@@ -8,10 +8,10 @@
     "version": "1.1",
     "footer_bn": "সকল তথ্য data.json থেকে লোড হয়",
     "footer_en": "All data is loaded from data.json",
-    "updated_at": "2026-09-24T15:43:39+06:00",
+    "updated_at": "",
     "counters": {
       "task": {
-        "2026": 4
+        "2026": 3
       },
       "note": {
         "2026": 2
@@ -315,25 +315,6 @@
       "history": [
         {
           "at": "2026-09-24T09:10:00+06:00",
-          "event": "created"
-        }
-      ]
-    },
-    {
-      "id": "TSK-2026-0004",
-      "title": "mj node network create",
-      "title_bn": "",
-      "desc": "",
-      "status": "todo",
-      "priority": "high",
-      "due": "2026-09-25",
-      "category": "general",
-      "tags": [],
-      "created_at": "2026-09-24T15:43:39+06:00",
-      "completed_at": "",
-      "history": [
-        {
-          "at": "2026-09-24T15:43:39+06:00",
           "event": "created"
         }
       ]

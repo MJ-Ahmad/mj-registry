@@ -123,7 +123,7 @@ bn:{search:'খুঁজুন — আইডি, শিরোনাম, ট্�
 let D,lang='en',cur={type:'dashboard'},curId='dash',open=new Set(),sf='',search='',mId='';
 try{const s=localStorage.getItem('mj_lang');if(s==='bn'||s==='en')lang=s}catch(e){}
 const T=()=>UI[lang],pick=(en,bn)=>lang==='bn'?(bn||en):(en||bn),lab=n=>pick(n.en,n.bn),ttl=i=>pick(i.title,i.title_bn);
-const items=t=>t==='all'?[...D.tasks.map(x=>({...x,_k:'tasks'})),...D.notes.map(x=>({...x,_k:'notes'})),...D.audits.map(x=>({...x,_k:'audits'})),...(D.codes||[]).map(x=>({...x,_k:'codes',menu_path:x.menu_path||['codecraft','c-'+x.lang]}))]:(D[t]||[]).map(x=>({...x,_k:t}));
+const items=t=>t==='all'?[...D.tasks.map(x=>({...x,_k:'tasks'})),...D.notes.map(x=>({...x,_k:'notes'})),...D.audits.map(x=>({...x,_k:'audits'})),...(D.codes||[]).map(x=>({...x,_k:'codes'}))]:(D[t]||[]).map(x=>({...x,_k:t}));
 const match=(it,f)=>!f||Object.entries(f).every(([k,v])=>Array.isArray(it[k])?it[k].includes(v):it[k]===v);
 const cnt=v=>v&&v.type!=='dashboard'?items(v.type).filter(i=>match(i,v.filter)).length:null;
 const fmt=s=>s?new Date(s).toLocaleString(lang==='bn'?'bn-BD':'en-GB',{dateStyle:'medium',timeStyle:'short'}):'—';
@@ -193,10 +193,7 @@ function dash(v){
 
 function list(v,type,filter,isSearch){
   const t=T();
-  const nm=isSearch?null:nodeMap()[curId];
-  v.append(E('h2','',isSearch?t.searchT:(nm&&nm.view&&nm.view.type===type?lab(nm):t.ty[type])));
-  if(nm&&nm.view&&nm.view.filter&&nm.view.filter.menu_path)v.append(E('div','sub','📁 '+esc(crumb(pathOf(nm.view.filter.menu_path)))));
-  if(nm&&nm.children&&nm.children.length){const b=E('div','bar');nm.children.forEach(c=>{const n=cnt(c.view),ch=E('button','chip',esc(lab(c))+(n!=null?` (${n})`:''));ch.onclick=()=>{open.add(nm.id);if(c.view){cur=c.view;curId=c.id;sf=''}drawNav();render()};b.append(ch)});v.append(b)}
+  v.append(E('h2','',isSearch?t.searchT:t.ty[type]));
   if(isSearch)v.append(E('div','sub','“'+esc(search)+'”'));
   let arr=items(type).filter(i=>match(i,filter)).filter(i=>!search||[i.id,i.title,i.title_bn,i.desc,i.body,i.findings,i.desc_bn,i.filename,i.content,i.category,(i.tags||[]).join(' ')].join(' ').toLowerCase().includes(search));
   const sts=[...new Set(arr.map(i=>i.status||i.result).filter(Boolean))];
@@ -205,13 +202,10 @@ function list(v,type,filter,isSearch){
   if(!arr.length)v.append(E('div','empty',t.empty));
   arr.forEach(i=>v.append(type==='codes'&&!isSearch?codeCard(i):row(i)))}
 
-const nodeMap=()=>{const m={};(function w(ns){ns.forEach(n=>{m[n.id]=n;w(n.children||[])})})(D.menu);return m};
-function pathOf(id){let r=null;(function w(ns,p){ns.forEach(n=>{const q=[...p,n.id];if(n.id===id)r=q;else w(n.children||[],q)})})(D.menu,[]);return r||[id]}
-const crumb=ids=>{const m=nodeMap();return ids.map(x=>m[x]?lab(m[x]):x).join(' › ')};
 function codeCard(i,full){
   const t=T(),N=D.meta.code_preview_lines||4,ls=i.content.split('\n');if(ls[ls.length-1]==='')ls.pop();
   let ex=!!full;const c=E('article','cc l-'+i.lang);
-  c.innerHTML=`<div class="cch"><span class="lg">${esc(i.lang_label||i.lang)}</span><div class="ct"><b>${esc(ttl(i))}</b><small>${esc(pick(i.desc,i.desc_bn))}</small><span class="id">${esc(i.id)} · ${esc(i.filename)} · ${ls.length} ${t.ln}</span><small class="cr">📁 ${esc(crumb(i.menu_path||[]))}</small></div><div class="ca"><button data-a="c">${t.cp}</button><button data-a="d" title="${t.dl}">↓</button></div></div><div class="cb"><pre class="gt"></pre><pre class="cd"><code></code></pre></div><button class="tg2"></button>`;
+  c.innerHTML=`<div class="cch"><span class="lg">${esc(i.lang_label||i.lang)}</span><div class="ct"><b>${esc(ttl(i))}</b><small>${esc(pick(i.desc,i.desc_bn))}</small><span class="id">${esc(i.id)} · ${esc(i.filename)} · ${ls.length} ${t.ln}</span></div><div class="ca"><button data-a="c">${t.cp}</button><button data-a="d" title="${t.dl}">↓</button></div></div><div class="cb"><pre class="gt"></pre><pre class="cd"><code></code></pre></div><button class="tg2"></button>`;
   const tg=c.querySelector('.tg2'),cb=c.querySelector('.cb');
   const draw=()=>{const sh=ex?ls:ls.slice(0,N);c.querySelector('.gt').textContent=sh.map((_,k)=>k+1).join('\n');c.querySelector('code').textContent=sh.join('\n');c.classList.toggle('fade',!ex&&ls.length>N);tg.hidden=ls.length<=N;tg.textContent=ex?t.co:`${t.sa} (${ls.length} ${t.ln})`};
   tg.onclick=()=>{ex=!ex;draw()};cb.onclick=()=>{if(!ex&&ls.length>N){ex=true;draw()}};
@@ -227,7 +221,7 @@ function row(i){
 
 function showM(id){
   const it=items('all').find(x=>x.id===id);if(!it)return;mId=id;
-  const t=T(),skip=['history','title','title_bn','_k','id','content','sha256','lang','ext','desc_bn','menu_path'],p=$('#mp');
+  const t=T(),skip=['history','title','title_bn','_k','id','content','sha256','lang','ext','desc_bn'],p=$('#mp');
   const val=(k,v)=>k==='desc'?esc(pick(v,it.desc_bn)):Array.isArray(v)?(k==='related'?v.map(x=>`<span class="lnk" data-id="${esc(x)}">${esc(x)}</span>`).join(''):esc(v.join(', '))):k.endsWith('_at')||k==='due'?fmt(v):k==='status'||k==='priority'||k==='result'?esc(t.st[v]||v):esc(v===true?'✔':v);
   p.innerHTML=`<button class="x" aria-label="Close">×</button><div class="id">${esc(it.id)} <a class="lnk" href="#${esc(it.id)}" style="font-size:12px" onclick="navigator.clipboard&&navigator.clipboard.writeText('${esc(it.id)}')">${t.copy}</a></div><h2>${esc(ttl(it))}</h2><dl>${Object.entries(it).filter(([k,v])=>!skip.includes(k)&&v!==''&&!(Array.isArray(v)&&!v.length)).map(([k,v])=>`<dt>${esc(t.fk[k]||k)}</dt><dd>${val(k,v)}</dd>`).join('')}</dl><h2 style="font-size:16px">${t.history}</h2><div class="hist">${(it.history||[]).map(h=>`<div>${fmt(h.at)} — ${esc(h.event)}${h.note?': '+esc(h.note):''}</div>`).join('')}</div>`;
   p.style.width=it._k==='codes'?'min(900px,100%)':'';if(it._k==='codes')p.querySelector('h2').after(codeCard(it,true));p.querySelector('.x').onclick=closeM;p.querySelectorAll('[data-id]').forEach(e=>e.onclick=()=>showM(e.dataset.id));

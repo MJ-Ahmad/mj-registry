@@ -27,8 +27,6 @@ def walk(ns):
         if not n.get("id") or not (n.get("bn") or n.get("en")): errs.append(f"menu node needs id+label: {n}")
         walk(n.get("children", []))
 walk(d.get("menu", []))
-for it in d.get('codes', []):
-    errs += [f"{it['id']}: menu_path id not in menu: {m}" for m in it.get('menu_path', []) if m not in mids]
 errs += [f"duplicate menu id {m}" for m in set(mids) if mids.count(m) > 1]
 if errs: print("✘ Problems:"); [print("  -", e) for e in errs]; sys.exit(1)
 print(f"✔ OK — {len(d['tasks'])} tasks, {len(d['notes'])} notes, {len(d['audits'])} audits, {len(d['codes'])} codes, {len(mids)} menu nodes")

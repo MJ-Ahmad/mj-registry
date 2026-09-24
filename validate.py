@@ -1,0 +1,30 @@
+#!/usr/bin/env python3
+"""Checks data.json integrity. Exit 0 = OK, 1 = problems."""
+import re
+from _lib import *
+d = load(); errs = []; seen = set()
+req = {"task": ["id", "title", "status", "priority", "created_at"], "note": ["id", "title", "created_at"],
+       "audit": ["id", "title", "result", "created_at"]}
+for k, (p, key) in KIND.items():
+    for it in d.get(key, []):
+        i = it.get("id", "?")
+        if i in seen: errs.append(f"duplicate ID {i}")
+        seen.add(i)
+        if not re.fullmatch(rf"{p}-\d{{4}}-\d{{4,}}", i): errs.append(f"bad ID format {i}")
+        errs += [f"{i}: missing '{f}'" for f in req[k] if not it.get(f)]
+        c = d["meta"].get("counters", {}).get(k, {}).get(i.split("-")[1], 0)
+        if i[:3] == p and int(i.split("-")[2]) > c: errs.append(f"{i}: counter behind ({c})")
+for key in ("tasks", "notes", "audits"):
+    for it in d.get(key, []):
+        for r in it.get("related", []):
+            if r not in seen: errs.append(f"{it['id']}: related ID missing {r}")
+mids = []
+def walk(ns):
+    for n in ns:
+        mids.append(n.get("id")); 
+        if not n.get("id") or not (n.get("bn") or n.get("en")): errs.append(f"menu node needs id+label: {n}")
+        walk(n.get("children", []))
+walk(d.get("menu", []))
+errs += [f"duplicate menu id {m}" for m in set(mids) if mids.count(m) > 1]
+if errs: print("✘ Problems:"); [print("  -", e) for e in errs]; sys.exit(1)
+print(f"✔ OK — {len(d['tasks'])} tasks, {len(d['notes'])} notes, {len(d['audits'])} audits, {len(mids)} menu nodes")

@@ -63,3 +63,61 @@ def detect(name, text, force=""):
         for k, v in SHEBANG.items():
             if k in text.split("\n", 1)[0]: return v
     return ("text", "Text")
+
+import re
+def walk(ns, path=()):
+    for n in ns:
+        yield n, path + (n["id"],)
+        yield from walk(n.get("children", []), path + (n["id"],))
+
+def find_node(d, ref):
+    """ref = menu id, or a label path like 'CodeCraft/Web/Portal' (EN/BN/id, case-insensitive). -> (node, [id path]) or (None, None)"""
+    ref = ref.strip()
+    for n, p in walk(d["menu"]):
+        if n["id"] == ref: return n, list(p)
+    segs = [s.strip().lower() for s in ref.strip("/").split("/") if s.strip()]
+    if not segs: return None, None
+    def go(ns, sg, path):
+        for n in ns:
+            if sg[0] in (n["id"].lower(), (n.get("en") or "").lower(), (n.get("bn") or "").lower()):
+                if len(sg) == 1: return n, path + [n["id"]]
+                r = go(n.get("children", []), sg[1:], path + [n["id"]])
+                if r[0]: return r
+        return None, None
+    r = go(d["menu"], segs, [])
+    if r[0]: return r
+    root = next((n for n in d["menu"] if n["id"] == "codecraft"), None)   # 'Web/Portal' means CodeCraft/Web/Portal
+    return go(root.get("children", []), segs, ["codecraft"]) if root else (None, None)
+
+def ensure_root(d):
+    root = next((n for n in d["menu"] if n["id"] == "codecraft"), None)
+    if not root:
+        root = {"id": "codecraft", "bn": "কোডক্রাফ্ট", "en": "CodeCraft", "icon": "❮❯", "open": True, "view": {"type": "codes"}, "children": []}
+        k = next((j for j, n in enumerate(d["menu"]) if n["id"] == "registry"), len(d["menu"])); d["menu"].insert(k, root)
+    root.setdefault("children", []); return root
+
+def ensure_chain(d, parent, ppath, names, bns=()):
+    """Create (or reuse, matched by name) nested submenus under parent. -> (deepest node, id path)"""
+    ids = {n["id"] for n, _ in walk(d["menu"])}
+    for k, name in enumerate(names):
+        sib = parent.setdefault("children", [])
+        hit = next((c for c in sib if name.lower() in ((c.get("en") or "").lower(), (c.get("bn") or "").lower())), None)
+        if not hit:
+            bn = bns[k].strip() if k < len(bns) and bns[k].strip() else name
+            base = "c-" + (re.sub(r"[^a-z0-9]+", "-", name.lower()).strip("-") or "m"); nid = base; i = 2
+            while nid in ids: nid = f"{base}-{i}"; i += 1
+            ids.add(nid)
+            hit = {"id": nid, "bn": bn, "en": name, "view": {"type": "codes", "filter": {"menu_path": nid}}}
+            sib.append(hit)
+        parent = hit; ppath = ppath + [hit["id"]]
+    return parent, ppath
+
+def normalize(d):
+    """Upgrade older data: language nodes filter by menu_path; entries get a menu_path."""
+    root = ensure_root(d)
+    for c in root["children"]:
+        f = c.get("view", {}).get("filter", {})
+        if "lang" in f: c["view"]["filter"] = {"menu_path": c["id"]}
+    for it in d["codes"]:
+        it.setdefault("menu_path", ["codecraft", "c-" + it["lang"]])
+    return d

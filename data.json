@@ -1,23 +1,26 @@
 {
   "meta": {
-    "title": "",
+    "title": "MJ Ahmad",
     "subtitle_bn": "টাস্ক · নোট · অডিট রেজিস্ট্রি",
     "subtitle_en": "Task · Note · Audit Registry",
     "logo": "assets/logo.png",
     "splash_ms": 1800,
-    "version": "1.1",
+    "version": "1.2",
     "footer_bn": "সকল তথ্য data.json থেকে লোড হয়",
     "footer_en": "All data is loaded from data.json",
-    "updated_at": "2026-09-24T15:43:39+06:00",
+    "updated_at": "2026-09-24T20:52:15+06:00",
     "counters": {
       "task": {
-        "2026": 4
+        "2026": 3
       },
       "note": {
         "2026": 2
       },
       "audit": {
         "2026": 2
+      },
+      "code": {
+        "2026": 1
       }
     },
     "tagline": "Where every script is a verdict, every invocation a vote, and every log a legacy.",
@@ -36,15 +39,15 @@
       },
       {
         "icon": "✉",
-        "en": "Email",
-        "bn": "Email",
+        "en": "mjahmad2024@outlook.com",
+        "bn": "mjahmad2024@outlook.com",
         "url": "mailto:mjahmad2024@outlook.com"
       },
       {
-        "icon": "°",
-        "en": "Help",
-        "bn": "সহায়ক",
-        "url": "https://MJ-Ahmad.github.io/mj/help/index.html"
+        "icon": "in",
+        "en": "LinkedIn",
+        "bn": "লিংকডিন",
+        "url": "https://www.linkedin.com/in/jafor-ahmad"
       }
     ],
     "commands": [
@@ -69,6 +72,11 @@
         "cmd": "./run.sh audit \"Title\" --result pass --related TSK-2026-0001"
       },
       {
+        "en": "Add code file / URL",
+        "bn": "কোড ফাইল / লিংক যুক্ত",
+        "cmd": "./run.sh code ~/mj/portal/index.html \"Title\" \"Description\" --bn \"শিরোনাম\" --bn \"বর্ণনা\""
+      },
+      {
         "en": "Complete task",
         "bn": "টাস্ক সম্পন্ন",
         "cmd": "./run.sh done TSK-2026-0001 --note \"done\""
@@ -88,7 +96,8 @@
         "bn": "পোর্ট ব্যস্ত হলে অন্যটি",
         "cmd": "python3 -m http.server 8080"
       }
-    ]
+    ],
+    "code_preview_lines": 4
   },
   "menu": [
     {
@@ -241,6 +250,29 @@
       ]
     },
     {
+      "id": "codecraft",
+      "bn": "কোডক্রাফ্ট",
+      "en": "CodeCraft",
+      "icon": "❮❯",
+      "open": true,
+      "view": {
+        "type": "codes"
+      },
+      "children": [
+        {
+          "id": "c-html",
+          "bn": "HTML",
+          "en": "HTML",
+          "view": {
+            "type": "codes",
+            "filter": {
+              "lang": "html"
+            }
+          }
+        }
+      ]
+    },
+    {
       "id": "registry",
       "bn": "রেজিস্ট্রি (সব)",
       "en": "Registry (all)",
@@ -315,25 +347,6 @@
       "history": [
         {
           "at": "2026-09-24T09:10:00+06:00",
-          "event": "created"
-        }
-      ]
-    },
-    {
-      "id": "TSK-2026-0004",
-      "title": "mj node network create",
-      "title_bn": "",
-      "desc": "",
-      "status": "todo",
-      "priority": "high",
-      "due": "2026-09-25",
-      "category": "general",
-      "tags": [],
-      "created_at": "2026-09-24T15:43:39+06:00",
-      "completed_at": "",
-      "history": [
-        {
-          "at": "2026-09-24T15:43:39+06:00",
           "event": "created"
         }
       ]
@@ -423,6 +436,34 @@
           "event": "created"
         }
       ]
+    }
+  ],
+  "codes": [
+    {
+      "id": "CDE-2026-0001",
+      "title": "MJ Root Index",
+      "title_bn": "এম জে রুট ইনডেক্স",
+      "desc": "https://MJ-Ahmad.github.io/mj Home page index.html code",
+      "desc_bn": "এমজে ওয়েবসাইটের হোম পেইজের কোড",
+      "filename": "index.html",
+      "source": "/data/data/com.termux/files/home/mj/index.html",
+      "lang": "html",
+      "lang_label": "HTML",
+      "ext": "html",
+      "lines": 84,
+      "bytes": 2108,
+      "sha256": "c35b30fe03bb52b2746b2b90100f77660d13b898f7f28e861c8d84f53d14ef3a",
+      "category": "general",
+      "tags": [],
+      "created_at": "2026-09-24T20:52:15+06:00",
+      "history": [
+        {
+          "at": "2026-09-24T20:52:15+06:00",
+          "event": "created",
+          "note": "/data/data/com.termux/files/home/mj/index.html"
+        }
+      ],
+      "content": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n  <meta charset=\"UTF-8\" />\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n  <title>MJSovereign | Loading...</title>\n  <link rel=\"stylesheet\" href=\"css/style.css\" />\n  <style>\n    /* Splash overlay styles */\n    body {\n      margin: 0;\n      font-family: Arial, sans-serif;\n    }\n    #splash {\n      position: fixed;\n      top: 0; left: 0;\n      width: 100%; height: 100%;\n      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);\n      display: flex;\n      justify-content: center;\n      align-items: center;\n      flex-direction: column;\n      z-index: 9999;\n      color: #fff;\n    }\n    #splash img {\n      width: 180px;\n      animation: fadeIn 2s ease-in-out;\n    }\n    .progress-bar {\n      width: 300px;\n      height: 10px;\n      background: rgba(255,255,255,0.2);\n      border-radius: 5px;\n      margin: 20px auto;\n      overflow: hidden;\n    }\n    .progress {\n      height: 100%;\n      width: 0;\n      background: #00ffcc;\n      transition: width 0.3s ease;\n    }\n    .loading-text {\n      margin-top: 15px;\n      font-size: 1.1em;\n      animation: pulse 1.5s infinite;\n    }\n    @keyframes fadeIn {\n      from { opacity: 0; transform: scale(0.8); }\n      to { opacity: 1; transform: scale(1); }\n    }\n    @keyframes pulse {\n      0% { opacity: 0.5; }\n      50% { opacity: 1; }\n      100% { opacity: 0.5; }\n    }\n  </style>\n</head>\n<body>\n  <!-- Splash overlay -->\n  <div id=\"splash\">\n    <img src=\"logo.png\" alt=\"MJSovereign Logo\">\n    <div class=\"progress-bar\"><div class=\"progress\"></div></div>\n    <p class=\"loading-text\">Preparing your sovereign experience...</p>\n  </div>\n\n  <!-- Splash script -->\n  <script>\n    let progress = document.querySelector(\".progress\");\n    let width = 0;\n    let interval = setInterval(() => {\n      if (width >= 100) {\n        clearInterval(interval);\n        // Redirect to home.html after splash\n        window.location.href = \"home.html\";\n      } else {\n        width++;\n        progress.style.width = width + \"%\";\n      }\n    }, 30); // 3 seconds total\n  </script>\n</body>\n</html>\n"
     }
   ]
 }

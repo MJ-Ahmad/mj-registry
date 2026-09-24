@@ -1,25 +1,24 @@
 {
   "meta": {
-    "title": "MJ Ahmad",
+    "title": "",
     "subtitle_bn": "টাস্ক · নোট · অডিট রেজিস্ট্রি",
     "subtitle_en": "Task · Note · Audit Registry",
     "logo": "assets/logo.png",
     "splash_ms": 1800,
-    "version": "1.2",
+    "version": "1.1",
     "footer_bn": "সকল তথ্য data.json থেকে লোড হয়",
     "footer_en": "All data is loaded from data.json",
-    "updated_at": "",
+    "updated_at": "2026-09-24T15:43:39+06:00",
     "counters": {
       "task": {
-        "2026": 3
+        "2026": 4
       },
       "note": {
         "2026": 2
       },
       "audit": {
         "2026": 2
-      },
-      "code": {}
+      }
     },
     "tagline": "Where every script is a verdict, every invocation a vote, and every log a legacy.",
     "links": [
@@ -37,15 +36,15 @@
       },
       {
         "icon": "✉",
-        "en": "mjahmad2024@outlook.com",
-        "bn": "mjahmad2024@outlook.com",
+        "en": "Email",
+        "bn": "Email",
         "url": "mailto:mjahmad2024@outlook.com"
       },
       {
-        "icon": "in",
-        "en": "LinkedIn",
-        "bn": "লিংকডিন",
-        "url": "https://www.linkedin.com/in/jafor-ahmad"
+        "icon": "°",
+        "en": "Help",
+        "bn": "সহায়ক",
+        "url": "https://MJ-Ahmad.github.io/mj/help/index.html"
       }
     ],
     "commands": [
@@ -70,11 +69,6 @@
         "cmd": "./run.sh audit \"Title\" --result pass --related TSK-2026-0001"
       },
       {
-        "en": "Add code file / URL",
-        "bn": "কোড ফাইল / লিংক যুক্ত",
-        "cmd": "./run.sh code ~/mj/portal/index.html \"Title\" \"Description\" --bn \"শিরোনাম\" --bn \"বর্ণনা\""
-      },
-      {
         "en": "Complete task",
         "bn": "টাস্ক সম্পন্ন",
         "cmd": "./run.sh done TSK-2026-0001 --note \"done\""
@@ -94,8 +88,7 @@
         "bn": "পোর্ট ব্যস্ত হলে অন্যটি",
         "cmd": "python3 -m http.server 8080"
       }
-    ],
-    "code_preview_lines": 4
+    ]
   },
   "menu": [
     {
@@ -248,17 +241,6 @@
       ]
     },
     {
-      "id": "codecraft",
-      "bn": "কোডক্রাফ্ট",
-      "en": "CodeCraft",
-      "icon": "❮❯",
-      "open": true,
-      "view": {
-        "type": "codes"
-      },
-      "children": []
-    },
-    {
       "id": "registry",
       "bn": "রেজিস্ট্রি (সব)",
       "en": "Registry (all)",
@@ -333,6 +315,25 @@
       "history": [
         {
           "at": "2026-09-24T09:10:00+06:00",
+          "event": "created"
+        }
+      ]
+    },
+    {
+      "id": "TSK-2026-0004",
+      "title": "mj node network create",
+      "title_bn": "",
+      "desc": "",
+      "status": "todo",
+      "priority": "high",
+      "due": "2026-09-25",
+      "category": "general",
+      "tags": [],
+      "created_at": "2026-09-24T15:43:39+06:00",
+      "completed_at": "",
+      "history": [
+        {
+          "at": "2026-09-24T15:43:39+06:00",
           "event": "created"
         }
       ]
@@ -423,6 +424,5 @@
         }
       ]
     }
-  ],
-  "codes": []
+  ]
 }

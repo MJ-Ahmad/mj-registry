@@ -21,7 +21,6 @@ body{font-family:"Hind Siliguri","Noto Sans Bengali",system-ui,sans-serif;backgr
 @keyframes bar{to{width:180px}}
 header{display:flex;align-items:center;gap:12px;padding:10px 16px;background:var(--pine);color:#F3F5F2;flex:none}
 header img{width:36px;height:36px;object-fit:contain}
-.logo-fb{width:36px;height:36px;border-radius:50%;background:var(--brass);display:grid;place-items:center;font-weight:700;color:#fff}
 header h1{font-size:18px;font-weight:700;line-height:1.2}
 header small{display:block;opacity:.8;font-size:12px}
 #q{margin-left:auto;width:min(320px,45%);padding:7px 10px;border-radius:var(--r);border:1px solid #ffffff44;background:#ffffff1c;color:#fff;font:inherit}
@@ -67,46 +66,74 @@ h2{font-size:22px;margin-bottom:2px}.sub{color:var(--mut);margin-bottom:14px}
 .x{float:right;background:none;border:0;font-size:22px;color:var(--mut);cursor:pointer}
 footer{flex:none;padding:8px 16px;background:var(--pan);border-top:1px solid var(--line);color:var(--mut);font-size:12.5px;display:flex;flex-wrap:wrap;gap:6px 18px;justify-content:space-between}
 @media(max-width:820px){#burger{display:block}nav{position:fixed;top:56px;bottom:0;left:0;z-index:40;transform:translateX(-100%);transition:transform .2s;width:290px}nav.on{transform:none}.row{grid-template-columns:1fr}section#view{padding:14px}}
+.lang{display:flex;border:1px solid #ffffff55;border-radius:var(--r);overflow:hidden;flex:none}
+.lang button{background:none;border:0;color:#fff;padding:5px 11px;font:inherit;font-size:13px;font-weight:600;cursor:pointer;opacity:.75}
+.lang button+button{border-left:1px solid #ffffff55}
+.lang button.on{background:var(--brass);opacity:1}
+#splash .tg{font-style:italic;max-width:420px;text-align:center;font-size:13px;opacity:.65;padding:0 20px}
+footer{gap:8px;flex-direction:column;align-items:stretch;max-height:45vh;overflow:auto}
+footer a{color:var(--pine);text-decoration:none;font-weight:500}footer a:hover{text-decoration:underline}
+.fl{display:flex;flex-wrap:wrap;gap:6px 20px}
+footer summary{cursor:pointer;color:var(--ink);font-weight:500}
+.cm{display:grid;grid-template-columns:200px 1fr;gap:4px 12px;padding:4px 0;border-bottom:1px dashed var(--line)}
+.cm code{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12.5px;color:var(--pine);cursor:pointer;word-break:break-all}
+.fq{font-style:italic;color:var(--ink)}
+@media(max-width:820px){.cm{grid-template-columns:1fr}#q{width:34%}}
 @media(prefers-reduced-motion:reduce){*{transition:none!important;animation-duration:.01s!important}}
 </style>
 </head>
 <body>
-<div id="splash"><img id="sl" alt=""><h1 id="st">MJ Ahmad</h1><p id="ss"></p><i></i></div>
+<div id="splash"><img id="sl" alt="Logo"><h1 id="st">MJ Ahmad</h1><p id="ss"></p><p id="sq" class="tg"></p><i></i></div>
 <header>
   <button id="burger" aria-label="Menu">☰</button>
-  <img id="hl" alt=""><div class="logo-fb" id="hf" hidden>M</div>
+  <img id="hl" alt="Logo">
   <div><h1 id="ht">MJ Ahmad</h1><small id="hs"></small></div>
   <input id="q" type="search" placeholder="খুঁজুন / Search — ID, শিরোনাম, ট্যাগ…" aria-label="Search">
+  <div class="lang" id="lang" role="group" aria-label="Language"><button data-l="en">EN</button><button data-l="bn">BN</button></div>
 </header>
 <div class="main"><nav id="nav" aria-label="Menu"></nav><section id="view"></section></div>
-<footer><span id="f1"></span><span id="f2"></span></footer>
+<footer><div class="fl" id="fl"></div><details id="fd"><summary id="fs"></summary><div id="fc"></div></details><div class="fq" id="fq"></div><div class="fm" id="f2"></div></footer>
 <div id="modal"><div class="p" id="mp"></div></div>
 <script>
 const $=s=>document.querySelector(s),E=(t,c,h)=>{const e=document.createElement(t);if(c)e.className=c;if(h!=null)e.innerHTML=h;return e};
 const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
-const L={todo:'করণীয় / To do',doing:'চলমান / In progress',done:'সম্পন্ন / Done',low:'নিম্ন / Low',medium:'মাঝারি / Medium',high:'উচ্চ / High',urgent:'জরুরি / Urgent',pass:'উত্তীর্ণ / Pass',warning:'সতর্কতা / Warning',fail:'ব্যর্থ / Fail'};
-const TN={tasks:['টাস্ক','Tasks','task'],notes:['নোট','Notes','note'],audits:['অডিট','Audits','audit'],all:['রেজিস্ট্রি','Registry','']};
-let D,cur={type:'dashboard'},curId='dash',open=new Set(),sf='',search='';
-const items=(t)=>t==='all'?[...D.tasks.map(x=>({...x,_k:'tasks'})),...D.notes.map(x=>({...x,_k:'notes'})),...D.audits.map(x=>({...x,_k:'audits'}))]:D[t].map(x=>({...x,_k:t}));
+const UI={
+en:{search:'Search — ID, title, tag…',dash:'Dashboard',recent:'Recent',searchT:'Search',all:'All',empty:'Nothing here yet. Add entries with ./run.sh',overdue:'Overdue',history:'History',copy:'copy',openT:'Open tasks',done:'Done',notes:'Notes',audits:'Audits',failed:'Failed audits',t:'tasks',n:'notes',a:'audits',upd:'Updated',cmds:'Quick commands & emergency help',err:'Could not load data.json. Run ./run.sh serve and open http://localhost:8000',menu:'Menu',
+ st:{todo:'To do',doing:'In progress',done:'Done',low:'Low',medium:'Medium',high:'High',urgent:'Urgent',pass:'Pass',warning:'Warning',fail:'Fail'},
+ ty:{tasks:'Tasks',notes:'Notes',audits:'Audits',all:'Registry'},
+ fk:{status:'Status',priority:'Priority',due:'Due',category:'Category',tags:'Tags',created_at:'Created',completed_at:'Completed',desc:'Description',body:'Note',result:'Result',target:'Target',findings:'Findings',auditor:'Auditor',related:'Related',pinned:'Pinned'}},
+bn:{search:'খুঁজুন — আইডি, শিরোনাম, ট্যাগ…',dash:'ড্যাশবোর্ড',recent:'সাম্প্রতিক',searchT:'অনুসন্ধান',all:'সব',empty:'এখনো কিছু নেই। ./run.sh দিয়ে যুক্ত করুন',overdue:'মেয়াদোত্তীর্ণ',history:'ইতিহাস',copy:'কপি',openT:'খোলা টাস্ক',done:'সম্পন্ন',notes:'নোট',audits:'অডিট',failed:'ব্যর্থ অডিট',t:'টাস্ক',n:'নোট',a:'অডিট',upd:'আপডেট',cmds:'দ্রুত কমান্ড ও জরুরি নির্দেশনা',err:'data.json লোড হয়নি। ./run.sh serve চালিয়ে http://localhost:8000 খুলুন',menu:'মেনু',
+ st:{todo:'করণীয়',doing:'চলমান',done:'সম্পন্ন',low:'নিম্ন',medium:'মাঝারি',high:'উচ্চ',urgent:'জরুরি',pass:'উত্তীর্ণ',warning:'সতর্কতা',fail:'ব্যর্থ'},
+ ty:{tasks:'টাস্ক',notes:'নোট',audits:'অডিট',all:'রেজিস্ট্রি'},
+ fk:{status:'অবস্থা',priority:'অগ্রাধিকার',due:'শেষ তারিখ',category:'বিভাগ',tags:'ট্যাগ',created_at:'তৈরি',completed_at:'সম্পন্ন হয়েছে',desc:'বিবরণ',body:'নোট',result:'ফলাফল',target:'লক্ষ্য',findings:'পর্যবেক্ষণ',auditor:'অডিটর',related:'সম্পর্কিত',pinned:'পিন করা'}}};
+let D,lang='en',cur={type:'dashboard'},curId='dash',open=new Set(),sf='',search='',mId='';
+try{const s=localStorage.getItem('mj_lang');if(s==='bn'||s==='en')lang=s}catch(e){}
+const T=()=>UI[lang],pick=(en,bn)=>lang==='bn'?(bn||en):(en||bn),lab=n=>pick(n.en,n.bn),ttl=i=>pick(i.title,i.title_bn);
+const items=t=>t==='all'?[...D.tasks.map(x=>({...x,_k:'tasks'})),...D.notes.map(x=>({...x,_k:'notes'})),...D.audits.map(x=>({...x,_k:'audits'}))]:D[t].map(x=>({...x,_k:t}));
 const match=(it,f)=>!f||Object.entries(f).every(([k,v])=>Array.isArray(it[k])?it[k].includes(v):it[k]===v);
 const cnt=v=>v&&v.type!=='dashboard'?items(v.type).filter(i=>match(i,v.filter)).length:null;
-const fmt=s=>s?new Date(s).toLocaleString('bn-BD',{dateStyle:'medium',timeStyle:'short'}):'—';
+const fmt=s=>s?new Date(s).toLocaleString(lang==='bn'?'bn-BD':'en-GB',{dateStyle:'medium',timeStyle:'short'}):'—';
 const overdue=t=>t.status!=='done'&&t.due&&t.due<new Date().toISOString().slice(0,10);
 
-fetch('data.json?'+Date.now()).then(r=>r.json()).then(init).catch(e=>{$('#view').innerHTML='<div class="empty">data.json লোড হয়নি / could not load.<br>Run: <code>./run.sh serve</code> then open <code>http://localhost:8000</code><br><small>'+esc(e)+'</small></div>';hideSplash()});
+fetch('data.json?'+Date.now()).then(r=>r.json()).then(init).catch(e=>{$('#view').innerHTML='<div class="empty">'+esc(T().err)+'<br><small>'+esc(e)+'</small></div>';hideSplash()});
 
 function init(d){
-  D=d;const m=d.meta;document.title=m.title+' — '+m.subtitle_en;
-  $('#ht').textContent=$('#st').textContent=m.title;$('#hs').textContent=m.subtitle_bn+' · '+m.subtitle_en;$('#ss').textContent=m.subtitle_bn+' · '+m.subtitle_en;
-  for(const id of['hl','sl']){const i=$('#'+id);i.src=m.logo;i.onerror=()=>{i.style.display='none';if(id==='hl')$('#hf').hidden=false}}
-  $('#hf').textContent=(m.title||'M')[0];
-  $('#f1').textContent=m.footer_bn+' · '+m.footer_en;
-  $('#f2').textContent=`v${m.version} · ${D.tasks.length} টাস্ক · ${D.notes.length} নোট · ${D.audits.length} অডিট · আপডেট ${fmt(m.updated_at)}`;
+  D=d;const m=d.meta;
+  $('#hl').src=$('#sl').src=m.logo;
   (function pre(ns){ns.forEach(n=>{if(n.open)open.add(n.id);pre(n.children||[])})})(D.menu);
-  drawNav();render();
   $('#splash').style.setProperty('--ms',(m.splash_ms||1800)+'ms');
+  document.querySelectorAll('#lang button').forEach(b=>b.onclick=()=>{lang=b.dataset.l;try{localStorage.setItem('mj_lang',lang)}catch(e){}applyLang()});
+  applyLang();
+  if(location.hash.length>1)showM(location.hash.slice(1));
   setTimeout(hideSplash,m.splash_ms||1800);
 }
+function applyLang(){
+  const m=D.meta,t=T(),sub=pick(m.subtitle_en,m.subtitle_bn);
+  document.documentElement.lang=lang;document.title=m.title+' — '+sub;
+  $('#ht').textContent=$('#st').textContent=m.title;$('#hs').textContent=$('#ss').textContent=sub;
+  $('#sq').textContent=m.tagline||'';$('#q').placeholder=t.search;
+  document.querySelectorAll('#lang button').forEach(b=>b.classList.toggle('on',b.dataset.l===lang));
+  drawNav();drawFooter();render();if($('#modal').classList.contains('on'))showM(mId)}
 function hideSplash(){$('#splash').classList.add('out')}
 $('#splash').onclick=hideSplash;
 $('#burger').onclick=()=>$('#nav').classList.toggle('on');
@@ -114,13 +141,22 @@ $('#q').oninput=e=>{search=e.target.value.trim().toLowerCase();render()};
 $('#modal').onclick=e=>{if(e.target.id==='modal')closeM()};
 addEventListener('keydown',e=>{if(e.key==='Escape')closeM()});
 
+function drawFooter(){
+  const m=D.meta,t=T();
+  $('#fl').innerHTML=(m.links||[]).map(l=>`<a href="${esc(l.url)}"${l.url.startsWith('mailto:')?'':' target="_blank" rel="noopener"'}><span>${esc(l.icon||'')}</span> ${esc(pick(l.en,l.bn))}</a>`).join('');
+  const c=m.commands||[];$('#fd').hidden=!c.length;$('#fs').textContent=t.cmds;
+  $('#fc').innerHTML=c.map(x=>`<div class="cm"><span>${esc(pick(x.en,x.bn))}</span><code title="click to copy">${esc(x.cmd)}</code></div>`).join('');
+  $('#fc').querySelectorAll('code').forEach(e=>e.onclick=()=>navigator.clipboard&&navigator.clipboard.writeText(e.textContent));
+  $('#fq').textContent=m.tagline?'“'+m.tagline+'”':'';
+  $('#f2').textContent=`${pick(m.footer_en,m.footer_bn)} · v${m.version} · ${D.tasks.length} ${t.t} · ${D.notes.length} ${t.n} · ${D.audits.length} ${t.a} · ${t.upd} ${fmt(m.updated_at)} · © ${new Date().getFullYear()} ${m.title}`}
+
 function drawNav(){const nav=$('#nav');nav.innerHTML='';nav.append(tree(D.menu))}
 function tree(ns){
   const ul=E('ul');
   ns.forEach(n=>{
-    const li=E('li'+'',open.has(n.id)?'open':''),kids=n.children&&n.children.length,c=cnt(n.view);
+    const li=E('li',open.has(n.id)?'open':''),kids=n.children&&n.children.length,c=cnt(n.view);
     const row=E('div','node'+(n.id===curId?' act':''));
-    row.innerHTML=`<span class="chev">${kids?'›':''}</span><span class="ic">${n.icon||''}</span><span class="lb">${esc(n.bn||n.en)}${n.bn&&n.en?`<small>${esc(n.en)}</small>`:''}</span>${c!=null?`<span class="cnt">${c}</span>`:''}`;
+    row.innerHTML=`<span class="chev">${kids?'›':''}</span><span class="ic">${n.icon||''}</span><span class="lb">${esc(lab(n))}</span>${c!=null?`<span class="cnt">${c}</span>`:''}`;
     row.tabIndex=0;
     const go=()=>{if(kids){open.has(n.id)?open.delete(n.id):open.add(n.id)}if(n.view){cur=n.view;curId=n.id;sf='';$('#nav').classList.remove('on')}drawNav();render()};
     row.onclick=go;row.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();go()}};
@@ -133,34 +169,35 @@ function render(){
   cur.type==='dashboard'?dash(v):list(v,cur.type,cur.filter)}
 
 function dash(v){
-  const T=D.tasks,A=D.audits,od=T.filter(overdue).length;
-  v.innerHTML=`<h2>ড্যাশবোর্ড</h2><div class="sub">Dashboard</div>`;
+  const t=T(),TK=D.tasks,A=D.audits;
+  v.innerHTML=`<h2>${t.dash}</h2>`;
   const g=E('div','grid');
-  [['খোলা টাস্ক / Open tasks',T.filter(t=>t.status!=='done').length,'tasks',{}],['সম্পন্ন / Done',T.filter(t=>t.status==='done').length,'tasks',{status:'done'}],['মেয়াদোত্তীর্ণ / Overdue',od,'tasks',{},'bad'],['নোট / Notes',D.notes.length,'notes',{}],['অডিট / Audits',A.length,'audits',{}],['ব্যর্থ অডিট / Failed',A.filter(a=>a.result==='fail').length,'audits',{result:'fail'},'bad']]
-   .forEach(([l,n,t,f,c])=>{const s=E('div','stat '+(c||''),`<b>${n}</b><span>${l}</span>`);s.onclick=()=>{cur={type:t,filter:f};curId='';drawNav();render()};g.append(s)});
-  v.append(g,E('h2','','সাম্প্রতিক / Recent'));
+  [[t.openT,TK.filter(x=>x.status!=='done').length,'tasks',{}],[t.done,TK.filter(x=>x.status==='done').length,'tasks',{status:'done'}],[t.overdue,TK.filter(overdue).length,'tasks',{},'bad'],[t.notes,D.notes.length,'notes',{}],[t.audits,A.length,'audits',{}],[t.failed,A.filter(a=>a.result==='fail').length,'audits',{result:'fail'},'bad']]
+   .forEach(([l,n,ty,f,c])=>{const s=E('div','stat '+(c||''),`<b>${n}</b><span>${l}</span>`);s.onclick=()=>{cur={type:ty,filter:f};curId='';drawNav();render()};g.append(s)});
+  v.append(g,E('h2','',t.recent));
   items('all').sort((a,b)=>b.created_at.localeCompare(a.created_at)).slice(0,8).forEach(i=>v.append(row(i)))}
 
 function list(v,type,filter,isSearch){
-  const [bn,en]=TN[type];
-  v.append(E('h2','',isSearch?'অনুসন্ধান / Search':bn),E('div','sub',isSearch?`"${esc(search)}"`:en));
+  const t=T();
+  v.append(E('h2','',isSearch?t.searchT:t.ty[type]));
+  if(isSearch)v.append(E('div','sub','“'+esc(search)+'”'));
   let arr=items(type).filter(i=>match(i,filter)).filter(i=>!search||[i.id,i.title,i.title_bn,i.desc,i.body,i.findings,i.category,(i.tags||[]).join(' ')].join(' ').toLowerCase().includes(search));
   const sts=[...new Set(arr.map(i=>i.status||i.result).filter(Boolean))];
-  if(sts.length>1){const b=E('div','bar');['',...sts].forEach(s=>{const c=E('button','chip'+(sf===s?' on':''),s?L[s]||s:'সব / All');c.onclick=()=>{sf=s;render()};b.append(c)});v.append(b)}
+  if(sts.length>1){const b=E('div','bar');['',...sts].forEach(s=>{const c=E('button','chip'+(sf===s?' on':''),s?t.st[s]||s:t.all);c.onclick=()=>{sf=s;render()};b.append(c)});v.append(b)}
   arr=arr.filter(i=>!sf||(i.status||i.result)===sf).sort((a,b)=>b.id.localeCompare(a.id));
-  if(!arr.length)v.append(E('div','empty','কিছু পাওয়া যায়নি / Nothing here yet. Add with ./run.sh'));
+  if(!arr.length)v.append(E('div','empty',t.empty));
   arr.forEach(i=>v.append(row(i)))}
 
 function row(i){
-  const s=i.status||i.result,r=E('div','row');
-  r.innerHTML=`<span class="id">${esc(i.id)}</span><span class="tt">${esc(i.title)}${i.title_bn?`<small>${esc(i.title_bn)}</small>`:''}</span><span>${s?`<span class="b ${s}">${L[s]||s}</span>`:''}${i.priority?`<span class="b ${i.priority}">${L[i.priority]}</span>`:''}${overdue(i)?'<span class="b fail">মেয়াদোত্তীর্ণ</span>':''}${i.pinned?'<span class="b">📌</span>':''}</span>`;
+  const t=T(),s=i.status||i.result,r=E('div','row');
+  r.innerHTML=`<span class="id">${esc(i.id)}</span><span class="tt">${esc(ttl(i))}</span><span>${s?`<span class="b ${s}">${t.st[s]||s}</span>`:''}${i.priority?`<span class="b ${i.priority}">${t.st[i.priority]}</span>`:''}${overdue(i)?`<span class="b fail">${t.overdue}</span>`:''}${i.pinned?'<span class="b">📌</span>':''}</span>`;
   r.onclick=()=>showM(i.id);return r}
 
 function showM(id){
-  const it=items('all').find(x=>x.id===id);if(!it)return;
-  const skip=['history','title','title_bn','_k'],p=$('#mp');
-  const val=(k,v)=>Array.isArray(v)?(k==='related'?v.map(x=>`<span class="lnk" data-id="${esc(x)}">${esc(x)}</span>`).join(''):esc(v.join(', '))):k.endsWith('_at')||k==='due'?fmt(v):esc(v===true?'✔':v);
-  p.innerHTML=`<button class="x" aria-label="Close">×</button><div class="id">${esc(it.id)} <a class="lnk" href="#${esc(it.id)}" style="font-size:12px" onclick="navigator.clipboard&&navigator.clipboard.writeText('${esc(it.id)}')">copy</a></div><h2>${esc(it.title)}</h2><div class="sub">${esc(it.title_bn)}</div><dl>${Object.entries(it).filter(([k,v])=>!skip.includes(k)&&k!=='id'&&v!==''&&!(Array.isArray(v)&&!v.length)).map(([k,v])=>`<dt>${esc(k)}</dt><dd>${val(k,v)}</dd>`).join('')}</dl><h2 style="font-size:16px">ইতিহাস / History</h2><div class="hist">${(it.history||[]).map(h=>`<div>${fmt(h.at)} — ${esc(h.event)}${h.note?': '+esc(h.note):''}</div>`).join('')}</div>`;
+  const it=items('all').find(x=>x.id===id);if(!it)return;mId=id;
+  const t=T(),skip=['history','title','title_bn','_k','id'],p=$('#mp');
+  const val=(k,v)=>Array.isArray(v)?(k==='related'?v.map(x=>`<span class="lnk" data-id="${esc(x)}">${esc(x)}</span>`).join(''):esc(v.join(', '))):k.endsWith('_at')||k==='due'?fmt(v):k==='status'||k==='priority'||k==='result'?esc(t.st[v]||v):esc(v===true?'✔':v);
+  p.innerHTML=`<button class="x" aria-label="Close">×</button><div class="id">${esc(it.id)} <a class="lnk" href="#${esc(it.id)}" style="font-size:12px" onclick="navigator.clipboard&&navigator.clipboard.writeText('${esc(it.id)}')">${t.copy}</a></div><h2>${esc(ttl(it))}</h2><dl>${Object.entries(it).filter(([k,v])=>!skip.includes(k)&&v!==''&&!(Array.isArray(v)&&!v.length)).map(([k,v])=>`<dt>${esc(t.fk[k]||k)}</dt><dd>${val(k,v)}</dd>`).join('')}</dl><h2 style="font-size:16px">${t.history}</h2><div class="hist">${(it.history||[]).map(h=>`<div>${fmt(h.at)} — ${esc(h.event)}${h.note?': '+esc(h.note):''}</div>`).join('')}</div>`;
   p.querySelector('.x').onclick=closeM;p.querySelectorAll('[data-id]').forEach(e=>e.onclick=()=>showM(e.dataset.id));
   $('#modal').classList.add('on');location.hash=id}
 function closeM(){$('#modal').classList.remove('on');history.replaceState(null,'',location.pathname)}

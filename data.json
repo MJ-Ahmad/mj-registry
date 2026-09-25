@@ -8,7 +8,7 @@
     "version": "1.2",
     "footer_bn": "সকল তথ্য data.json থেকে লোড হয়",
     "footer_en": "All data is loaded from data.json",
-    "updated_at": "2026-09-25T07:40:03+06:00",
+    "updated_at": "2026-09-25T17:45:33+06:00",
     "counters": {
       "task": {
         "2026": 20
@@ -20,7 +20,7 @@
         "2026": 2
       },
       "code": {
-        "2026": 19
+        "2026": 20
       }
     },
     "tagline": "Where every script is a verdict, every invocation a vote, and every log a legacy.",
@@ -323,6 +323,17 @@
                   }
                 }
               ]
+            },
+            {
+              "id": "c-node",
+              "bn": "node",
+              "en": "node",
+              "view": {
+                "type": "codes",
+                "filter": {
+                  "menu_path": "c-node"
+                }
+              }
             }
           ]
         },
@@ -1447,6 +1458,37 @@
         }
       ],
       "content": "net.json\nnet.json.bak\nnet.json.tmp\n"
+    },
+    {
+      "id": "CDE-2026-0020",
+      "title": "draft.md",
+      "title_bn": "",
+      "desc": "",
+      "desc_bn": "",
+      "filename": "draft.md",
+      "source": "~/mjnode/draft.md",
+      "lang": "markdown",
+      "lang_label": "Markdown",
+      "ext": "md",
+      "lines": 88,
+      "bytes": 5195,
+      "sha256": "a9bac39a33c420b5efd169bf90eb36edc3df7e4de80b7d3e22d354c79c801037",
+      "menu_path": [
+        "codecraft",
+        "c-html",
+        "c-node"
+      ],
+      "category": "general",
+      "tags": [],
+      "created_at": "2026-09-25T17:45:33+06:00",
+      "history": [
+        {
+          "at": "2026-09-25T17:45:33+06:00",
+          "event": "created",
+          "note": "~/mjnode/draft.md"
+        }
+      ],
+      "content": "# NexaraGov Political Workforce Grid (NPWG)  \n— MJ Ahmad  \n\n---\n\n## 🧠 Structure Overview  \n\n### A. Identity Layer  \nLumID-এর মাধ্যমে প্রতিটি কর্মীর DID (Decentralized ID), যোগদানের সময়, পরিচয় যাচাই, এবং ভূমিকা সংরক্ষণ  \n\n### B. Governance Layer  \nNexaraGov-এর স্মার্ট কন্ট্রাক্ট ভিত্তিক নিয়ন্ত্রণ, রিওয়ার্ড, পদোন্নতি, এবং শৃঙ্খলা ব্যবস্থা  \n\n### C. Geo-Grid Layer  \nLumScap-এর মাধ্যমে ৮ বিভাগ, ৬৪ জেলা, প্রতিটি থানা, ইউনিয়ন, পাড়া-মহল্লা পর্যন্ত ডিজিটাল ম্যাপিং ও কর্মী বিতরণ  \n\n### D. Analytics Layer  \nকর্মীদের কার্যক্রম, উপস্থিতি, অবদান, এবং প্রভাব বিশ্লেষণ করে AI-ভিত্তিক রিওয়ার্ড ও পদোন্নতির সুপারিশ  \n\n### E. Election Readiness Layer  \nনির্বাচনী কেন্দ্রভিত্তিক কর্মী প্রস্তুতি, দায়িত্ব বণ্টন, এবং ভোট-ডে অপারেশনাল কমান্ড  \n\n---\n\n## 📜 Executive Summary  \n\nবাংলাদেশের ৫৬ হাজার বর্গকিলোমিটার জুড়ে ছড়িয়ে থাকা প্রতিটি পাড়া-মহল্লায় আমাদের কর্মীরা যেন একটি সুসংগঠিত, স্বচ্ছ, এবং প্রযুক্তি-ভিত্তিক কাঠামোর মাধ্যমে নিয়ন্ত্রিত হয়—এই লক্ষ্যেই NexaraGov Political Workforce Grid। LumID-এর মাধ্যমে প্রতিটি কর্মীর পরিচয়, LumScap-এর মাধ্যমে তাদের অবস্থান, এবং NexaraGov-এর মাধ্যমে তাদের দায়িত্ব, পুরস্কার, এবং উন্নয়ন নিশ্চিত করা হবে। MJ Ahmad-এর নেতৃত্বে এই প্রস্তাবনা একটি রাজনৈতিক দলকে আগামী নির্বাচনে সর্বোচ্চ প্রস্তুতি ও নিয়ন্ত্রণের ক্ষমতা প্রদান করবে।  \n\n---\n\n## 🗺️ ফুল কন্ট্রোল সিস্টেমের ভৌগলিক রূপ  \n\n**Hierarchy:**  \n- ৮ বিভাগ → ৬৪ জেলা → প্রতিটি থানা → ইউনিয়ন → ওয়ার্ড → পাড়া/মহল্লা  \n\n**Components:**  \n- Zone Coordinator  \n- Digital Workforce Ledger  \n- Real-time Reporting Node  \n- Reward & Disciplinary Smart Contract  \n\n---\n\n## 🔐 প্রযুক্তিগত বৈধতা ও নিরাপত্তা  \n\n- **LumID:** Blockchain-based DID system (IPFS anchored)  \n- **NexaraGov:** Role-based access, quorum rules, and proposal lifecycle  \n- **LumScap:** Scraping-based real-time geo-data integration with transport and logistics overlay  \n\n---\n\n## 🚀 Pitch Deck  \n\n### 🎯 উদ্দেশ্য  \nরাজনৈতিক দলকে প্রভাবিত করে অনুমোদন বা সমর্থন আদায় করা  \n\n### 📊 Pitch Deck ১০-স্লাইড কাঠামো  \n\n1. **Tagline Slide:**  \n   “আপনার দলকে মাঠ পর্যায়ে সর্বোচ্চ নিয়ন্ত্রণে নিয়ে আসুন, AI-ভিত্তিক কর্মী কাঠামোর মাধ্যমে”  \n\n2. **Problem Slide:**  \n   \"বাংলাদেশের মাঠ পর্যায়ে কর্মী নিয়ন্ত্রণে স্বচ্ছতা ও গতিশীলতা নেই\"  \n\n3. **Solution Slide:**  \n   NexaraGov Grid: DID-based পরিচয়, AI রিওয়ার্ড, Geo-layered workforce  \n\n4. **Product Overview:**  \n   LumID, NexaraGov, LumScap – একত্রে ডেটা, নিয়ন্ত্রণ ও বিশ্লেষণ  \n\n5. **How It Works:**  \n   Field-level mapping → Smart Contracts → Election readiness  \n\n6. **Benefits:**  \n   নিয়ন্ত্রণ, স্বচ্ছতা, কর্মী উত্সাহ, দক্ষ অপারেশন  \n\n7. **Market Opportunity:**  \n   1M+ রাজনৈতিক কর্মী, field deployment potential  \n\n8. **Impact Vision:**  \n   Election Command Center, full-stack geo-grid tracking  \n\n9. **Implementation Roadmap:**  \n   6-month pilot → Nationwide scale-up  \n\n10. **Call to Action:**  \n   “এই নির্বাচনে জিততে হলে, মাঠ দখলে আনুন—সহজ, টেকসই, শক্তিশালী”\n\n"
     }
   ]
 }

@@ -1,0 +1,7 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>MJ Node Network</title>
+<style>body{margin:0;min-height:100vh;display:grid;place-items:center;background:#0F4C42;color:#F3F5F2;font-family:"Hind Siliguri",system-ui,sans-serif}
+main{width:min(380px,92%);text-align:center}h1{margin:.2em 0}p{opacity:.8}input,button{width:100%;box-sizing:border-box;padding:11px;margin-top:10px;border-radius:6px;border:0;font:inherit}
+button{background:#B8862B;color:#fff;font-weight:700;cursor:pointer}a{color:#E9C879}</style></head><body><main>
+<img src="../assets/logo.png" alt="" width="72" onerror="this.remove()"><h1>MJ Node Network</h1><p>নোড নেটওয়ার্ক · Accountable network of Bangladesh</p>
+<input id="i" placeholder="Node ID / নোড আইডি (e.g. UPZ-0002)" autocomplete="username"><button onclick="go()">Continue →</button><p><a href="../index.html">← Registry</a></p></main>
+<script>function go(){const v=document.getElementById('i').value.trim().toUpperCase();if(v)location.href='sites/'+encodeURIComponent(v)+'/'}document.getElementById('i').onkeydown=e=>{if(e.key==='Enter')go()}</script></body></html>

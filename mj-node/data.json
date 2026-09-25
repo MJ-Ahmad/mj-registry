@@ -1,0 +1,439 @@
+{
+  "meta": {
+    "title": "MJ Ahmad",
+    "subtitle_bn": "টাস্ক · নোট · অডিট রেজিস্ট্রি",
+    "subtitle_en": "Task · Note · Audit Registry",
+    "logo": "assets/logo.png",
+    "splash_ms": 1800,
+    "version": "1.3",
+    "footer_bn": "সকল তথ্য data.json থেকে লোড হয়",
+    "footer_en": "All data is loaded from data.json",
+    "updated_at": "",
+    "counters": {
+      "task": {
+        "2026": 3
+      },
+      "note": {
+        "2026": 2
+      },
+      "audit": {
+        "2026": 2
+      },
+      "code": {}
+    },
+    "tagline": "Where every script is a verdict, every invocation a vote, and every log a legacy.",
+    "links": [
+      {
+        "icon": "◈",
+        "en": "Current project",
+        "bn": "চলমান প্রজেক্ট",
+        "url": "https://MJ-Ahmad.github.io/qf"
+      },
+      {
+        "icon": "◎",
+        "en": "Website",
+        "bn": "ওয়েবসাইট",
+        "url": "https://MJ-Ahmad.github.io/mj"
+      },
+      {
+        "icon": "⬡",
+        "en": "Node Network",
+        "bn": "নোড নেটওয়ার্ক",
+        "url": "mj-node/index.html"
+      },
+      {
+        "icon": "✉",
+        "en": "mjahmad2024@outlook.com",
+        "bn": "mjahmad2024@outlook.com",
+        "url": "mailto:mjahmad2024@outlook.com"
+      },
+      {
+        "icon": "in",
+        "en": "LinkedIn",
+        "bn": "লিংকডিন",
+        "url": "https://www.linkedin.com/in/jafor-ahmad"
+      }
+    ],
+    "commands": [
+      {
+        "en": "Start viewer",
+        "bn": "ভিউয়ার চালু",
+        "cmd": "./run.sh serve"
+      },
+      {
+        "en": "Add task",
+        "bn": "টাস্ক যুক্ত",
+        "cmd": "./run.sh task \"Title\" --bn \"শিরোনাম\" --priority high --due 2026-12-31"
+      },
+      {
+        "en": "Add note",
+        "bn": "নোট যুক্ত",
+        "cmd": "./run.sh note \"Title\" --body \"...\" --pinned"
+      },
+      {
+        "en": "Add audit",
+        "bn": "অডিট যুক্ত",
+        "cmd": "./run.sh audit \"Title\" --result pass --related TSK-2026-0001"
+      },
+      {
+        "en": "Add code file / URL",
+        "bn": "কোড ফাইল / লিংক যুক্ত",
+        "cmd": "./run.sh code ~/mj/portal/index.html \"Title\" \"Description\" --bn \"শিরোনাম\" --bn \"বর্ণনা\""
+      },
+      {
+        "en": "Show / manage menu tree",
+        "bn": "মেনু ট্রি দেখা / পরিচালনা",
+        "cmd": "./run.sh menu   |   ./run.sh menu --new \"Web/Portal\"   |   ./run.sh menu --move CDE-2026-0001 --to \"CodeCraft/Web\""
+      },
+      {
+        "en": "Complete task",
+        "bn": "টাস্ক সম্পন্ন",
+        "cmd": "./run.sh done TSK-2026-0001 --note \"done\""
+      },
+      {
+        "en": "Validate data",
+        "bn": "ডাটা যাচাই",
+        "cmd": "./run.sh check"
+      },
+      {
+        "en": "Emergency: restore last backup",
+        "bn": "জরুরি: শেষ ব্যাকআপ ফেরত",
+        "cmd": "cp data.json.bak data.json && ./run.sh check"
+      },
+      {
+        "en": "Port busy? use another",
+        "bn": "পোর্ট ব্যস্ত হলে অন্যটি",
+        "cmd": "python3 -m http.server 8080"
+      }
+    ],
+    "code_preview_lines": 4
+  },
+  "menu": [
+    {
+      "id": "dash",
+      "bn": "ড্যাশবোর্ড",
+      "en": "Dashboard",
+      "icon": "◧",
+      "view": {
+        "type": "dashboard"
+      }
+    },
+    {
+      "id": "tasks",
+      "bn": "টাস্ক",
+      "en": "Tasks",
+      "icon": "☑",
+      "open": true,
+      "view": {
+        "type": "tasks"
+      },
+      "children": [
+        {
+          "id": "t-todo",
+          "bn": "করণীয়",
+          "en": "To do",
+          "view": {
+            "type": "tasks",
+            "filter": {
+              "status": "todo"
+            }
+          }
+        },
+        {
+          "id": "t-doing",
+          "bn": "চলমান",
+          "en": "In progress",
+          "view": {
+            "type": "tasks",
+            "filter": {
+              "status": "doing"
+            }
+          }
+        },
+        {
+          "id": "t-done",
+          "bn": "সম্পন্ন",
+          "en": "Done",
+          "view": {
+            "type": "tasks",
+            "filter": {
+              "status": "done"
+            }
+          }
+        },
+        {
+          "id": "t-pri",
+          "bn": "অগ্রাধিকার",
+          "en": "By priority",
+          "children": [
+            {
+              "id": "t-urgent",
+              "bn": "জরুরি",
+              "en": "Urgent",
+              "view": {
+                "type": "tasks",
+                "filter": {
+                  "priority": "urgent"
+                }
+              }
+            },
+            {
+              "id": "t-high",
+              "bn": "উচ্চ",
+              "en": "High",
+              "view": {
+                "type": "tasks",
+                "filter": {
+                  "priority": "high"
+                }
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "notes",
+      "bn": "নোট",
+      "en": "Notes",
+      "icon": "✎",
+      "view": {
+        "type": "notes"
+      },
+      "children": [
+        {
+          "id": "n-pin",
+          "bn": "পিন করা",
+          "en": "Pinned",
+          "view": {
+            "type": "notes",
+            "filter": {
+              "pinned": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "audits",
+      "bn": "অডিট",
+      "en": "Audits",
+      "icon": "⚖",
+      "view": {
+        "type": "audits"
+      },
+      "children": [
+        {
+          "id": "a-pass",
+          "bn": "উত্তীর্ণ",
+          "en": "Pass",
+          "view": {
+            "type": "audits",
+            "filter": {
+              "result": "pass"
+            }
+          }
+        },
+        {
+          "id": "a-warn",
+          "bn": "সতর্কতা",
+          "en": "Warning",
+          "view": {
+            "type": "audits",
+            "filter": {
+              "result": "warning"
+            }
+          }
+        },
+        {
+          "id": "a-fail",
+          "bn": "ব্যর্থ",
+          "en": "Fail",
+          "view": {
+            "type": "audits",
+            "filter": {
+              "result": "fail"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "codecraft",
+      "bn": "কোডক্রাফ্ট",
+      "en": "CodeCraft",
+      "icon": "❮❯",
+      "open": true,
+      "view": {
+        "type": "codes"
+      },
+      "children": []
+    },
+    {
+      "id": "registry",
+      "bn": "রেজিস্ট্রি (সব)",
+      "en": "Registry (all)",
+      "icon": "☰",
+      "view": {
+        "type": "all"
+      }
+    }
+  ],
+  "tasks": [
+    {
+      "id": "TSK-2026-0001",
+      "title": "Set up project registry",
+      "title_bn": "প্রজেক্ট রেজিস্ট্রি সেটআপ",
+      "desc": "Create index.html, data.json and scripts.",
+      "status": "done",
+      "priority": "high",
+      "due": "",
+      "category": "setup",
+      "tags": [
+        "setup"
+      ],
+      "created_at": "2026-09-24T09:00:00+06:00",
+      "completed_at": "2026-09-24T10:00:00+06:00",
+      "history": [
+        {
+          "at": "2026-09-24T09:00:00+06:00",
+          "event": "created"
+        },
+        {
+          "at": "2026-09-24T10:00:00+06:00",
+          "event": "status → done",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "id": "TSK-2026-0002",
+      "title": "Add logo to assets/",
+      "title_bn": "assets/ এ লোগো যুক্ত করুন",
+      "desc": "Place logo.png inside assets folder.",
+      "status": "todo",
+      "priority": "urgent",
+      "due": "2026-09-30",
+      "category": "setup",
+      "tags": [
+        "logo"
+      ],
+      "created_at": "2026-09-24T09:05:00+06:00",
+      "completed_at": "",
+      "history": [
+        {
+          "at": "2026-09-24T09:05:00+06:00",
+          "event": "created"
+        }
+      ]
+    },
+    {
+      "id": "TSK-2026-0003",
+      "title": "Review weekly entries",
+      "title_bn": "সাপ্তাহিক এন্ট্রি পর্যালোচনা",
+      "desc": "",
+      "status": "doing",
+      "priority": "medium",
+      "due": "2026-10-01",
+      "category": "review",
+      "tags": [
+        "weekly"
+      ],
+      "created_at": "2026-09-24T09:10:00+06:00",
+      "completed_at": "",
+      "history": [
+        {
+          "at": "2026-09-24T09:10:00+06:00",
+          "event": "created"
+        }
+      ]
+    }
+  ],
+  "notes": [
+    {
+      "id": "NOT-2026-0001",
+      "title": "How this system works",
+      "title_bn": "এই সিস্টেম যেভাবে কাজ করে",
+      "body": "index.html never changes. Add data with the scripts; the page reads data.json.",
+      "category": "guide",
+      "tags": [
+        "guide"
+      ],
+      "pinned": true,
+      "created_at": "2026-09-24T09:15:00+06:00",
+      "history": [
+        {
+          "at": "2026-09-24T09:15:00+06:00",
+          "event": "created"
+        }
+      ]
+    },
+    {
+      "id": "NOT-2026-0002",
+      "title": "ID format",
+      "title_bn": "আইডি ফরম্যাট",
+      "body": "TSK / NOT / AUD + year + serial. IDs are never reused.",
+      "category": "guide",
+      "tags": [
+        "id"
+      ],
+      "pinned": false,
+      "created_at": "2026-09-24T09:20:00+06:00",
+      "history": [
+        {
+          "at": "2026-09-24T09:20:00+06:00",
+          "event": "created"
+        }
+      ]
+    }
+  ],
+  "audits": [
+    {
+      "id": "AUD-2026-0001",
+      "title": "Data integrity check",
+      "title_bn": "ডাটা ইন্টিগ্রিটি যাচাই",
+      "result": "pass",
+      "target": "data.json",
+      "findings": "No duplicate IDs.",
+      "auditor": "MJ Ahmad",
+      "related": [
+        "TSK-2026-0001"
+      ],
+      "category": "system",
+      "tags": [
+        "integrity"
+      ],
+      "created_at": "2026-09-24T10:10:00+06:00",
+      "history": [
+        {
+          "at": "2026-09-24T10:10:00+06:00",
+          "event": "created"
+        }
+      ]
+    },
+    {
+      "id": "AUD-2026-0002",
+      "title": "Logo file present",
+      "title_bn": "লোগো ফাইল আছে কিনা",
+      "result": "warning",
+      "target": "assets/logo.png",
+      "findings": "Logo not yet added.",
+      "auditor": "MJ Ahmad",
+      "related": [
+        "TSK-2026-0002"
+      ],
+      "category": "system",
+      "tags": [
+        "logo"
+      ],
+      "created_at": "2026-09-24T10:12:00+06:00",
+      "history": [
+        {
+          "at": "2026-09-24T10:12:00+06:00",
+          "event": "created"
+        }
+      ]
+    }
+  ],
+  "codes": []
+}

@@ -8,7 +8,7 @@
     "version": "1.2",
     "footer_bn": "সকল তথ্য data.json থেকে লোড হয়",
     "footer_en": "All data is loaded from data.json",
-    "updated_at": "2026-09-26T17:18:57+06:00",
+    "updated_at": "2026-09-26T18:24:25+06:00",
     "counters": {
       "task": {
         "2026": 20
@@ -20,7 +20,7 @@
         "2026": 2
       },
       "code": {
-        "2026": 28
+        "2026": 30
       }
     },
     "tagline": "Where every script is a verdict, every invocation a vote, and every log a legacy.",
@@ -424,6 +424,17 @@
                             "type": "codes",
                             "filter": {
                               "menu_path": "c-termux"
+                            }
+                          }
+                        },
+                        {
+                          "id": "c-ubuntu",
+                          "bn": "ubuntu",
+                          "en": "ubuntu",
+                          "view": {
+                            "type": "codes",
+                            "filter": {
+                              "menu_path": "c-ubuntu"
                             }
                           }
                         }
@@ -1854,6 +1865,74 @@
         }
       ],
       "content": "# ============================\n# Termux Custom Profile (MJ)\n# ============================\n\n# রঙিন ডাইনামিক প্রম্পট সেটআপ\n# হোমে থাকলে দেখাবে: MJ :: ~\n# অন্য ডিরেক্টরিতে গেলে দেখাবে: MJ :: ~/folder/subfolder\n# রঙ: MJ অংশ সবুজ, লোকেশন নীল, $ চিহ্ন হলুদ\nexport PS1=\"\\[\\e[1;32m\\]MJ :: \\[\\e[1;34m\\]\\w\\[\\e[0m\\]\\n\\[\\e[1;33m\\]\\$\\[\\e[0m\\] \"\n\n# ============================\n# সাধারণ অ্যালিয়াস\n# ============================\nalias cls='clear'\nalias ll='ls -la'\nalias ..='cd ..'\n\n# VM/ক্লাউড কানেকশন শর্টকাট\nalias connect_vm='ssh myvm'\nalias connect_cloud='ssh clouduser@cloud-ip'\n\n# Git শর্টকাট\nalias gs='git status'\nalias ga='git add .'\nalias gc='git commit -m'\nalias gp='git push'\nalias gar='git add data.json'\nalias gcr='git commit -m \"update data.json\"'\n\n# Python/Node শর্টকাট\nalias py='python3'\nalias npmi='npm install'\nalias npms='npm start'\n\n# tmux শর্টকাট\nalias tnew='tmux new -s'\nalias tls='tmux ls'\nalias ta='tmux attach -t'\n\n# sh\nalias rn='./run.sh'\nalias rns='./run.sh serve'\nalias rnc='./run.sh code'\n\n# ============================\n# প্রজেক্ট জাম্প অ্যালিয়াস\n# ============================\nalias mj='cd ~/mj'\nalias rg='cd ~/mj-registry'\nalias dev='cd ~/mjdev'\nalias qf='cd ~/qf'\nalias pv1='cd ~/mjpv1'\n\n# ============================\n# কাস্টম ফাংশন (goto)\n# ============================\nfunction goto() {\n    case $1 in\n        mj) cd ~/mj ;;\n        rg) cd ~/mj-registry ;;\n        dev) cd ~/mjdev ;;\n        qf) cd ~/qf ;;\n        pv1) cd ~/mjpv1 ;;\n        *) echo \"Unknown project: $1\" ;;\n    esac\n}\n\n# ============================\n# Welcome Banner\n# ============================\necho -e \"\\e[1;32m======================================\"\necho -e \" Welcome MJ! Termux Ready for DevOps 🚀\"\necho -e \" Timestamp: $(date '+%Y-%m-%d %H:%M:%S')\"\necho -e \"======================================\\e[0m\"\n"
+    },
+    {
+      "id": "CDE-2026-0029",
+      "title": "ubuntu.md",
+      "title_bn": "",
+      "desc": "",
+      "desc_bn": "",
+      "filename": "ubuntu.md",
+      "source": "ubuntu.md",
+      "lang": "markdown",
+      "lang_label": "Markdown",
+      "ext": "md",
+      "lines": 105,
+      "bytes": 3688,
+      "sha256": "20390a9eb7fd9a7fcb9266306999e016786159b4859da3430acb8c7f98e9e8cb",
+      "menu_path": [
+        "codecraft",
+        "c-html",
+        "c-help",
+        "c-shell",
+        "c-profile",
+        "c-ubuntu"
+      ],
+      "category": "general",
+      "tags": [],
+      "created_at": "2026-09-26T18:22:16+06:00",
+      "history": [
+        {
+          "at": "2026-09-26T18:22:16+06:00",
+          "event": "created",
+          "note": "ubuntu.md"
+        }
+      ],
+      "content": "চমৎকার প্রশ্ন MJ 🚀 — তুমি যখন proot-distro login ubuntu চালিয়ে Ubuntu শেলে ঢুকবে, তখন সেটি আলাদা পরিবেশ হিসেবে কাজ করবে। তাই Termux-এর .bashrc এর মতো সেটাপগুলো সেখানে আলাদাভাবে তৈরি করতে হবে।  \n\n---\n\n🛠️ Ubuntu শেলে .bashrc তৈরি করা\nUbuntu শেলের জন্যও একটি .bashrc ফাইল থাকে, সাধারণত লোকেশন:  \n`\n/root/.bashrc\n`\n(কারণ তুমি root হিসেবে লগইন করছো)  \n\nতুমি চাইলে Termux-এর .bashrc এর মতোই সেটাপ সেখানে যুক্ত করতে পারো। নিচে একটি উন্নত রঙিন প্রম্পটসহ পূর্ণ উদাহরণ দিলাম:  \n\n`bash\n\n============================\n\nUbuntu Custom Profile (MJ)\n\n============================\n\nরঙিন ডাইনামিক প্রম্পট\n\nহোমে থাকলে দেখাবে: MJ :: ~\n\nঅন্য ডিরেক্টরিতে গেলে দেখাবে: MJ :: ~/folder/subfolder\nexport PS1=\"\\[\\e[1;32m\\]MJ :: \\[\\e[1;34m\\]\\w\\[\\e[0m\\]\\n\\[\\e[1;33m\\]\\$\\[\\e[0m\\] \"\n\nসাধারণ অ্যালিয়াস\nalias cls='clear'\nalias ll='ls -la'\nalias ..='cd ..'\n\nVM/ক্লাউড কানেকশন\nalias connect_vm='ssh myvm'\nalias connect_cloud='ssh clouduser@cloud-ip'\n\nGit শর্টকাট\nalias gs='git status'\nalias ga='git add .'\nalias gc='git commit -m'\nalias gp='git push'\n\nPython/Node শর্টকাট\nalias py='python3'\nalias npmi='npm install'\nalias npms='npm start'\n\ntmux শর্টকাট\nalias tnew='tmux new -s'\nalias tls='tmux ls'\nalias ta='tmux attach -t'\n\nsh\nalias rn='./run.sh'\n\nপ্রজেক্ট জাম্প অ্যালিয়াস\nalias mj='cd ~/mj'\nalias rg='cd ~/mj-registry'\nalias dev='cd ~/mjdev'\nalias qf='cd ~/qf'\nalias pv1='cd ~/mjpv1'\n\nকাস্টম ফাংশন (goto)\nfunction goto() {\n    case $1 in\n        mj) cd ~/mj ;;\n        rg) cd ~/mj-registry ;;\n        dev) cd ~/mjdev ;;\n        qf) cd ~/qf ;;\n        pv1) cd ~/mjpv1 ;;\n        *) echo \"Unknown project: $1\" ;;\n    esac\n}\n\nWelcome Banner\necho -e \"\\e[1;32m======================================\"\necho -e \" Welcome MJ! Ubuntu Ready for DevOps 🐧\"\necho -e \" Timestamp: $(date '+%Y-%m-%d %H:%M:%S')\"\necho -e \"======================================\\e[0m\"\n`\n\n---\n\n🔧 যুক্ত করার নির্দেশনা\n1. Ubuntu শেলে ঢুকো:  \n   `bash\n   proot-distro login ubuntu\n   `\n2. .bashrc ফাইল খুলো:  \n   `bash\n   nano ~/.bashrc\n   `\n3. উপরের কোড কপি করে সেখানে পেস্ট করো।  \n4. সেভ করে বের হও (CTRL+O, CTRL+X)।  \n5. পরিবর্তন কার্যকর করতে:  \n   `bash\n   source ~/.bashrc\n   `\n\n---\n\nএখন Ubuntu শেলের ভেতরেও তোমার প্রম্পট হবে রঙিন MJ :: ~ বা MJ :: ~/mj-registry এর মতো, এবং Termux-এর মতো সব alias ও ফাংশন কাজ করবে।  \n\n👉 চাইলে আমি এটিকে আরও উন্নত করে Git ব্রাঞ্চ দেখানো Ubuntu প্রম্পট বা টাইমস্ট্যাম্প যুক্ত Ubuntu প্রম্পট বানিয়ে দিতে পারি।\n"
+    },
+    {
+      "id": "CDE-2026-0030",
+      "title": "ubuntu.md",
+      "title_bn": "",
+      "desc": "",
+      "desc_bn": "",
+      "filename": "ubuntu.md",
+      "source": "ubuntu.md",
+      "lang": "markdown",
+      "lang_label": "Markdown",
+      "ext": "md",
+      "lines": 61,
+      "bytes": 1650,
+      "sha256": "135a511fb76906999bfdfad1ef67c7be856ea829f409c50dbd73782b0d24de5a",
+      "menu_path": [
+        "codecraft",
+        "c-html",
+        "c-help",
+        "c-shell",
+        "c-profile",
+        "c-ubuntu"
+      ],
+      "category": "general",
+      "tags": [],
+      "created_at": "2026-09-26T18:24:25+06:00",
+      "history": [
+        {
+          "at": "2026-09-26T18:24:25+06:00",
+          "event": "created",
+          "note": "ubuntu.md"
+        }
+      ],
+      "content": "# ============================\n# Ubuntu Custom Profile (MJ)\n# ============================\n\n# রঙিন ডাইনামিক প্রম্পট\n# হোমে থাকলে দেখাবে: MJ :: ~\n# অন্য ডিরেক্টরিতে গেলে দেখাবে: MJ :: ~/folder/subfolder\nexport PS1=\"\\[\\e[1;32m\\]MJ :: \\[\\e[1;34m\\]\\w\\[\\e[0m\\]\\n\\[\\e[1;33m\\]\\$\\[\\e[0m\\] \"\n\n# সাধারণ অ্যালিয়াস\nalias cls='clear'\nalias ll='ls -la'\nalias ..='cd ..'\n\n# VM/ক্লাউড কানেকশন\nalias connect_vm='ssh myvm'\nalias connect_cloud='ssh clouduser@cloud-ip'\n\n# Git শর্টকাট\nalias gs='git status'\nalias ga='git add .'\nalias gc='git commit -m'\nalias gp='git push'\n\n# Python/Node শর্টকাট\nalias py='python3'\nalias npmi='npm install'\nalias npms='npm start'\n\n# tmux শর্টকাট\nalias tnew='tmux new -s'\nalias tls='tmux ls'\nalias ta='tmux attach -t'\n\n# sh\nalias rn='./run.sh'\n\n# প্রজেক্ট জাম্প অ্যালিয়াস\nalias mj='cd ~/mj'\nalias rg='cd ~/mj-registry'\nalias dev='cd ~/mjdev'\nalias qf='cd ~/qf'\nalias pv1='cd ~/mjpv1'\n\n# কাস্টম ফাংশন (goto)\nfunction goto() {\n    case $1 in\n        mj) cd ~/mj ;;\n        rg) cd ~/mj-registry ;;\n        dev) cd ~/mjdev ;;\n        qf) cd ~/qf ;;\n        pv1) cd ~/mjpv1 ;;\n        *) echo \"Unknown project: $1\" ;;\n    esac\n}\n\n# Welcome Banner\necho -e \"\\e[1;32m======================================\"\necho -e \" Welcome MJ! Ubuntu Ready for DevOps 🐧\"\necho -e \" Timestamp: $(date '+%Y-%m-%d %H:%M:%S')\"\necho -e \"======================================\\e[0m\"\n"
     }
   ]
 }

@@ -8,7 +8,7 @@
     "version": "1.2",
     "footer_bn": "সকল তথ্য data.json থেকে লোড হয়",
     "footer_en": "All data is loaded from data.json",
-    "updated_at": "2026-09-26T15:30:23+00:00",
+    "updated_at": "2026-09-26T16:25:10+00:00",
     "counters": {
       "task": {
         "2026": 20
@@ -20,7 +20,7 @@
         "2026": 2
       },
       "code": {
-        "2026": 33
+        "2026": 37
       }
     },
     "tagline": "Where every script is a verdict, every invocation a vote, and every log a legacy.",
@@ -457,6 +457,43 @@
                             "type": "codes",
                             "filter": {
                               "menu_path": "c-kali"
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "id": "c-ai-chat",
+                  "bn": "ai_chat",
+                  "en": "ai_chat",
+                  "view": {
+                    "type": "codes",
+                    "filter": {
+                      "menu_path": "c-ai-chat"
+                    }
+                  },
+                  "children": [
+                    {
+                      "id": "c-git",
+                      "bn": "git",
+                      "en": "git",
+                      "view": {
+                        "type": "codes",
+                        "filter": {
+                          "menu_path": "c-git"
+                        }
+                      },
+                      "children": [
+                        {
+                          "id": "c-ssh",
+                          "bn": "ssh",
+                          "en": "ssh",
+                          "view": {
+                            "type": "codes",
+                            "filter": {
+                              "menu_path": "c-ssh"
                             }
                           }
                         }
@@ -2057,6 +2094,141 @@
         }
       ],
       "content": "# ============================\n# Kali Nethunter Custom Profile (MJ)\n# ============================\n\n# রঙিন ডাইনামিক প্রম্পট\n# ইউজারনেম: mj, হোস্ট: kali\n# লোকেশন অনুযায়ী পরিবর্তন হবে\nexport PS1=\"\\[\\e[1;32m\\]┌──(\\[\\e[1;36m\\]mj\\[\\e[0m\\]㉿\\[\\e[1;31m\\]kali\\[\\e[0m\\])-[\\[\\e[1;34m\\]\\w\\[\\e[0m\\]]\\n\\[\\e[1;32m\\]└─\\[\\e[1;33m\\]\\$\\[\\e[0m\\] \"\n\n# ============================\n# সাধারণ অ্যালিয়াস\n# ============================\nalias cls='clear'\nalias ll='ls -la'\nalias ..='cd ..'\n\n# VM/ক্লাউড কানেকশন\nalias connect_vm='ssh myvm'\nalias connect_cloud='ssh clouduser@cloud-ip'\n\n# Git শর্টকাট\nalias gs='git status'\nalias ga='git add .'\nalias gc='git commit -m'\nalias gp='git push'\nalias gar='git add data.json'\nalias gcr='git commit -m \"update registry\"'\n\n# Python/Node শর্টকাট\nalias py='python3'\nalias npmi='npm install'\nalias npms='npm start'\n\n# tmux শর্টকাট\nalias tnew='tmux new -s'\nalias tls='tmux ls'\nalias ta='tmux attach -t'\n\n# sh\nalias rns='./run.sh serve'\nalias rnc='./run.sh code'\n\n# ============================\n# প্রজেক্ট জাম্প অ্যালিয়াস\n# ============================\nalias mj='cd ~/mj'\nalias rg='cd ~/mj-registry'\nalias dev='cd ~/mjdev'\nalias qf='cd ~/qf'\nalias pv1='cd ~/mjpv1'\n\n# ============================\n# কাস্টম ফাংশন (goto)\n# ============================\nfunction goto() {\n    case $1 in\n        mj) cd ~/mj ;;\n        rg) cd ~/mj-registry ;;\n        dev) cd ~/mjdev ;;\n        qf) cd ~/qf ;;\n        pv1) cd ~/mjpv1 ;;\n        *) echo \"Unknown project: $1\" ;;\n    esac\n}\n\n# ============================\n# ASCII Banner with .NET Standard Time\n# ============================\n\n# রঙের শর্টকাট\nRED=\"\\e[1;31m\"\nGREEN=\"\\e[1;32m\"\nYELLOW=\"\\e[1;33m\"\nBLUE=\"\\e[1;34m\"\nMAGENTA=\"\\e[1;35m\"\nCYAN=\"\\e[1;36m\"\nWHITE=\"\\e[1;37m\"\nRESET=\"\\e[0m\"\n\n# ব্যানার (UTC + Dhaka)\necho -e \"${GREEN}======================================\"\necho -e \" ${WHITE}Welcome MJ!${RESET} ${RED}🐉${RESET} ${CYAN}Kali Nethunter Ready${RESET}\"\necho -e \" ${MAGENTA}Timestamp (UTC):${RESET} $(date -u '+%Y-%m-%d %H:%M:%S')\"\necho -e \" ${MAGENTA}Timestamp (Dhaka):${RESET} $(TZ=Asia/Dhaka date '+%Y-%m-%d %H:%M:%S')\"\necho -e \"${GREEN}======================================${RESET}\"\n\n"
+    },
+    {
+      "id": "CDE-2026-0034",
+      "title": "ssh.md",
+      "title_bn": "",
+      "desc": "",
+      "desc_bn": "",
+      "filename": "ssh.md",
+      "source": "ssh.md",
+      "lang": "markdown",
+      "lang_label": "Markdown",
+      "ext": "md",
+      "lines": 64,
+      "bytes": 2262,
+      "sha256": "57386dfce7dca8581ddadab2e2e506901fb24d4b8f7adb608aa169ea6da49cf5",
+      "menu_path": [
+        "codecraft",
+        "c-html",
+        "c-help",
+        "c-ai-chat",
+        "c-git",
+        "c-ssh"
+      ],
+      "category": "general",
+      "tags": [],
+      "created_at": "2026-09-26T16:13:59+00:00",
+      "history": [
+        {
+          "at": "2026-09-26T16:13:59+00:00",
+          "event": "created",
+          "note": "ssh.md"
+        }
+      ],
+      "content": "আপনি SSH key তৈরি করার সময় /mj-registry লোকেশন দিয়েছেন। এতে key ফাইল ~/.ssh/ided25519 এ না গিয়ে /mj-registry নামে সেভ হচ্ছে। GitHub SSH client সাধারণত ~/.ssh/ided25519 খোঁজে, তাই push করার সময় সমস্যা হবে।  \n\n---\n\n🔧 সমাধান\n\n1. ডিফল্ট লোকেশনে key তৈরি করুন\n`bash\nssh-keygen -t ed25519 -C \"your_email@example.com\"\n`\n- যখন জিজ্ঞেস করবে Enter file in which to save the key, শুধু Enter চাপুন।  \n- এতে key সেভ হবে:  \n  - Private key → ~/.ssh/id_ed25519  \n  - Public key → ~/.ssh/id_ed25519.pub\n\n2. Public key GitHub-এ যোগ করুন\n`bash\ncat ~/.ssh/id_ed25519.pub\n`\n- আউটপুট কপি করুন।  \n- GitHub → Settings → SSH and GPG keys → New SSH key → paste করুন।\n\n3. Remote URL পরিবর্তন করুন\n`bash\ngit remote set-url origin git@github.com:MJ-Ahmad/mj-registry.git\n`\n\n4. কানেকশন টেস্ট করুন\n`bash\nssh -T git@github.com\n`\nযদি ঠিক থাকে, দেখাবে:\n`\nHi MJ-Ahmad! You've successfully authenticated, but GitHub does not provide shell access.\n`\n\n5. Push করুন\n`bash\ngit push -u origin main\n`\n\n---\n\n⚡ যদি /mj-registry তে key সেভ করতে চান\nতাহলে GitHub-কে জানাতে হবে key কোথায় আছে। এজন্য ~/.ssh/config ফাইল তৈরি করুন:\n\n`bash\nnano ~/.ssh/config\n`\n\nলিখুন:\n`\nHost github.com\n  User git\n  IdentityFile /mj-registry\n`\n\nএখন GitHub ওই key ব্যবহার করবে।\n\n---\n\n👉 আপনার জন্য সবচেয়ে সহজ হবে ডিফল্ট লোকেশনে key তৈরি করা।  \nআপনি কি চান আমি আপনার জন্য SSH config ফাইল সেটআপের কমান্ডগুলো সাজিয়ে দিই, যাতে /mj-registry তে সেভ করা key দিয়েই GitHub কাজ করে?\n\n"
+    },
+    {
+      "id": "CDE-2026-0035",
+      "title": "ssh.md",
+      "title_bn": "",
+      "desc": "",
+      "desc_bn": "",
+      "filename": "ssh.md",
+      "source": "ssh.md",
+      "lang": "markdown",
+      "lang_label": "Markdown",
+      "ext": "md",
+      "lines": 50,
+      "bytes": 1888,
+      "sha256": "d1f6e522847a54546d567e6d16e73c05f5734968e4b6505d75814323ddb268cf",
+      "menu_path": [
+        "codecraft",
+        "c-html",
+        "c-help",
+        "c-ai-chat",
+        "c-git",
+        "c-ssh"
+      ],
+      "category": "general",
+      "tags": [],
+      "created_at": "2026-09-26T16:17:15+00:00",
+      "history": [
+        {
+          "at": "2026-09-26T16:17:15+00:00",
+          "event": "created",
+          "note": "ssh.md"
+        }
+      ],
+      "content": "ঠিক আছে MJ — যেহেতু আপনি SSH key /mj-registry লোকেশনে সেভ করেছেন, GitHub-কে জানাতে হবে যে ওই key ব্যবহার করতে হবে। এজন্য ~/.ssh/config ফাইল বানিয়ে কনফিগারেশন সেট করতে হবে।  \n\n---\n\n🛠️ SSH config সেটআপ ধাপসমূহ\n\n1. Config ফাইল তৈরি করুন  \n   `bash\n   nano ~/.ssh/config\n   `\n\n2. নিচের কনফিগ লিখুন  \n   `\n   Host github.com\n     User git\n     IdentityFile /mj-registry\n   `\n\n3. পারমিশন ঠিক করুন  \n   `bash\n   chmod 600 /mj-registry\n   chmod 600 ~/.ssh/config\n   `\n\n4. কানেকশন টেস্ট করুন  \n   `bash\n   ssh -T git@github.com\n   `\n   সফল হলে দেখাবে:\n   `\n   Hi MJ-Ahmad! You've successfully authenticated, but GitHub does not provide shell access.\n   `\n\n5. Remote URL পরিবর্তন করুন  \n   `bash\n   git remote set-url origin git@github.com:MJ-Ahmad/mj-registry.git\n   `\n\n6. Push করুন  \n   `bash\n   git push -u origin main\n   `\n\n---\n\n👉 এখন GitHub আপনার /mj-registry key ব্যবহার করবে।  \n\nআপনি চাইলে আমি আপনার জন্য একটি এক লাইনের স্ক্রিপ্ট সাজিয়ে দিতে পারি, যা config ফাইল তৈরি করে, পারমিশন ঠিক করে, এবং GitHub কানেকশন টেস্ট করে দেবে। এতে আলাদা করে ধাপ চালাতে হবে না।  \n\nআপনি কি চান আমি সেই অটো-সেটআপ স্ক্রিপ্ট লিখে দিই?\n"
+    },
+    {
+      "id": "CDE-2026-0036",
+      "title": "ssh.md",
+      "title_bn": "",
+      "desc": "",
+      "desc_bn": "",
+      "filename": "ssh.md",
+      "source": "ssh.md",
+      "lang": "markdown",
+      "lang_label": "Markdown",
+      "ext": "md",
+      "lines": 93,
+      "bytes": 2869,
+      "sha256": "1da3b9e62dfd069f1e50181ff515397bab3ac26af381ecfec868d2cea6401474",
+      "menu_path": [
+        "codecraft",
+        "c-html",
+        "c-help",
+        "c-ai-chat",
+        "c-git",
+        "c-ssh"
+      ],
+      "category": "general",
+      "tags": [],
+      "created_at": "2026-09-26T16:22:59+00:00",
+      "history": [
+        {
+          "at": "2026-09-26T16:22:59+00:00",
+          "event": "created",
+          "note": "ssh.md"
+        }
+      ],
+      "content": "বুঝেছি MJ — আপনি চান ভবিষ্যতে SSH key, GitHub, DNS বা Git সম্পর্কিত সমস্যায় পড়লে এক জায়গায় দেখে নিতে পারেন এমন কিছু দরকারি কমান্ড সাজানো। নিচে আমি একটি রেফারেন্স লিস্ট দিলাম, যেটা আপনার Kali/Termux পরিবেশে কাজে লাগবে।  \n\n---\n\n🔑 SSH Key Management\n- নতুন key তৈরি করুন (ডিফল্ট লোকেশনে)  \n  `bash\n  ssh-keygen -t ed25519 -C \"your_email@example.com\"\n  `\n- Public key দেখুন  \n  `bash\n  cat ~/.ssh/id_ed25519.pub\n  `\n- SSH config ফাইল তৈরি করুন  \n  `bash\n  nano ~/.ssh/config\n  `\n  লিখুন:\n  `\n  Host github.com\n    User git\n    IdentityFile /root/id_ed25519\n  `\n- পারমিশন ঠিক করুন  \n  `bash\n  chmod 600 /root/id_ed25519\n  chmod 600 ~/.ssh/config\n  `\n\n---\n\n🌐 DNS Fix (Termux/Kali proot)\n- resolv.conf এ nameserver যোগ করুন  \n  `bash\n  nano /etc/resolv.conf\n  `\n  লিখুন:\n  `\n  nameserver 8.8.8.8\n  nameserver 1.1.1.1\n  `\n- সেশন DNS override করে চালান  \n  `bash\n  proot-distro login kali --dns 8.8.8.8\n  `\n\n---\n\n🌀 GitHub Operations\n- Remote URL HTTPS → SSH এ পরিবর্তন করুন  \n  `bash\n  git remote set-url origin git@github.com:MJ-Ahmad/mj-registry.git\n  `\n- কানেকশন টেস্ট করুন  \n  `bash\n  ssh -T git@github.com\n  `\n- Push করুন  \n  `bash\n  git push -u origin main\n  `\n\n---\n\n⚙️ Git Credential Helpers\n- Token cache করতে  \n  `bash\n  git config --global credential.helper store\n  `\n- Config দেখতে  \n  `bash\n  git config --list\n  `\n\n---\n\n🚀 Apt & Update Fix\n- Update চালান  \n  `bash\n  sudo apt update && sudo apt upgrade -y\n  `\n- Sources list চেক করুন  \n  `bash\n  cat /etc/apt/sources.list\n  `\n\n---\n\nএগুলোকে আপনি নিজের নোটে রেখে দিলে ভবিষ্যতে সমস্যায় পড়লে দ্রুত দেখে নিতে পারবেন।  \n\nআপনি চাইলে আমি এগুলোকে একটি ছোট cheat-sheet ফাইল আকারে সাজিয়ে দিতে পারি, যেমন mj-cheatsheet.txt, যাতে সব কমান্ড একসাথে থাকবে। এতে আপনার Kali/Termux-এ সরাসরি cat mj-cheatsheet.txt চালিয়ে রেফারেন্স নিতে পারবেন।  \n\nআপনি কি চান আমি সেই cheat-sheet ফাইলের কনটেন্ট লিখে দিই?\n"
+    },
+    {
+      "id": "CDE-2026-0037",
+      "title": "git.md",
+      "title_bn": "",
+      "desc": "",
+      "desc_bn": "",
+      "filename": "git.md",
+      "source": "git.md",
+      "lang": "markdown",
+      "lang_label": "Markdown",
+      "ext": "md",
+      "lines": 189,
+      "bytes": 4494,
+      "sha256": "f7b2718bcb3376c69017ee968c1a4d051c3624b4887cc3b3dc3b4297f0476e40",
+      "menu_path": [
+        "codecraft",
+        "c-html",
+        "c-help",
+        "c-ai-chat",
+        "c-git"
+      ],
+      "category": "general",
+      "tags": [],
+      "created_at": "2026-09-26T16:25:10+00:00",
+      "history": [
+        {
+          "at": "2026-09-26T16:25:10+00:00",
+          "event": "created",
+          "note": "git.md"
+        }
+      ],
+      "content": "চমৎকার MJ — আমি আপনার জন্য একটি বৃহৎ আকারের mj-cheatsheet সাজিয়ে দিলাম। এতে SSH, GitHub, DNS, Git, Apt, Termux/Kali proot-distro, এবং সাধারণ Linux troubleshooting-এর দরকারি কমান্ডগুলো একসাথে থাকবে। ভবিষ্যতে সমস্যায় পড়লে শুধু এই ফাইল দেখে নিতে পারবেন।  \n\n---\n\n📘 mj-cheatsheet (বৃহৎ সংস্করণ)\n\n🔑 SSH Key & Authentication\n- নতুন key তৈরি করুন (ডিফল্ট লোকেশনে)  \n  `bash\n  ssh-keygen -t ed25519 -C \"your_email@example.com\"\n  `\n- Public key দেখুন  \n  `bash\n  cat ~/.ssh/id_ed25519.pub\n  `\n- SSH config ফাইল তৈরি করুন  \n  `bash\n  nano ~/.ssh/config\n  `\n  `\n  Host github.com\n    User git\n    IdentityFile /root/id_ed25519\n  `\n- পারমিশন ঠিক করুন  \n  `bash\n  chmod 600 /root/id_ed25519\n  chmod 600 ~/.ssh/config\n  `\n- কানেকশন টেস্ট করুন  \n  `bash\n  ssh -T git@github.com\n  `\n\n---\n\n🌐 DNS & Networking (Termux/Kali proot)\n- resolv.conf এ nameserver যোগ করুন  \n  `bash\n  nano /etc/resolv.conf\n  `\n  `\n  nameserver 8.8.8.8\n  nameserver 1.1.1.1\n  `\n- সেশন DNS override করে চালান  \n  `bash\n  proot-distro login kali --dns 8.8.8.8\n  `\n- Connectivity টেস্ট করুন  \n  `bash\n  ping -c 3 github.com\n  curl https://github.com\n  `\n\n---\n\n🌀 GitHub & Git Operations\n- Remote URL HTTPS → SSH এ পরিবর্তন করুন  \n  `bash\n  git remote set-url origin git@github.com:MJ-Ahmad/mj-registry.git\n  `\n- ক্লোন করুন  \n  `bash\n  git clone git@github.com:MJ-Ahmad/mj-registry.git\n  `\n- Push করুন  \n  `bash\n  git push -u origin main\n  `\n- Config দেখতে  \n  `bash\n  git config --list\n  `\n- Token cache করতে  \n  `bash\n  git config --global credential.helper store\n  `\n\n---\n\n⚙️ Apt & Package Management\n- Update চালান  \n  `bash\n  sudo apt update && sudo apt upgrade -y\n  `\n- Sources list চেক করুন  \n  `bash\n  cat /etc/apt/sources.list\n  `\n- Broken packages ঠিক করুন  \n  `bash\n  sudo apt --fix-broken install\n  `\n- Cache clean করুন  \n  `bash\n  sudo apt clean\n  sudo apt autoremove -y\n  `\n\n---\n\n🖥️ NetHunter & KeX (GUI Desktop)\n- Installer script ডাউনলোড করুন  \n  `bash\n  wget -O install-nethunter-termux https://offs.ec/2MceZWr\n  chmod +x install-nethunter-termux\n  ./install-nethunter-termux\n  `\n- NetHunter চালান  \n  `bash\n  nethunter\n  `\n- KeX setup করুন  \n  `bash\n  nethunter kex passwd\n  nethunter kex start\n  `\n- KeX বন্ধ করুন  \n  `bash\n  nethunter kex stop\n  `\n\n---\n\n🛠️ Linux Basics\n- System info দেখুন  \n  `bash\n  uname -a\n  lsb_release -a\n  `\n- Disk usage দেখুন  \n  `bash\n  df -h\n  du -sh *\n  `\n- Process list দেখুন  \n  `bash\n  ps aux\n  top\n  htop\n  `\n- Network ports চেক করুন  \n  `bash\n  netstat -tulnp\n  ss -tulnp\n  `\n\n---\n\n📂 Termux Essentials\n- প্যাকেজ আপডেট করুন  \n  `bash\n  pkg update && pkg upgrade\n  `\n- প্রয়োজনীয় টুলস ইন্সটল করুন  \n  `bash\n  pkg install git curl wget nano\n  `\n- proot-distro দিয়ে Kali চালান  \n  `bash\n  pkg install proot-distro\n  proot-distro install kali\n  proot-distro login kali\n  `\n\n---\n\n🚀 জরুরি Troubleshooting\n- DNS reset করুন  \n  `bash\n  rm /etc/resolv.conf\n  echo \"nameserver 8.8.8.8\" > /etc/resolv.conf\n  `\n- GitHub connectivity চেক করুন  \n  `bash\n  ssh -T git@github.com\n  `\n- APT error fix করুন  \n  `bash\n  sudo apt-get clean\n  sudo apt-get update --fix-missing\n  `\n\n---\n\n👉 MJ, এই mj-cheatsheet আপনি নিজের Kali/Termux-এ mj-cheatsheet.txt নামে রেখে দিলে ভবিষ্যতে যেকোনো সমস্যায় দ্রুত দেখে নিতে পারবেন।  \n\nআপনি কি চান আমি এটাকে Markdown ফরম্যাটে সাজিয়ে দিই, যাতে GitHub Pages বা MJDocs-এ সুন্দরভাবে ডকুমেন্ট আকারে ব্যবহার করতে পারেন?\n"
     }
   ]
 }

@@ -8,7 +8,7 @@
     "version": "1.2",
     "footer_bn": "সকল তথ্য data.json থেকে লোড হয়",
     "footer_en": "All data is loaded from data.json",
-    "updated_at": "2026-09-26T15:30:11+06:00",
+    "updated_at": "2026-09-26T16:46:13+06:00",
     "counters": {
       "task": {
         "2026": 20
@@ -20,7 +20,7 @@
         "2026": 2
       },
       "code": {
-        "2026": 22
+        "2026": 24
       }
     },
     "tagline": "Where every script is a verdict, every invocation a vote, and every log a legacy.",
@@ -356,6 +356,80 @@
                       "menu_path": "c-bashrc"
                     }
                   }
+                }
+              ]
+            },
+            {
+              "id": "c-help",
+              "bn": "help",
+              "en": "help",
+              "view": {
+                "type": "codes",
+                "filter": {
+                  "menu_path": "c-help"
+                }
+              },
+              "children": [
+                {
+                  "id": "c-cli",
+                  "bn": "cli",
+                  "en": "cli",
+                  "view": {
+                    "type": "codes",
+                    "filter": {
+                      "menu_path": "c-cli"
+                    }
+                  },
+                  "children": [
+                    {
+                      "id": "c-nh",
+                      "bn": "nh",
+                      "en": "nh",
+                      "view": {
+                        "type": "codes",
+                        "filter": {
+                          "menu_path": "c-nh"
+                        }
+                      }
+                    }
+                  ]
+                },
+                {
+                  "id": "c-shell",
+                  "bn": "shell",
+                  "en": "shell",
+                  "view": {
+                    "type": "codes",
+                    "filter": {
+                      "menu_path": "c-shell"
+                    }
+                  },
+                  "children": [
+                    {
+                      "id": "c-profile",
+                      "bn": "profile",
+                      "en": "profile",
+                      "view": {
+                        "type": "codes",
+                        "filter": {
+                          "menu_path": "c-profile"
+                        }
+                      },
+                      "children": [
+                        {
+                          "id": "c-termux",
+                          "bn": "termux",
+                          "en": "termux",
+                          "view": {
+                            "type": "codes",
+                            "filter": {
+                              "menu_path": "c-termux"
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  ]
                 }
               ]
             }
@@ -1577,6 +1651,73 @@
         }
       ],
       "content": "# ============================\n# Termux Custom Profile (MJ)\n# ============================\n\n# ডিফল্ট লোকেশন সেট করা\ncd ~/mj\n\n# প্রম্পট কাস্টমাইজেশন (PowerShell স্টাইল)\nexport PS1=\"MJ :: > \"\n\n# সাধারণ অ্যালিয়াস\nalias cls='clear'\nalias ll='ls -la'\nalias ..='cd ..'\n\n# প্রজেক্ট-ভিত্তিক অ্যালিয়াস (একটি প্রজেক্ট উদাহরণ)\nalias myproj='cd ~/mj/projects/myproj'\n\n# VM/ক্লাউড কানেকশন শর্টকাট\nalias connect_vm='ssh myvm'\nalias connect_cloud='ssh clouduser@cloud-ip'\n\n# Git শর্টকাট\nalias gs='git status'\nalias ga='git add .'\nalias gc='git commit -m'\nalias gp='git push'\n\n# Python/Node শর্টকাট\nalias py='python3'\nalias npmi='npm install'\nalias npms='npm start'\n\n# tmux শর্টকাট\nalias tnew='tmux new -s'\nalias tls='tmux ls'\nalias ta='tmux attach -t'\n\n# ============================\n# কাস্টম ফাংশন\n# ============================\n\n# প্রজেক্ট জাম্প ফাংশন\nfunction goto() {\n    case $1 in\n        myproj) cd ~/mj/projects/myproj ;;\n        *) echo \"Unknown project: $1\" ;;\n    esac\n}\n\n# হেল্প সিস্টেম\nfunction mj() {\n    case $1 in\n        help)\n            echo \"==============================\"\n            echo \" MJ Help Menu\"\n            echo \"==============================\"\n            echo \" System:\"\n            echo \"   git      → Git commands\"\n            echo \"   node     → Node.js commands\"\n            echo \"   dotnet   → .NET SDK commands\"\n            echo \"   shell    → Shell basics\"\n            echo \"   cloud    → Cloud/VM connect\"\n            echo \"\"\n            echo \" Usage: mj help\"\n            echo \"==============================\"\n            ;;\n        git) echo \"Git shortcuts: gs, ga, gc, gp\" ;;\n        node) echo \"Node shortcuts: npmi, npms\" ;;\n        dotnet) echo \".NET SDK available in Ubuntu proot\" ;;\n        shell) echo \"Shell basics: cls, ll, ..\" ;;\n        cloud) echo \"Cloud connect: connect_vm, connect_cloud\" ;;\n        *) echo \"Unknown option. Try: mj help\" ;;\n    esac\n}\n\n# ============================\n# Welcome Message\n# ============================\necho \"======================================\"\necho \" Welcome MJ! Termux Ready for DevOps 🚀\"\necho \" Timestamp: $(date '+%Y-%m-%d %H:%M:%S')\"\necho \" Default Location: ~/mj\"\necho \"======================================\"\n"
+    },
+    {
+      "id": "CDE-2026-0023",
+      "title": "nh.txt",
+      "title_bn": "",
+      "desc": "",
+      "desc_bn": "",
+      "filename": "nh.txt",
+      "source": "nh.txt",
+      "lang": "text",
+      "lang_label": "Text",
+      "ext": "txt",
+      "lines": 10,
+      "bytes": 423,
+      "sha256": "b2aab35eee38ff8e7e949f41e709be63019dfb7931fec235d423d823cc57e3d4",
+      "menu_path": [
+        "codecraft",
+        "c-html",
+        "c-help",
+        "c-cli",
+        "c-nh"
+      ],
+      "category": "general",
+      "tags": [],
+      "created_at": "2026-09-26T16:26:55+06:00",
+      "history": [
+        {
+          "at": "2026-09-26T16:26:55+06:00",
+          "event": "created",
+          "note": "nh.txt"
+        }
+      ],
+      "content": "\n[=] Kali NetHunter for Termux installed successfully\n\n[+] To start Kali NetHunter, type:                 [+] nethunter             # To start NetHunter CLI\n[+] nethunter kex passwd  # To set the KeX password\n[+] nethunter kex start   # To start NetHunter GUI [+] nethunter kex stop    # To stop NetHunter GUI\n[+] nethunter -r          # To run NetHunter as root\n[+] nh                    # Shortcut for nethunter\n\nMJ :: >\n"
+    },
+    {
+      "id": "CDE-2026-0024",
+      "title": "bashrc.md",
+      "title_bn": "",
+      "desc": "",
+      "desc_bn": "",
+      "filename": "bashrc.md",
+      "source": "bashrc.md",
+      "lang": "markdown",
+      "lang_label": "Markdown",
+      "ext": "md",
+      "lines": 81,
+      "bytes": 2747,
+      "sha256": "e168ad3dc35e15a2adf0b4270393cc3ec7a861e16429eee26fbfda9ea9fc6d3c",
+      "menu_path": [
+        "codecraft",
+        "c-html",
+        "c-help",
+        "c-shell",
+        "c-profile",
+        "c-termux"
+      ],
+      "category": "general",
+      "tags": [],
+      "created_at": "2026-09-26T16:46:13+06:00",
+      "history": [
+        {
+          "at": "2026-09-26T16:46:13+06:00",
+          "event": "created",
+          "note": "bashrc.md"
+        }
+      ],
+      "content": "বুঝেছি MJ 👍 — তোমার প্রম্পটকে এমনভাবে সাজাতে হবে যাতে হোম ডিরেক্টরিতে থাকলে সবসময় MJ :: ~ দেখায়, আর অন্য কোনো ডিরেক্টরিতে গেলে সঠিক লোকেশন দেখায়। এজন্য $PWD এবং ~ ব্যবহার করে ডাইনামিক প্রম্পট বানানো যায়।  \n\nএখানে আপডেট করা .bashrc অংশ দিলাম:  \n\n`bash\n\n============================\n\nTermux Custom Profile (MJ)\n\n============================\n\nডাইনামিক প্রম্পট সেটআপ\n\nহোমে থাকলে দেখাবে: MJ :: ~\n\nঅন্য ডিরেক্টরিতে গেলে দেখাবে: MJ :: ~/folder/subfolder\nexport PS1='MJ :: \\w\\n$ '\n\n============================\n\nসাধারণ অ্যালিয়াস\n\n============================\nalias cls='clear'\nalias ll='ls -la'\nalias ..='cd ..'\n\n============================\n\nপ্রজেক্ট জাম্প অ্যালিয়াস\n\n============================\nalias mj='cd ~/mj'\nalias rg='cd ~/mj-registry'\nalias dev='cd ~/mjdev'\nalias qf='cd ~/qf'\nalias pv1='cd ~/mjpv1'\n\n============================\n\nকাস্টম ফাংশন (goto)\n\n============================\nfunction goto() {\n    case $1 in\n        mj) cd ~/mj ;;\n        rg) cd ~/mj-registry ;;\n        dev) cd ~/mjdev ;;\n        qf) cd ~/qf ;;\n        pv1) cd ~/mjpv1 ;;\n        *) echo \"Unknown project: $1\" ;;\n    esac\n}\n\n============================\n\nWelcome Banner\n\n============================\necho \"======================================\"\necho \" Welcome MJ! Termux Ready for DevOps 🚀\"\necho \" Timestamp: $(date '+%Y-%m-%d %H:%M:%S')\"\necho \" Default Location: ~\"\necho \" Type 'mj help' for your assistant menu.\"\necho \"======================================\"\n`\n\n🔑 এখানে মূল পরিবর্তন হলো PS1 সেটিং:  \n- \\w → বর্তমান ডিরেক্টরি দেখাবে, হোম হলে শুধু ~ দেখাবে।  \n- তাই হোমে থাকলে হবে: MJ :: ~  \n- অন্য ডিরেক্টরিতে গেলে হবে: MJ :: ~/mj-registry  \n\nএখন cd mj-registry দিলে প্রম্পট হবে:  \n`\nMJ :: ~/mj-registry\n$\n`\n\nতুমি চাইলে আমি এটিকে আরও উন্নত করে রঙিন প্রম্পট বা Git ব্রাঞ্চ দেখানো প্রম্পট বানিয়ে দিতে পারি।\n\n"
     }
   ]
 }

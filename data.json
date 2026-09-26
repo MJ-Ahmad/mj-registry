@@ -8,7 +8,7 @@
     "version": "1.2",
     "footer_bn": "সকল তথ্য data.json থেকে লোড হয়",
     "footer_en": "All data is loaded from data.json",
-    "updated_at": "2026-09-25T17:45:33+06:00",
+    "updated_at": "2026-09-26T16:26:55+06:00",
     "counters": {
       "task": {
         "2026": 20
@@ -20,7 +20,7 @@
         "2026": 2
       },
       "code": {
-        "2026": 20
+        "2026": 23
       }
     },
     "tagline": "Where every script is a verdict, every invocation a vote, and every log a legacy.",
@@ -281,8 +281,8 @@
     },
     {
       "id": "codecraft",
-      "bn": "কোডক্রাফ্ট",
-      "en": "CodeCraft",
+      "bn": "mj",
+      "en": "mj",
       "icon": "❮❯",
       "open": true,
       "view": {
@@ -291,8 +291,8 @@
       "children": [
         {
           "id": "c-html",
-          "bn": "MJ",
-          "en": "MJ",
+          "bn": "mj",
+          "en": "mj",
           "view": {
             "type": "codes",
             "filter": {
@@ -334,6 +334,67 @@
                   "menu_path": "c-node"
                 }
               }
+            },
+            {
+              "id": "c-code",
+              "bn": "code",
+              "en": "code",
+              "view": {
+                "type": "codes",
+                "filter": {
+                  "menu_path": "c-code"
+                }
+              },
+              "children": [
+                {
+                  "id": "c-bashrc",
+                  "bn": "bashrc",
+                  "en": "bashrc",
+                  "view": {
+                    "type": "codes",
+                    "filter": {
+                      "menu_path": "c-bashrc"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "id": "c-help",
+              "bn": "help",
+              "en": "help",
+              "view": {
+                "type": "codes",
+                "filter": {
+                  "menu_path": "c-help"
+                }
+              },
+              "children": [
+                {
+                  "id": "c-cli",
+                  "bn": "cli",
+                  "en": "cli",
+                  "view": {
+                    "type": "codes",
+                    "filter": {
+                      "menu_path": "c-cli"
+                    }
+                  },
+                  "children": [
+                    {
+                      "id": "c-nh",
+                      "bn": "nh",
+                      "en": "nh",
+                      "view": {
+                        "type": "codes",
+                        "filter": {
+                          "menu_path": "c-nh"
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
             }
           ]
         },
@@ -1489,6 +1550,103 @@
         }
       ],
       "content": "# NexaraGov Political Workforce Grid (NPWG)  \n— MJ Ahmad  \n\n---\n\n## 🧠 Structure Overview  \n\n### A. Identity Layer  \nLumID-এর মাধ্যমে প্রতিটি কর্মীর DID (Decentralized ID), যোগদানের সময়, পরিচয় যাচাই, এবং ভূমিকা সংরক্ষণ  \n\n### B. Governance Layer  \nNexaraGov-এর স্মার্ট কন্ট্রাক্ট ভিত্তিক নিয়ন্ত্রণ, রিওয়ার্ড, পদোন্নতি, এবং শৃঙ্খলা ব্যবস্থা  \n\n### C. Geo-Grid Layer  \nLumScap-এর মাধ্যমে ৮ বিভাগ, ৬৪ জেলা, প্রতিটি থানা, ইউনিয়ন, পাড়া-মহল্লা পর্যন্ত ডিজিটাল ম্যাপিং ও কর্মী বিতরণ  \n\n### D. Analytics Layer  \nকর্মীদের কার্যক্রম, উপস্থিতি, অবদান, এবং প্রভাব বিশ্লেষণ করে AI-ভিত্তিক রিওয়ার্ড ও পদোন্নতির সুপারিশ  \n\n### E. Election Readiness Layer  \nনির্বাচনী কেন্দ্রভিত্তিক কর্মী প্রস্তুতি, দায়িত্ব বণ্টন, এবং ভোট-ডে অপারেশনাল কমান্ড  \n\n---\n\n## 📜 Executive Summary  \n\nবাংলাদেশের ৫৬ হাজার বর্গকিলোমিটার জুড়ে ছড়িয়ে থাকা প্রতিটি পাড়া-মহল্লায় আমাদের কর্মীরা যেন একটি সুসংগঠিত, স্বচ্ছ, এবং প্রযুক্তি-ভিত্তিক কাঠামোর মাধ্যমে নিয়ন্ত্রিত হয়—এই লক্ষ্যেই NexaraGov Political Workforce Grid। LumID-এর মাধ্যমে প্রতিটি কর্মীর পরিচয়, LumScap-এর মাধ্যমে তাদের অবস্থান, এবং NexaraGov-এর মাধ্যমে তাদের দায়িত্ব, পুরস্কার, এবং উন্নয়ন নিশ্চিত করা হবে। MJ Ahmad-এর নেতৃত্বে এই প্রস্তাবনা একটি রাজনৈতিক দলকে আগামী নির্বাচনে সর্বোচ্চ প্রস্তুতি ও নিয়ন্ত্রণের ক্ষমতা প্রদান করবে।  \n\n---\n\n## 🗺️ ফুল কন্ট্রোল সিস্টেমের ভৌগলিক রূপ  \n\n**Hierarchy:**  \n- ৮ বিভাগ → ৬৪ জেলা → প্রতিটি থানা → ইউনিয়ন → ওয়ার্ড → পাড়া/মহল্লা  \n\n**Components:**  \n- Zone Coordinator  \n- Digital Workforce Ledger  \n- Real-time Reporting Node  \n- Reward & Disciplinary Smart Contract  \n\n---\n\n## 🔐 প্রযুক্তিগত বৈধতা ও নিরাপত্তা  \n\n- **LumID:** Blockchain-based DID system (IPFS anchored)  \n- **NexaraGov:** Role-based access, quorum rules, and proposal lifecycle  \n- **LumScap:** Scraping-based real-time geo-data integration with transport and logistics overlay  \n\n---\n\n## 🚀 Pitch Deck  \n\n### 🎯 উদ্দেশ্য  \nরাজনৈতিক দলকে প্রভাবিত করে অনুমোদন বা সমর্থন আদায় করা  \n\n### 📊 Pitch Deck ১০-স্লাইড কাঠামো  \n\n1. **Tagline Slide:**  \n   “আপনার দলকে মাঠ পর্যায়ে সর্বোচ্চ নিয়ন্ত্রণে নিয়ে আসুন, AI-ভিত্তিক কর্মী কাঠামোর মাধ্যমে”  \n\n2. **Problem Slide:**  \n   \"বাংলাদেশের মাঠ পর্যায়ে কর্মী নিয়ন্ত্রণে স্বচ্ছতা ও গতিশীলতা নেই\"  \n\n3. **Solution Slide:**  \n   NexaraGov Grid: DID-based পরিচয়, AI রিওয়ার্ড, Geo-layered workforce  \n\n4. **Product Overview:**  \n   LumID, NexaraGov, LumScap – একত্রে ডেটা, নিয়ন্ত্রণ ও বিশ্লেষণ  \n\n5. **How It Works:**  \n   Field-level mapping → Smart Contracts → Election readiness  \n\n6. **Benefits:**  \n   নিয়ন্ত্রণ, স্বচ্ছতা, কর্মী উত্সাহ, দক্ষ অপারেশন  \n\n7. **Market Opportunity:**  \n   1M+ রাজনৈতিক কর্মী, field deployment potential  \n\n8. **Impact Vision:**  \n   Election Command Center, full-stack geo-grid tracking  \n\n9. **Implementation Roadmap:**  \n   6-month pilot → Nationwide scale-up  \n\n10. **Call to Action:**  \n   “এই নির্বাচনে জিততে হলে, মাঠ দখলে আনুন—সহজ, টেকসই, শক্তিশালী”\n\n"
+    },
+    {
+      "id": "CDE-2026-0021",
+      "title": "bashrc.md",
+      "title_bn": "",
+      "desc": "",
+      "desc_bn": "",
+      "filename": "bashrc.md",
+      "source": "bashrc.md",
+      "lang": "markdown",
+      "lang_label": "Markdown",
+      "ext": "md",
+      "lines": 104,
+      "bytes": 2908,
+      "sha256": "1983daf626b94d68acf2c5a07bf83ea586bdbc5e3e85e719fffe800a4234a206",
+      "menu_path": [
+        "codecraft",
+        "c-html",
+        "c-code",
+        "c-bashrc"
+      ],
+      "category": "general",
+      "tags": [],
+      "created_at": "2026-09-26T15:27:03+06:00",
+      "history": [
+        {
+          "at": "2026-09-26T15:27:03+06:00",
+          "event": "created",
+          "note": "bashrc.md"
+        }
+      ],
+      "content": "ঠিক আছে MJ, তোমার দেওয়া alias গুলোকে সুন্দরভাবে .bashrc এর মধ্যে সাজিয়ে দিলাম। সাথে একটি goto ফাংশন যুক্ত করলাম যাতে তুমি শুধু goto mj বা goto qf লিখে সরাসরি প্রজেক্টে চলে যেতে পারো।  \n\n`bash\n\n============================\n\nTermux Custom Profile (MJ)\n\n============================\n\nডিফল্ট লোকেশন সেট করা\ncd ~/mj\n\nপ্রম্পট কাস্টমাইজেশন\nexport PS1=\"MJ :: > \"\n\n============================\n\nসাধারণ অ্যালিয়াস\n\n============================\nalias cls='clear'\nalias ll='ls -la'\nalias ..='cd ..'\n\n============================\n\nপ্রজেক্ট জাম্প অ্যালিয়াস\n\n============================\nalias mj='cd ~/mj'\nalias rg='cd ~/mj-registry'\nalias dev='cd ~/mjdev'\nalias qf='cd ~/qf'\nalias pv1='cd ~/mjpv1'\n\n============================\n\nGit শর্টকাট\n\n============================\nalias gs='git status'\nalias ga='git add .'\nalias gc='git commit -m'\nalias gp='git push'\n\n============================\n\nNode/Python শর্টকাট\n\n============================\nalias py='python3'\nalias npmi='npm install'\nalias npms='npm start'\n\n============================\n\ntmux শর্টকাট\n\n============================\nalias tnew='tmux new -s'\nalias tls='tmux ls'\nalias ta='tmux attach -t'\n\n============================\n\nকাস্টম ফাংশন\n\n============================\nfunction goto() {\n    case $1 in\n        mj) cd ~/mj ;;\n        rg) cd ~/mj-registry ;;\n        dev) cd ~/mjdev ;;\n        qf) cd ~/qf ;;\n        pv1) cd ~/mjpv1 ;;\n        *) echo \"Unknown project: $1\" ;;\n    esac\n}\n\n============================\n\nMJ Command Integration\n\n============================\nexport PATH=\"$HOME/mj/projects/mjcommand/bin:$PATH\"\n\n============================\n\nWelcome Banner\n\n============================\necho \"======================================\"\necho \" Welcome MJ! Termux Ready for DevOps 🚀\"\necho \" Timestamp: $(date '+%Y-%m-%d %H:%M:%S')\"\necho \" Default Location: ~/mj\"\necho \" Type 'mj help' for your assistant menu.\"\necho \"======================================\"\n`\n\n👉 এখন তুমি চাইলে mj, rg, dev, qf, pv1 লিখে সরাসরি জাম্প করতে পারবে। আর goto mj বা goto qf ব্যবহার করলে ফাংশন দিয়ে একই কাজ হবে।  \n\nতুমি কি চাও আমি এর সাথে একটি mj help মেনু যুক্ত করি, যেখানে প্রতিটি alias ও ফাংশনের ব্যাখ্যা সুন্দরভাবে দেখাবে?\n\n"
+    },
+    {
+      "id": "CDE-2026-0022",
+      "title": ".bashrc.md",
+      "title_bn": "",
+      "desc": "",
+      "desc_bn": "",
+      "filename": ".bashrc.md",
+      "source": ".bashrc.md",
+      "lang": "markdown",
+      "lang_label": "Markdown",
+      "ext": "md",
+      "lines": 84,
+      "bytes": 2571,
+      "sha256": "d431c91fe4d3c2920ef4dfe7ecda7d4b395db6038d62a2468a3499ad9a8753df",
+      "menu_path": [
+        "codecraft",
+        "c-html",
+        "c-code",
+        "c-bashrc"
+      ],
+      "category": "general",
+      "tags": [],
+      "created_at": "2026-09-26T15:30:11+06:00",
+      "history": [
+        {
+          "at": "2026-09-26T15:30:11+06:00",
+          "event": "created",
+          "note": ".bashrc.md"
+        }
+      ],
+      "content": "# ============================\n# Termux Custom Profile (MJ)\n# ============================\n\n# ডিফল্ট লোকেশন সেট করা\ncd ~/mj\n\n# প্রম্পট কাস্টমাইজেশন (PowerShell স্টাইল)\nexport PS1=\"MJ :: > \"\n\n# সাধারণ অ্যালিয়াস\nalias cls='clear'\nalias ll='ls -la'\nalias ..='cd ..'\n\n# প্রজেক্ট-ভিত্তিক অ্যালিয়াস (একটি প্রজেক্ট উদাহরণ)\nalias myproj='cd ~/mj/projects/myproj'\n\n# VM/ক্লাউড কানেকশন শর্টকাট\nalias connect_vm='ssh myvm'\nalias connect_cloud='ssh clouduser@cloud-ip'\n\n# Git শর্টকাট\nalias gs='git status'\nalias ga='git add .'\nalias gc='git commit -m'\nalias gp='git push'\n\n# Python/Node শর্টকাট\nalias py='python3'\nalias npmi='npm install'\nalias npms='npm start'\n\n# tmux শর্টকাট\nalias tnew='tmux new -s'\nalias tls='tmux ls'\nalias ta='tmux attach -t'\n\n# ============================\n# কাস্টম ফাংশন\n# ============================\n\n# প্রজেক্ট জাম্প ফাংশন\nfunction goto() {\n    case $1 in\n        myproj) cd ~/mj/projects/myproj ;;\n        *) echo \"Unknown project: $1\" ;;\n    esac\n}\n\n# হেল্প সিস্টেম\nfunction mj() {\n    case $1 in\n        help)\n            echo \"==============================\"\n            echo \" MJ Help Menu\"\n            echo \"==============================\"\n            echo \" System:\"\n            echo \"   git      → Git commands\"\n            echo \"   node     → Node.js commands\"\n            echo \"   dotnet   → .NET SDK commands\"\n            echo \"   shell    → Shell basics\"\n            echo \"   cloud    → Cloud/VM connect\"\n            echo \"\"\n            echo \" Usage: mj help\"\n            echo \"==============================\"\n            ;;\n        git) echo \"Git shortcuts: gs, ga, gc, gp\" ;;\n        node) echo \"Node shortcuts: npmi, npms\" ;;\n        dotnet) echo \".NET SDK available in Ubuntu proot\" ;;\n        shell) echo \"Shell basics: cls, ll, ..\" ;;\n        cloud) echo \"Cloud connect: connect_vm, connect_cloud\" ;;\n        *) echo \"Unknown option. Try: mj help\" ;;\n    esac\n}\n\n# ============================\n# Welcome Message\n# ============================\necho \"======================================\"\necho \" Welcome MJ! Termux Ready for DevOps 🚀\"\necho \" Timestamp: $(date '+%Y-%m-%d %H:%M:%S')\"\necho \" Default Location: ~/mj\"\necho \"======================================\"\n"
+    },
+    {
+      "id": "CDE-2026-0023",
+      "title": "nh.txt",
+      "title_bn": "",
+      "desc": "",
+      "desc_bn": "",
+      "filename": "nh.txt",
+      "source": "nh.txt",
+      "lang": "text",
+      "lang_label": "Text",
+      "ext": "txt",
+      "lines": 10,
+      "bytes": 423,
+      "sha256": "b2aab35eee38ff8e7e949f41e709be63019dfb7931fec235d423d823cc57e3d4",
+      "menu_path": [
+        "codecraft",
+        "c-html",
+        "c-help",
+        "c-cli",
+        "c-nh"
+      ],
+      "category": "general",
+      "tags": [],
+      "created_at": "2026-09-26T16:26:55+06:00",
+      "history": [
+        {
+          "at": "2026-09-26T16:26:55+06:00",
+          "event": "created",
+          "note": "nh.txt"
+        }
+      ],
+      "content": "\n[=] Kali NetHunter for Termux installed successfully\n\n[+] To start Kali NetHunter, type:                 [+] nethunter             # To start NetHunter CLI\n[+] nethunter kex passwd  # To set the KeX password\n[+] nethunter kex start   # To start NetHunter GUI [+] nethunter kex stop    # To stop NetHunter GUI\n[+] nethunter -r          # To run NetHunter as root\n[+] nh                    # Shortcut for nethunter\n\nMJ :: >\n"
     }
   ]
 }

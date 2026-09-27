@@ -1,0 +1,1043 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>mj</title>
+<style>
+  :root {
+    --hh: 64px;
+    --bg: #f2f5f1;
+    --surface: #ffffff;
+    --ink: #16241f;
+    --muted: #5a6b64;
+    --line: #dae2dc;
+    --hover: #e6ede8;
+    --accent: #0f6b56;
+    --accent-ink: #ffffff;
+    --gold: #d4a94a;
+    --gold-ink: #14201b;
+    --head-bg: #0c4a3d;
+    --head-ink: #ffffff;
+    --head-muted: #b5d3c8;
+    --code-bg: #0f1d19;
+    --code-bar: #172b25;
+    --code-ink: #dbeae4;
+    --code-muted: #8fb0a4;
+    --ok: #3ddc97;
+    --badge-task: #2f6fed;
+    --badge-note: #b3892b;
+    --badge-audit: #a23b6c;
+    --badge-code: #0f6b56;
+    --font-ui: "Noto Sans Bengali", "Hind Siliguri", "Kalpurush", "Nirmala UI", "Segoe UI", system-ui, -apple-system, sans-serif;
+    --font-code: "JetBrains Mono", "Fira Code", ui-monospace, "SF Mono", Consolas, monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #0b1310; --surface: #111f1a; --ink: #e5efe9; --muted: #92a89e;
+      --line: #22352d; --hover: #1a2c25; --accent: #4fc3a1; --accent-ink: #062018;
+      --head-bg: #08322a; --code-bg: #080f0d; --code-bar: #12231e;
+    }
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; scroll-padding-top: calc(var(--hh) + 12px); }
+  body {
+    margin: 0; background: var(--bg); color: var(--ink);
+    font-family: var(--font-ui); line-height: 1.7;
+    -webkit-text-size-adjust: 100%;
+  }
+  button { font-family: inherit; }
+  a { color: inherit; }
+
+  /* ---------- Header ---------- */
+  .top {
+    position: sticky; top: 0; z-index: 30;
+    min-height: var(--hh);
+    background: var(--head-bg); color: var(--head-ink);
+    border-bottom: 3px solid var(--gold);
+  }
+  .top-in {
+    max-width: 1280px; margin: 0 auto; padding: 8px 16px;
+    display: flex; align-items: center; gap: 14px; flex-wrap: wrap;
+  }
+  .navBtn {
+    flex: none; width: 38px; height: 38px; border-radius: 8px;
+    border: 1px solid rgba(255,255,255,0.28); background: transparent; color: var(--head-ink);
+    font-size: 1.1rem; cursor: pointer;
+  }
+  .navBtn:hover { background: rgba(255,255,255,0.1); }
+  .brand { display: flex; align-items: center; gap: 12px; min-width: 0; text-decoration: none; color: inherit; }
+  .logo {
+    flex: none; width: 42px; height: 42px; border-radius: 10px; overflow: hidden;
+    display: grid; place-items: center; background: #fff;
+  }
+  .logo img, .logo svg { width: 100%; height: 100%; object-fit: contain; display: block; }
+  .brand-text { display: flex; flex-direction: column; min-width: 0; line-height: 1.22; }
+  .brand-text b { font-size: 1.25rem; font-weight: 700; white-space: nowrap; }
+  .brand-text small { color: var(--head-muted); font-size: 0.78rem; white-space: nowrap; }
+
+  .hsearch-wrap { flex: 1 1 220px; min-width: 140px; max-width: 340px; }
+  .hsearch {
+    width: 100%; padding: 8px 13px; border-radius: 8px;
+    border: 1px solid rgba(255,255,255,0.3); background: rgba(255,255,255,0.08);
+    color: var(--head-ink); font: inherit; font-size: 0.92rem;
+  }
+  .hsearch::placeholder { color: var(--head-muted); }
+
+  .langsw { flex: none; display: flex; border-radius: 8px; overflow: hidden; border: 1px solid rgba(255,255,255,0.3); }
+  .langsw button {
+    padding: 8px 14px; border: 0; background: transparent; color: var(--head-ink);
+    font-weight: 700; font-size: 0.85rem; cursor: pointer;
+  }
+  .langsw button.on:first-child { background: var(--gold); color: var(--gold-ink); }
+  .langsw button.on:last-child { background: rgba(255,255,255,0.16); }
+
+  /* ---------- Layout ---------- */
+  .shell {
+    max-width: 1280px; margin: 0 auto; padding: 20px 16px 32px;
+    display: grid; grid-template-columns: 280px minmax(0, 1fr); gap: 24px;
+    align-items: start;
+  }
+
+  /* ---------- Sidebar ---------- */
+  .side {
+    position: sticky; top: calc(var(--hh) + 12px);
+    max-height: calc(100vh - var(--hh) - 24px);
+    overflow-y: auto;
+    background: var(--surface); border: 1px solid var(--line); border-radius: 12px;
+    padding: 10px;
+  }
+  .msearch {
+    width: 100%; margin-bottom: 8px; padding: 8px 12px;
+    border: 1px solid var(--line); border-radius: 8px;
+    background: var(--bg); color: var(--ink); font: inherit; font-size: 0.9rem;
+  }
+  .msearch::placeholder { color: var(--muted); }
+
+  ul.tree, .tree ul { list-style: none; margin: 0; padding: 0; }
+  .tree ul { margin-left: 13px; padding-left: 6px; border-left: 1px solid var(--line); }
+  .row { display: flex; align-items: center; border-radius: 8px; }
+  .row:hover { background: var(--hover); }
+  .row.section { margin: 1px 0; }
+  .icon { flex: none; width: 26px; text-align: center; font-size: 1.05rem; color: var(--muted); }
+  .row.active .icon { color: inherit; }
+  .chev {
+    flex: none; width: 28px; height: 34px; border: 0; background: transparent;
+    color: var(--muted); cursor: pointer; border-radius: 6px;
+    display: grid; place-items: center;
+  }
+  .chev::before {
+    content: ""; width: 6px; height: 6px;
+    border-right: 2px solid currentColor; border-bottom: 2px solid currentColor;
+    transform: rotate(-45deg); transition: transform .15s;
+  }
+  .chev[aria-expanded="true"]::before { transform: rotate(45deg); }
+  .spacer { flex: none; width: 28px; }
+  .lab {
+    flex: 1; min-width: 0; text-align: left; padding: 8px 4px;
+    border: 0; background: transparent; color: var(--ink);
+    font-size: 0.95rem; cursor: pointer; overflow-wrap: anywhere;
+  }
+  .cnt {
+    flex: none; padding: 1px 9px; border-radius: 999px; margin-inline-end: 4px;
+    font-size: 0.76rem; color: var(--muted); background: var(--bg);
+  }
+  .row.onpath .lab { font-weight: 600; }
+  .row.dim .lab { color: var(--muted); }
+  .row.active { background: var(--accent); }
+  .row.active .lab, .row.active .cnt, .row.active .chev { color: var(--accent-ink); }
+  .row.active .cnt { background: rgba(255,255,255,0.25); }
+  .row.active .lab { font-weight: 700; }
+  .none { margin: 8px 4px; font-size: 0.9rem; color: var(--muted); }
+  .side-sep { height: 1px; background: var(--line); margin: 8px 4px; }
+
+  /* ---------- Main ---------- */
+  .crumbs { display: flex; flex-wrap: wrap; align-items: center; gap: 4px; margin-bottom: 6px; font-size: 0.88rem; }
+  .crumbs button, .trail button {
+    padding: 0; border: 0; background: none; color: var(--muted); font-size: inherit; cursor: pointer;
+  }
+  .crumbs button:hover, .trail button:hover { color: var(--accent); text-decoration: underline; }
+  .crumbs .sep, .trail .sep { color: var(--muted); opacity: .6; }
+  .crumbs .here { color: var(--ink); font-weight: 600; }
+
+  .head-row { display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; margin-bottom: 14px; }
+  .head-row h2 { margin: 0; font-size: 1.5rem; line-height: 1.35; }
+  .head-row .meta { color: var(--muted); font-size: 0.9rem; }
+
+  .tiles-title { margin: 0 0 8px; font-size: 0.88rem; color: var(--muted); font-weight: 600; }
+  .tiles { display: grid; grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); gap: 10px; margin-bottom: 22px; }
+  .tile {
+    display: flex; justify-content: space-between; align-items: center; gap: 8px;
+    padding: 11px 14px; text-align: left;
+    border: 1px solid var(--line); border-left: 4px solid var(--gold); border-radius: 10px;
+    background: var(--surface); color: var(--ink); font-size: 0.95rem; cursor: pointer;
+  }
+  .tile:hover { border-color: var(--accent); border-left-color: var(--accent); }
+  .tile small { color: var(--muted); }
+
+  /* dashboard */
+  .cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 12px; margin-bottom: 26px; }
+  .card {
+    display: block; text-align: left; padding: 16px; border-radius: 12px;
+    background: var(--surface); border: 1px solid var(--line); border-top: 4px solid var(--accent);
+    color: var(--ink); cursor: pointer;
+  }
+  .card .num { font-size: 1.7rem; font-weight: 700; }
+  .card .lab2 { color: var(--muted); font-size: 0.88rem; }
+  .panel-title { margin: 0 0 10px; font-size: 1rem; font-weight: 700; }
+  .activity { display: flex; flex-direction: column; gap: 8px; margin-bottom: 8px; }
+  .arow { display: flex; gap: 10px; align-items: baseline; padding: 9px 12px; border: 1px solid var(--line); border-radius: 8px; background: var(--surface); font-size: 0.9rem; }
+  .arow .badge { flex: none; }
+  .arow .when { margin-inline-start: auto; color: var(--muted); font-size: 0.78rem; white-space: nowrap; }
+
+  .search {
+    width: 100%; margin-bottom: 18px; padding: 12px 16px;
+    border: 1px solid var(--line); border-radius: 10px;
+    background: var(--surface); color: var(--ink); font: inherit; font-size: 1rem;
+  }
+  .search::placeholder { color: var(--muted); }
+
+  .filters { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px; }
+  .filters button {
+    padding: 6px 13px; border-radius: 999px; border: 1px solid var(--line);
+    background: var(--surface); color: var(--muted); font-size: 0.85rem; cursor: pointer;
+  }
+  .filters button.on { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); font-weight: 600; }
+
+  .list { display: flex; flex-direction: column; gap: 22px; }
+  .entry {
+    background: var(--surface); border: 1px solid var(--line);
+    border-radius: 12px; padding: 20px; min-width: 0;
+  }
+  .entry.plain { border-left: 4px solid var(--accent); }
+  .trail { display: flex; flex-wrap: wrap; gap: 4px; margin: 0 0 4px; font-size: 0.82rem; }
+  .trail button { color: var(--accent); font-weight: 600; }
+  .badge {
+    display: inline-block; padding: 2px 10px; border-radius: 999px;
+    font-size: 0.74rem; font-weight: 700; color: #fff; letter-spacing: .02em;
+  }
+  .row-top { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-bottom: 6px; }
+  .idtag { font-family: var(--font-code); font-size: 0.76rem; color: var(--muted); }
+  .entry h3 { margin: 0 0 6px; font-size: 1.2rem; line-height: 1.4; }
+  .entry .desc { margin: 0 0 10px; color: var(--muted); white-space: pre-wrap; max-width: 70ch; }
+  .status-pill { font-size: 0.78rem; padding: 2px 10px; border-radius: 999px; background: var(--hover); color: var(--ink); }
+  .foot-meta { font-size: 0.78rem; color: var(--muted); }
+
+  /* ---------- Code box ---------- */
+  .codebox { border-radius: 8px; overflow: hidden; background: var(--code-bg); margin-top: 8px; }
+  .codebar {
+    display: flex; justify-content: space-between; align-items: center; gap: 12px;
+    padding: 8px 8px 8px 14px; background: var(--code-bar);
+  }
+  .label { display: flex; align-items: center; gap: 10px; min-width: 0; }
+  .lang {
+    flex: none; padding: 2px 10px; border-radius: 999px;
+    background: var(--tag, #0f6b56); color: #fff;
+    font-family: var(--font-code); font-size: 0.78rem; font-weight: 600;
+  }
+  .fname {
+    color: var(--code-muted); font-family: var(--font-code); font-size: 0.82rem;
+    overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+  }
+  .copy {
+    flex: none; min-width: 84px; padding: 6px 14px;
+    border: 1px solid rgba(255,255,255,0.2); border-radius: 6px;
+    background: transparent; color: var(--code-ink); font-size: 0.85rem; cursor: pointer;
+    transition: background .15s, border-color .15s, color .15s;
+  }
+  .copy:hover { background: rgba(255,255,255,0.08); }
+  .copy.done { border-color: var(--ok); color: var(--ok); }
+  pre {
+    margin: 0; padding: 16px 18px; overflow: auto; color: var(--code-ink);
+    font-family: var(--font-code); font-size: 0.88rem; line-height: 1.65; tab-size: 2;
+  }
+  pre code { font: inherit; white-space: pre; }
+  .collapsed pre { max-height: 300px; overflow: hidden; }
+  .more {
+    display: block; width: 100%; padding: 8px;
+    border: 0; border-top: 1px solid rgba(255,255,255,0.08);
+    background: var(--code-bar); color: var(--code-muted); font-size: 0.85rem; cursor: pointer;
+  }
+  .more:hover { color: var(--code-ink); }
+
+  .notice { padding: 20px; border: 1px dashed var(--line); border-radius: 12px; color: var(--muted); }
+  .notice code { font-family: var(--font-code); background: var(--surface); padding: 1px 6px; border-radius: 4px; color: var(--ink); }
+  .notice strong { color: var(--ink); }
+  .notice button {
+    margin-top: 10px; padding: 7px 14px; border: 1px solid var(--accent); border-radius: 8px;
+    background: transparent; color: var(--accent); cursor: pointer; font-size: 0.9rem;
+  }
+
+  :focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+
+  /* ---------- Footer ---------- */
+  .foot {
+    border-top: 1px solid var(--line); margin-top: 12px;
+    background: var(--surface);
+  }
+  .foot-in { max-width: 1280px; margin: 0 auto; padding: 22px 16px 26px; }
+  .flinks { display: flex; flex-wrap: wrap; gap: 18px; margin-bottom: 14px; }
+  .flinks a {
+    display: inline-flex; align-items: center; gap: 6px; text-decoration: none;
+    color: var(--accent); font-size: 0.92rem; font-weight: 600;
+  }
+  .flinks a:hover { text-decoration: underline; }
+  .fdetails { margin-bottom: 14px; }
+  .fdetails summary {
+    cursor: pointer; font-weight: 600; font-size: 0.92rem; color: var(--ink);
+    list-style: none; display: flex; align-items: center; gap: 6px;
+  }
+  .fdetails summary::-webkit-details-marker { display: none; }
+  .fdetails summary .tri { display: inline-block; transition: transform .15s; }
+  .fdetails[open] summary .tri { transform: rotate(90deg); }
+  .fdetails ul { margin: 10px 0 0; padding-inline-start: 20px; color: var(--muted); font-size: 0.88rem; display: flex; flex-direction: column; gap: 5px; }
+  .fdetails .emerg { margin-top: 10px; font-size: 0.86rem; color: var(--muted); }
+  .fquote {
+    font-style: italic; color: var(--ink); font-size: 1.02rem; line-height: 1.6;
+    margin: 16px 0; max-width: 62ch;
+  }
+  .fstats { color: var(--muted); font-size: 0.82rem; }
+
+  /* ---------- Mobile drawer ---------- */
+  .scrim { display: none; }
+  @media (max-width: 800px) {
+    :root { --hh: 58px; }
+    .brand-text b { font-size: 1.05rem; }
+    .brand-text small { display: none; }
+    .hsearch-wrap { order: 5; flex-basis: 100%; max-width: none; }
+    .shell { grid-template-columns: minmax(0, 1fr); padding-top: 14px; }
+    .side {
+      position: fixed; z-index: 50; top: 0; left: 0;
+      width: min(86vw, 330px); align-self: stretch; height: 100vh; height: 100dvh;
+      border-radius: 0 12px 12px 0; padding-top: 16px;
+      transform: translateX(-102%); transition: transform .22s ease;
+    }
+    body.nav-open .side { transform: none; }
+    body.nav-open .scrim { display: block; position: fixed; inset: 0; z-index: 40; background: rgba(0,0,0,0.45); }
+    .entry { padding: 16px; }
+    .head-row h2 { font-size: 1.3rem; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .side, .chev::before, .copy { transition: none; }
+  }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="top-in">
+    <button class="navBtn" id="navBtn" type="button" aria-label="Menu">☰</button>
+    <a class="brand" href="#/dashboard">
+      <span class="logo" id="logo">
+        <svg viewBox="0 0 40 40" aria-hidden="true"><rect width="40" height="40" rx="10" fill="#0c4a3d"/><text x="20" y="27" text-anchor="middle" font-family="Georgia,serif" font-size="18" font-weight="700" fill="#fff">MJ</text></svg>
+      </span>
+      <span class="brand-text">
+        <b id="siteTitle">mj</b>
+        <small id="siteTag"></small>
+      </span>
+    </a>
+    <div class="hsearch-wrap">
+      <input class="hsearch" id="hsearch" type="search" aria-label="Search">
+    </div>
+    <div class="langsw" id="langsw">
+      <button type="button" data-lang="en">EN</button>
+      <button type="button" data-lang="bn">BN</button>
+    </div>
+  </div>
+</header>
+<div class="scrim" id="scrim"></div>
+
+<div class="shell">
+  <aside class="side" id="side" aria-label="Navigation">
+    <input class="msearch" id="msearch" type="search">
+    <nav id="nav"></nav>
+  </aside>
+
+  <main id="main">
+    <div id="content"></div>
+  </main>
+</div>
+
+<footer class="foot">
+  <div class="foot-in">
+    <div class="flinks" id="flinks"></div>
+    <details class="fdetails" id="fdetails">
+      <summary><span class="tri">▶</span> <span id="fcmdTitle"></span></summary>
+      <ul id="fcmdList"></ul>
+      <div class="emerg" id="femerg"></div>
+    </details>
+    <p class="fquote" id="fquote"></p>
+    <p class="fstats" id="fstats"></p>
+  </div>
+</footer>
+
+<script>
+(function () {
+  "use strict";
+
+  var DATA_URL = "data.json";
+  var COLLAPSE_LINES = 18;
+  var LANG_COLORS = {
+    "html": "#e34c26", "css": "#2965f1", "json": "#8a6d00", "python": "#3776ab",
+    "node": "#3c873a", "javascript": "#b58900", "typescript": "#3178c6",
+    "bash": "#2f855a", "shell": "#2f855a", "php": "#777bb4", "java": "#c2571a",
+    "c": "#5a6a7d", "c++": "#00599c", "c#": "#68217a", "go": "#00a7c4",
+    "rust": "#b7410e", "sql": "#c05621", "yaml": "#a3293d", "xml": "#7a5c99",
+    "markdown": "#4a5568", "text": "#4a5568"
+  };
+  var BADGE_COLOR = { task: "var(--badge-task)", note: "var(--badge-note)", audit: "var(--badge-audit)", code: "var(--badge-code)" };
+
+  var STR = {
+    dashboard:   { en: "Dashboard", bn: "ড্যাশবোর্ড" },
+    tasks:       { en: "Tasks", bn: "টাস্ক" },
+    notes:       { en: "Notes", bn: "নোট" },
+    audits:      { en: "Audits", bn: "অডিট" },
+    mj:          { en: "mj", bn: "mj" },
+    registry:    { en: "Registry (all)", bn: "রেজিস্ট্রি (সব)" },
+    search:      { en: "Search…", bn: "খুঁজুন…" },
+    searchMenu:  { en: "Filter menu…", bn: "মেনু খুঁজুন…" },
+    searchIn:    { en: "Search titles, descriptions or code…", bn: "শিরোনাম, বিবরণ বা কোড খুঁজুন…" },
+    all:         { en: "All", bn: "সব" },
+    entries:     { en: "entries", bn: "টি এন্ট্রি" },
+    subMenu:     { en: "Sub menu", bn: "সাব মেনু" },
+    chooseMenu:  { en: "Choose a section", bn: "মেনু বেছে নিন" },
+    noneHere:    { en: "Nothing here yet.", bn: "এখনও কিছু নেই।" },
+    noneFound:   { en: "Nothing found.", bn: "কিছু পাওয়া যায়নি।" },
+    noneMenu:    { en: "No menu found.", bn: "কোনো মেনু পাওয়া যায়নি।" },
+    searchAll:   { en: "Search everywhere", bn: "সব জায়গায় খুঁজুন" },
+    runAdd:      { en: "Run: ", bn: "চালান: " },
+    cmdToAdd:    { en: "python add.py", bn: "python add.py" },
+    copy:        { en: "Copy", bn: "কপি" },
+    copied:      { en: "Copied", bn: "কপি হয়েছে" },
+    failed:      { en: "Failed", bn: "ব্যর্থ" },
+    showMore:    { en: "Show all", bn: "পুরোটা দেখুন" },
+    showLess:    { en: "Collapse", bn: "ছোট করুন" },
+    recent:      { en: "Recent activity", bn: "সাম্প্রতিক কার্যক্রম" },
+    noActivity:  { en: "No activity logged yet.", bn: "এখনও কোনো কার্যক্রম লগ হয়নি।" },
+    overview:    { en: "Overview", bn: "সারসংক্ষেপ" },
+    quickCmds:   { en: "Quick commands & emergency help", bn: "কুইক কমান্ড ও জরুরি সহায়তা" },
+    loadErrTitle:{ en: "Couldn't load data.json.", bn: "data.json লোড করা যায়নি।" },
+    loadErrFile: { en: "Your browser won't read a JSON file straight off disk. In this folder run: python add.py serve — then open ", bn: "ব্রাউজার সরাসরি ফাইল খুলে JSON পড়তে দেয় না। এই ফোল্ডারে চালান: python add.py serve — তারপর খুলুন " },
+    loadErrGen:  { en: "Check that the file sits next to index.html and that the JSON is valid.", bn: "ফাইলটি index.html এর পাশেই আছে কি না এবং JSON ঠিক আছে কি না দেখুন।" },
+    created:     { en: "created", bn: "তৈরি" },
+    status:      { en: "Status", bn: "অবস্থা" },
+    typeTask:    { en: "Task", bn: "টাস্ক" },
+    typeNote:    { en: "Note", bn: "নোট" },
+    typeAudit:   { en: "Audit", bn: "অডিট" },
+    typeCode:    { en: "Code", bn: "কোড" }
+  };
+
+  var SECTION_ICON = { dashboard: "▦", tasks: "☑", notes: "✎", audits: "⚖", mj: "◇", registry: "≡" };
+
+  var state = {
+    data: null, lang: "bn",
+    section: "dashboard",
+    mjPath: [], mjMap: {}, mjRoot: null, mjExpanded: {},
+    query: "", menuQuery: "", regFilter: "all"
+  };
+
+  var $ = function (id) { return document.getElementById(id); };
+  var el = {
+    logo: $("logo"), title: $("siteTitle"), tag: $("siteTag"),
+    nav: $("nav"), msearch: $("msearch"), hsearch: $("hsearch"),
+    content: $("content"),
+    navBtn: $("navBtn"), scrim: $("scrim"), side: $("side"),
+    langsw: $("langsw"),
+    flinks: $("flinks"), fdetails: $("fdetails"), fcmdTitle: $("fcmdTitle"),
+    fcmdList: $("fcmdList"), femerg: $("femerg"), fquote: $("fquote"), fstats: $("fstats")
+  };
+
+  function t(key) { return (STR[key] || {})[state.lang] || key; }
+  var BN_DIGITS = "০১২৩৪৫৬৭৮৯";
+  function num(n) { return state.lang === "bn" ? String(n).replace(/\d/g, function (d) { return BN_DIGITS[d]; }) : String(n); }
+
+  /* ---------- load ---------- */
+  fetch(DATA_URL, { cache: "no-store" })
+    .then(function (r) { if (!r.ok) throw new Error("HTTP " + r.status); return r.json(); })
+    .then(function (data) { state.data = data; init(); })
+    .catch(showLoadError);
+
+  function showLoadError(err) {
+    el.content.innerHTML = "";
+    var box = document.createElement("div");
+    box.className = "notice";
+    var msg = t("loadErrFile") + '<code>http://localhost:8000</code>';
+    if (location.protocol !== "file:") msg = t("loadErrGen");
+    box.innerHTML = "<strong>" + t("loadErrTitle") + "</strong><br>" + msg;
+    el.content.appendChild(box);
+    console.error("mj:", err);
+  }
+
+  /* ---------- init ---------- */
+  function init() {
+    try { var saved = localStorage.getItem("mj-lang"); if (saved) state.lang = saved; } catch (e) {}
+    setLogo(state.data.site && state.data.site.logo);
+    buildMjTree();
+    applyLangChrome();
+    window.addEventListener("hashchange", applyHash);
+    applyHash();
+
+    el.langsw.addEventListener("click", function (e) {
+      var b = e.target.closest("button[data-lang]");
+      if (!b) return;
+      state.lang = b.getAttribute("data-lang");
+      try { localStorage.setItem("mj-lang", state.lang); } catch (er) {}
+      applyLangChrome();
+      renderAll();
+    });
+    el.msearch.addEventListener("input", function () { state.menuQuery = el.msearch.value; renderNav(); });
+    el.hsearch.addEventListener("input", function () { state.query = el.hsearch.value.trim().toLowerCase(); renderMain(); });
+    el.navBtn.addEventListener("click", function () { document.body.classList.toggle("nav-open"); });
+    el.scrim.addEventListener("click", closeDrawer);
+    document.addEventListener("keydown", function (e) { if (e.key === "Escape") closeDrawer(); });
+  }
+
+  function setLogo(src) {
+    if (!src) return;
+    var img = new Image();
+    img.alt = "";
+    img.onload = function () { el.logo.innerHTML = ""; el.logo.appendChild(img); };
+    img.src = src;
+  }
+
+  function closeDrawer() { document.body.classList.remove("nav-open"); }
+  function isMobile() { return window.matchMedia("(max-width: 800px)").matches; }
+
+  /* ============================================================ mj tree */
+  function keyOf(path) { return path.map(encodeURIComponent).join("/"); }
+  function isPrefix(prefix, path) {
+    if (prefix.length > path.length) return false;
+    for (var i = 0; i < prefix.length; i++) if (prefix[i] !== path[i]) return false;
+    return true;
+  }
+  function itemPath(it) { return Array.isArray(it.path) && it.path.length ? it.path : (it.menu ? [it.menu] : []); }
+
+  function buildMjTree() {
+    var root = { name: "", path: [], key: "", children: [], count: 0 };
+    var map = { "": root };
+    function ensure(path) {
+      var cur = root;
+      for (var i = 0; i < path.length; i++) {
+        var name = path[i];
+        var next = cur.children.filter(function (c) { return c.name === name; })[0];
+        if (!next) {
+          var p = path.slice(0, i + 1);
+          next = { name: name, path: p, key: keyOf(p), children: [], count: 0 };
+          cur.children.push(next);
+          map[next.key] = next;
+        }
+        cur = next;
+      }
+      return cur;
+    }
+    function addMenus(list, base) {
+      (list || []).forEach(function (m) {
+        var name = typeof m === "string" ? m : m.name;
+        var p = base.concat([name]);
+        ensure(p);
+        if (m && typeof m === "object") addMenus(m.children, p);
+      });
+    }
+    addMenus(state.data.menus, []);
+    (state.data.items || []).forEach(function (it) {
+      it._path = itemPath(it);
+      ensure(it._path);
+      root.count++;
+      for (var i = 1; i <= it._path.length; i++) map[keyOf(it._path.slice(0, i))].count++;
+    });
+    state.mjRoot = root;
+    state.mjMap = map;
+  }
+  function mjNode() { return state.mjMap[keyOf(state.mjPath)] || state.mjRoot; }
+
+  /* ============================================================ routing */
+  function navTo(section, path) {
+    var h = "#/" + section + (path && path.length ? "/" + keyOf(path) : "");
+    if (location.hash === h) applyHash(); else location.hash = h;
+  }
+  function applyHash() {
+    var raw = location.hash.replace(/^#\/?/, "");
+    var parts = raw ? raw.split("/") : [];
+    var section = parts.shift() || "dashboard";
+    if (["dashboard", "tasks", "notes", "audits", "mj", "registry"].indexOf(section) === -1) section = "dashboard";
+    state.section = section;
+    if (section === "mj") {
+      var path = parts.map(decodeURIComponent);
+      if (!state.mjMap[keyOf(path)]) path = [];
+      state.mjPath = path;
+      for (var i = 1; i <= path.length; i++) state.mjExpanded[keyOf(path.slice(0, i))] = true;
+    } else {
+      state.mjPath = [];
+    }
+    el.hsearch.value = ""; state.query = "";
+    if (isMobile()) closeDrawer();
+    renderAll();
+    window.scrollTo({ top: 0 });
+  }
+
+  function renderAll() { renderNav(); renderMain(); }
+
+  /* ============================================================ counts */
+  function counts() {
+    var d = state.data;
+    return {
+      task: (d.tasks || []).length,
+      note: (d.notes || []).length,
+      audit: (d.audits || []).length,
+      code: (d.items || []).length
+    };
+  }
+  function totalRegistry() { var c = counts(); return c.task + c.note + c.audit + c.code; }
+
+  /* ============================================================ sidebar */
+  function renderNav() {
+    el.nav.innerHTML = "";
+    var c = counts();
+    var top = document.createElement("ul");
+    top.className = "tree";
+
+    addSectionRow(top, "dashboard", num(c.task), false, true);
+    addSectionRow(top, "tasks", num(c.task));
+    addSectionRow(top, "notes", num(c.note));
+    addSectionRow(top, "audits", num(c.audit));
+
+    var sep = document.createElement("li");
+    sep.innerHTML = '<div class="side-sep"></div>';
+    top.appendChild(sep);
+
+    // mj — infinite tree
+    var q = state.menuQuery.trim().toLowerCase();
+    function matches(n) { return n.name.toLowerCase().indexOf(q) !== -1; }
+    function visible(n) { return !q || matches(n) || n.children.some(visible); }
+
+    top.appendChild(makeMjRow(state.mjRoot, t("mj"), true, c.code));
+    var any = false;
+    (function build(nodes, parentLi, forceAll) {
+      nodes.forEach(function (n) {
+        if (!(forceAll || visible(n))) return;
+        any = true;
+        var li = makeMjRow(n, n.name, false);
+        var container = parentLi.lastElementChild && parentLi.lastElementChild.tagName === "UL" ? parentLi.lastElementChild : null;
+        if (!container) { container = document.createElement("ul"); parentLi.appendChild(container); }
+        container.appendChild(li);
+        var hasKids = n.children.length > 0;
+        var open = q ? hasKids : !!state.mjExpanded[n.key];
+        if (hasKids && open) build(n.children, li, q && matches(n));
+      });
+    })(state.mjRoot.children, top.lastElementChild, false);
+
+    if (q && !any) {
+      var p = document.createElement("p");
+      p.className = "none";
+      p.textContent = t("noneMenu");
+      el.nav.appendChild(p);
+    }
+
+    addSectionRow(top, "registry", num(totalRegistry()));
+
+    el.nav.appendChild(top);
+
+    function addSectionRow(parentUl, key, count, _unused, isFirst) {
+      var li = document.createElement("li");
+      var row = document.createElement("div");
+      row.className = "row section";
+      var active = state.section === key;
+      if (active) row.classList.add("active");
+      var sp = document.createElement("span"); sp.className = "spacer"; row.appendChild(sp);
+      var icon = document.createElement("span"); icon.className = "icon"; icon.textContent = SECTION_ICON[key]; row.appendChild(icon);
+      var lab = document.createElement("button");
+      lab.type = "button"; lab.className = "lab"; lab.textContent = t(key);
+      lab.addEventListener("click", function () { navTo(key); });
+      row.appendChild(lab);
+      var cnt = document.createElement("span"); cnt.className = "cnt"; cnt.textContent = count; row.appendChild(cnt);
+      li.appendChild(row);
+      parentUl.appendChild(li);
+    }
+
+    function makeMjRow(n, label, isRoot, rootCount) {
+      var li = document.createElement("li");
+      var row = document.createElement("div");
+      row.className = "row" + (isRoot ? " section" : "");
+      var curKey = keyOf(state.mjPath);
+      var active = state.section === "mj" && n.key === curKey;
+      if (active) row.classList.add("active");
+      else if (!isRoot && isPrefix(n.path, state.mjPath) && state.section === "mj") row.classList.add("onpath");
+      if (n.count === 0 && !isRoot) row.classList.add("dim");
+
+      var hasKids = n.children.length > 0;
+      if (hasKids) {
+        var chev = document.createElement("button");
+        chev.type = "button"; chev.className = "chev";
+        var open = q ? true : !!state.mjExpanded[n.key];
+        chev.setAttribute("aria-expanded", String(open));
+        chev.addEventListener("click", function () { state.mjExpanded[n.key] = !state.mjExpanded[n.key]; renderNav(); });
+        row.appendChild(chev);
+      } else {
+        var sp2 = document.createElement("span"); sp2.className = "spacer"; row.appendChild(sp2);
+      }
+      if (isRoot) { var icon = document.createElement("span"); icon.className = "icon"; icon.textContent = SECTION_ICON.mj; row.appendChild(icon); }
+
+      var lab = document.createElement("button");
+      lab.type = "button"; lab.className = "lab"; lab.textContent = label;
+      lab.addEventListener("click", function () {
+        if (hasKids) state.mjExpanded[n.key] = true;
+        navTo("mj", n.path);
+      });
+      row.appendChild(lab);
+
+      var cnt = document.createElement("span"); cnt.className = "cnt";
+      cnt.textContent = isRoot ? rootCount : num(n.count);
+      row.appendChild(cnt);
+
+      li.appendChild(row);
+      return li;
+    }
+  }
+
+  /* ============================================================ main router */
+  function renderMain() {
+    el.content.innerHTML = "";
+    if (state.section === "dashboard") return renderDashboard();
+    if (state.section === "tasks") return renderFlatList("tasks", "task");
+    if (state.section === "notes") return renderFlatList("notes", "note");
+    if (state.section === "audits") return renderFlatList("audits", "audit");
+    if (state.section === "registry") return renderRegistry();
+    if (state.section === "mj") return renderMj();
+  }
+
+  function heading(titleText, metaText) {
+    var row = document.createElement("div");
+    row.className = "head-row";
+    var h = document.createElement("h2"); h.textContent = titleText;
+    row.appendChild(h);
+    if (metaText) { var m = document.createElement("span"); m.className = "meta"; m.textContent = metaText; row.appendChild(m); }
+    el.content.appendChild(row);
+  }
+
+  /* ---------- dashboard ---------- */
+  function renderDashboard() {
+    heading(t("overview"));
+    var c = counts();
+    var cardsWrap = document.createElement("div"); cardsWrap.className = "cards";
+    [["tasks", c.task], ["notes", c.note], ["audits", c.audit], ["mj", c.code], ["registry", totalRegistry()]].forEach(function (pair) {
+      var b = document.createElement("button");
+      b.type = "button"; b.className = "card";
+      b.innerHTML = '<div class="num">' + num(pair[1]) + '</div><div class="lab2">' + t(pair[0]) + '</div>';
+      b.addEventListener("click", function () { navTo(pair[0]); });
+      cardsWrap.appendChild(b);
+    });
+    el.content.appendChild(cardsWrap);
+
+    var p = document.createElement("p"); p.className = "panel-title"; p.textContent = t("recent");
+    el.content.appendChild(p);
+    var log = (state.data.log || []).slice().reverse().slice(0, 8);
+    if (!log.length) {
+      var none = document.createElement("p"); none.className = "notice"; none.style.padding = "14px 16px";
+      none.textContent = t("noActivity");
+      el.content.appendChild(none);
+      return;
+    }
+    var wrap = document.createElement("div"); wrap.className = "activity";
+    log.forEach(function (l) {
+      var row = document.createElement("div"); row.className = "arow";
+      var badge = document.createElement("span"); badge.className = "badge"; badge.style.background = BADGE_COLOR[l.type] || "#666";
+      badge.textContent = t("type" + cap(l.type));
+      row.appendChild(badge);
+      var txt = document.createElement("span"); txt.textContent = l.title;
+      row.appendChild(txt);
+      var when = document.createElement("span"); when.className = "when"; when.textContent = l.at || "";
+      row.appendChild(when);
+      wrap.appendChild(row);
+    });
+    el.content.appendChild(wrap);
+  }
+  function cap(s) { return s ? s.charAt(0).toUpperCase() + s.slice(1) : s; }
+
+  /* ---------- tasks / notes / audits ---------- */
+  function renderFlatList(dataKey, type) {
+    var all = state.data[dataKey] || [];
+    heading(t(state.section), num(all.length) + " " + t("entries"));
+    var q = state.query;
+    var shown = all.filter(function (it) {
+      if (!q) return true;
+      var hay = [it.title, it.description, it.status].join("\n").toLowerCase();
+      return hay.indexOf(q) !== -1;
+    });
+    var search = document.createElement("input");
+    search.className = "search"; search.type = "search"; search.placeholder = t("searchIn");
+    search.value = q; search.addEventListener("input", function () { state.query = search.value.trim().toLowerCase(); renderMain(); });
+    el.content.appendChild(search);
+
+    var list = document.createElement("div"); list.className = "list";
+    if (!shown.length) {
+      var e = document.createElement("div"); e.className = "notice";
+      e.innerHTML = q ? t("noneFound") : (t("noneHere") + " " + t("runAdd") + "<code>" + t("cmdToAdd") + " " + type + "</code>");
+      list.appendChild(e);
+    } else {
+      shown.slice().reverse().forEach(function (it) { list.appendChild(plainCard(it, type)); });
+    }
+    el.content.appendChild(list);
+  }
+
+  function plainCard(it, type) {
+    var art = document.createElement("article"); art.className = "entry plain";
+    var top = document.createElement("div"); top.className = "row-top";
+    var badge = document.createElement("span"); badge.className = "badge"; badge.style.background = BADGE_COLOR[type];
+    badge.textContent = t("type" + cap(type));
+    top.appendChild(badge);
+    var id = document.createElement("span"); id.className = "idtag"; id.textContent = it.id || "";
+    top.appendChild(id);
+    if (it.status) { var st = document.createElement("span"); st.className = "status-pill"; st.textContent = it.status; top.appendChild(st); }
+    art.appendChild(top);
+    var h = document.createElement("h3"); h.textContent = it.title || ""; art.appendChild(h);
+    if (it.description) { var d = document.createElement("p"); d.className = "desc"; d.textContent = it.description; art.appendChild(d); }
+    var fm = document.createElement("p"); fm.className = "foot-meta"; fm.textContent = (it.created || "");
+    art.appendChild(fm);
+    return art;
+  }
+
+  /* ---------- registry (all) ---------- */
+  function renderRegistry() {
+    var rows = collectRegistry();
+    heading(t("registry"), num(rows.length) + " " + t("entries"));
+
+    var filters = document.createElement("div"); filters.className = "filters";
+    [["all", t("all")], ["task", t("typeTask")], ["note", t("typeNote")], ["audit", t("typeAudit")], ["code", t("typeCode")]].forEach(function (f) {
+      var b = document.createElement("button"); b.type = "button"; b.textContent = f[1];
+      if (state.regFilter === f[0]) b.classList.add("on");
+      b.addEventListener("click", function () { state.regFilter = f[0]; renderMain(); });
+      filters.appendChild(b);
+    });
+    el.content.appendChild(filters);
+
+    var search = document.createElement("input");
+    search.className = "search"; search.type = "search"; search.placeholder = t("searchIn");
+    search.value = state.query;
+    search.addEventListener("input", function () { state.query = search.value.trim().toLowerCase(); renderMain(); });
+    el.content.appendChild(search);
+
+    var q = state.query;
+    var shown = rows.filter(function (r) {
+      if (state.regFilter !== "all" && r.type !== state.regFilter) return false;
+      if (!q) return true;
+      var hay = [r.title, r.description, (r.path || []).join(" ")].join("\n").toLowerCase();
+      return hay.indexOf(q) !== -1;
+    });
+
+    var list = document.createElement("div"); list.className = "list";
+    if (!shown.length) {
+      var e = document.createElement("div"); e.className = "notice"; e.textContent = t("noneFound");
+      list.appendChild(e);
+    } else {
+      shown.forEach(function (r) { list.appendChild(registryCard(r)); });
+    }
+    el.content.appendChild(list);
+  }
+
+  function collectRegistry() {
+    var d = state.data, rows = [];
+    (d.tasks || []).forEach(function (x) { rows.push(Object.assign({ type: "task" }, x)); });
+    (d.notes || []).forEach(function (x) { rows.push(Object.assign({ type: "note" }, x)); });
+    (d.audits || []).forEach(function (x) { rows.push(Object.assign({ type: "audit" }, x)); });
+    (d.items || []).forEach(function (x) { rows.push(Object.assign({ type: "code" }, x)); });
+    rows.sort(function (a, b) { return (a.created || "").localeCompare(b.created || "") || (a.id || "").localeCompare(b.id || ""); });
+    return rows.reverse();
+  }
+
+  function registryCard(r) {
+    if (r.type === "code") return card(r, true);
+    return plainCard(r, r.type);
+  }
+
+  /* ---------- mj (CodeCraft) ---------- */
+  function renderMj() {
+    var node = mjNode();
+    var isRoot = state.mjPath.length === 0;
+
+    var crumbs = document.createElement("div"); crumbs.className = "crumbs";
+    var segs = [{ name: t("mj"), path: [] }];
+    state.mjPath.forEach(function (name, i) { segs.push({ name: name, path: state.mjPath.slice(0, i + 1) }); });
+    segs.forEach(function (s, i) {
+      if (i > 0) { var sep = document.createElement("span"); sep.className = "sep"; sep.textContent = "›"; crumbs.appendChild(sep); }
+      if (i === segs.length - 1 && i > 0) {
+        var here = document.createElement("span"); here.className = "here"; here.textContent = s.name; crumbs.appendChild(here);
+      } else {
+        var b = document.createElement("button"); b.type = "button"; b.textContent = s.name;
+        b.addEventListener("click", function () { navTo("mj", s.path); });
+        crumbs.appendChild(b);
+      }
+    });
+    el.content.appendChild(crumbs);
+
+    heading(isRoot ? t("mj") : node.name, num(node.count) + " " + t("entries"));
+
+    if (node.children.length && !state.query) {
+      var tt = document.createElement("p"); tt.className = "tiles-title"; tt.textContent = isRoot ? t("chooseMenu") : t("subMenu");
+      el.content.appendChild(tt);
+      var grid = document.createElement("div"); grid.className = "tiles";
+      node.children.forEach(function (c) {
+        var b = document.createElement("button"); b.type = "button"; b.className = "tile";
+        b.innerHTML = "<span>" + escapeHtml(c.name) + "</span><small>" + num(c.count) + "</small>";
+        b.addEventListener("click", function () { navTo("mj", c.path); });
+        grid.appendChild(b);
+      });
+      el.content.appendChild(grid);
+    }
+
+    var search = document.createElement("input");
+    search.className = "search"; search.type = "search"; search.placeholder = t("searchIn");
+    search.value = state.query;
+    search.addEventListener("input", function () { state.query = search.value.trim().toLowerCase(); renderMain(); });
+    el.content.appendChild(search);
+
+    var items = (state.data.items || []).filter(function (it) { return isPrefix(state.mjPath, it._path) && matchCodeQuery(it); });
+    var list = document.createElement("div"); list.className = "list";
+    if (!items.length) {
+      var e = document.createElement("div"); e.className = "notice";
+      if (state.query) {
+        e.textContent = t("noneFound");
+        if (!isRoot) {
+          e.appendChild(document.createElement("br"));
+          var all = document.createElement("button"); all.type = "button"; all.textContent = t("searchAll");
+          all.addEventListener("click", function () { navTo("mj", []); });
+          e.appendChild(all);
+        }
+      } else {
+        e.innerHTML = t("noneHere") + " " + t("runAdd") + "<code>" + t("cmdToAdd") + " code</code>";
+      }
+      list.appendChild(e);
+    } else {
+      items.slice().reverse().forEach(function (it) { list.appendChild(card(it, false)); });
+    }
+    el.content.appendChild(list);
+  }
+
+  function matchCodeQuery(it) {
+    if (!state.query) return true;
+    var hay = [it.title, it.description, it.filename, it.language, it.code, (it._path || []).join(" ")].join("\n").toLowerCase();
+    return hay.indexOf(state.query) !== -1;
+  }
+
+  /* ---------- code card ---------- */
+  function card(it, withTrail) {
+    var art = document.createElement("article"); art.className = "entry";
+    var top = document.createElement("div"); top.className = "row-top";
+    var badge = document.createElement("span"); badge.className = "badge"; badge.style.background = BADGE_COLOR.code;
+    badge.textContent = t("typeCode");
+    top.appendChild(badge);
+    var id = document.createElement("span"); id.className = "idtag"; id.textContent = it.id || "";
+    top.appendChild(id);
+    art.appendChild(top);
+
+    var path = it._path || itemPath(it);
+    if (withTrail && path.length) {
+      var trail = document.createElement("div"); trail.className = "trail";
+      path.forEach(function (name, i) {
+        if (i > 0) { var s = document.createElement("span"); s.className = "sep"; s.textContent = "›"; trail.appendChild(s); }
+        var b = document.createElement("button"); b.type = "button"; b.textContent = name;
+        b.addEventListener("click", function () { navTo("mj", path.slice(0, i + 1)); });
+        trail.appendChild(b);
+      });
+      art.appendChild(trail);
+    }
+
+    var h = document.createElement("h3"); h.textContent = it.title || ""; art.appendChild(h);
+    if (it.description) { var d = document.createElement("p"); d.className = "desc"; d.textContent = it.description; art.appendChild(d); }
+    if (it.code) art.appendChild(codeBox(it));
+    return art;
+  }
+
+  function codeBox(it) {
+    var box = document.createElement("div"); box.className = "codebox";
+    var bar = document.createElement("div"); bar.className = "codebar";
+    var label = document.createElement("div"); label.className = "label";
+    var lang = document.createElement("span"); lang.className = "lang"; lang.textContent = it.language || "Text";
+    lang.style.setProperty("--tag", LANG_COLORS[(it.language || "").toLowerCase()] || "#0f6b56");
+    label.appendChild(lang);
+    if (it.filename) { var f = document.createElement("span"); f.className = "fname"; f.textContent = it.filename; f.title = it.filename; label.appendChild(f); }
+    var copy = document.createElement("button"); copy.type = "button"; copy.className = "copy"; copy.textContent = t("copy");
+    copy.addEventListener("click", function () { copyText(it.code, copy); });
+    bar.appendChild(label); bar.appendChild(copy);
+    box.appendChild(bar);
+    var pre = document.createElement("pre"); var code = document.createElement("code");
+    code.textContent = it.code; pre.appendChild(code); pre.tabIndex = 0;
+    box.appendChild(pre);
+    if (it.code.split("\n").length > COLLAPSE_LINES) {
+      box.classList.add("collapsed");
+      var more = document.createElement("button"); more.type = "button"; more.className = "more"; more.textContent = t("showMore");
+      more.addEventListener("click", function () {
+        var c = box.classList.toggle("collapsed");
+        more.textContent = c ? t("showMore") : t("showLess");
+      });
+      box.appendChild(more);
+    }
+    return box;
+  }
+
+  function copyText(text, btn) {
+    function done(ok) {
+      btn.textContent = ok ? t("copied") : t("failed");
+      btn.classList.toggle("done", ok);
+      setTimeout(function () { btn.textContent = t("copy"); btn.classList.remove("done"); }, 1600);
+    }
+    if (navigator.clipboard && window.isSecureContext) {
+      navigator.clipboard.writeText(text).then(function () { done(true); }, function () { done(fallback(text)); });
+    } else { done(fallback(text)); }
+  }
+  function fallback(text) {
+    var ta = document.createElement("textarea");
+    ta.value = text; ta.setAttribute("readonly", ""); ta.style.cssText = "position:fixed;opacity:0";
+    document.body.appendChild(ta); ta.select();
+    var ok = false; try { ok = document.execCommand("copy"); } catch (e) { ok = false; }
+    document.body.removeChild(ta);
+    return ok;
+  }
+  function escapeHtml(s) { return String(s).replace(/[&<>"']/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]; }); }
+
+  /* ============================================================ chrome (header/footer/lang) */
+  function applyLangChrome() {
+    document.documentElement.lang = state.lang;
+    var site = state.data.site || {};
+    el.title.textContent = site.title || "mj";
+    el.tag.textContent = state.lang === "en" ? (site.tagline_en || "") : (site.tagline_bn || "");
+    document.title = (site.title || "mj") + " — " + (state.lang === "en" ? (site.tagline_en || "") : (site.tagline_bn || ""));
+    el.hsearch.placeholder = t("search");
+    el.msearch.placeholder = t("searchMenu");
+    Array.prototype.forEach.call(el.langsw.querySelectorAll("button"), function (b) {
+      b.classList.toggle("on", b.getAttribute("data-lang") === state.lang);
+    });
+
+    el.flinks.innerHTML = "";
+    (site.quick_links || []).forEach(function (l) {
+      var a = document.createElement("a");
+      var isHash = /^#/.test(l.url || "");
+      a.href = l.url || "#";
+      if (!isHash) { a.target = "_blank"; a.rel = "noopener"; }
+      a.innerHTML = "<span>" + (l.icon || "•") + "</span><span>" + escapeHtml(state.lang === "en" ? l.label_en : l.label_bn) + "</span>";
+      el.flinks.appendChild(a);
+    });
+
+    el.fcmdTitle.textContent = t("quickCmds");
+    el.fcmdList.innerHTML = "";
+    (site.quick_commands || []).forEach(function (c) {
+      var li = document.createElement("li");
+      li.textContent = state.lang === "en" ? c.en : c.bn;
+      el.fcmdList.appendChild(li);
+    });
+    el.femerg.textContent = state.lang === "en" ? (site.emergency_en || "") : (site.emergency_bn || "");
+
+    el.fquote.textContent = "“" + (state.lang === "en" ? (site.quote_en || "") : (site.quote_bn || "")) + "”";
+
+    var c = counts();
+    var updated = (state.data.meta && state.data.meta.updated) || "";
+    var year = new Date().getFullYear();
+    var stats = state.lang === "en"
+      ? "All data is loaded from data.json · v" + (site.version || "1.0.0") + " · " + c.task + " tasks · " + c.note + " notes · " + c.audit + " audits · " + c.code + " CodeCraft · Updated " + updated + " · © " + year
+      : "সব ডাটা লোড হয় data.json থেকে · v" + (site.version || "1.0.0") + " · " + num(c.task) + "টি টাস্ক · " + num(c.note) + "টি নোট · " + num(c.audit) + "টি অডিট · " + num(c.code) + "টি কোডক্রাফ্ট · হালনাগাদ " + updated + " · © " + year;
+    el.fstats.textContent = stats;
+  }
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,123 @@
+:root{
+  --green-deep:#0B4D3B;
+  --green-mid:#2E6F5E;
+  --gold:#C9A227;
+  --cream:#FAF6EE;
+  --ink:#1F2A24;
+  --line:#DED6C1;
+}
+*{box-sizing:border-box;}
+body{
+  margin:0;
+  background:var(--cream);
+  color:var(--ink);
+  font-family:'Hind Siliguri','Noto Sans Bengali',sans-serif;
+  min-height:100vh;
+}
+h1,h2,h3,.brand{
+  font-family:'Noto Serif Bengali',serif;
+}
+
+/* ---------- Header ---------- */
+.topbar{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:14px 24px;
+  background:var(--green-deep);
+  color:var(--cream);
+  border-bottom:3px solid var(--gold);
+}
+.brand{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  font-size:1.15rem;
+  font-weight:600;
+}
+.brand .mark{
+  width:34px;height:34px;border-radius:50%;
+  background:var(--gold);
+  color:var(--green-deep);
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Noto Serif Bengali',serif;
+  font-weight:700;
+}
+.topbar-right{display:flex;align-items:center;gap:18px;font-size:.9rem;}
+.clock{opacity:.9;letter-spacing:.02em;}
+.lang-toggle{
+  background:transparent;
+  border:1px solid var(--gold);
+  color:var(--cream);
+  padding:5px 12px;
+  border-radius:4px;
+  cursor:pointer;
+  font-family:inherit;
+  font-size:.85rem;
+}
+.lang-toggle:hover{background:var(--gold);color:var(--green-deep);}
+
+/* ---------- Lock screen ---------- */
+#lock{
+  position:fixed;inset:0;
+  background:var(--green-deep);
+  display:flex;align-items:center;justify-content:center;
+  z-index:50;
+}
+.lock-card{
+  background:var(--cream);
+  padding:36px 32px;
+  border-radius:6px;
+  width:min(92vw,340px);
+  text-align:center;
+  border-top:4px solid var(--gold);
+}
+.lock-card .mark{
+  width:56px;height:56px;border-radius:50%;
+  background:var(--green-deep);color:var(--gold);
+  display:flex;align-items:center;justify-content:center;
+  margin:0 auto 14px;
+  font-family:'Noto Serif Bengali',serif;font-size:1.3rem;font-weight:700;
+}
+.lock-card h2{margin:0 0 4px;font-size:1.15rem;color:var(--green-deep);}
+.lock-card p{margin:0 0 18px;font-size:.85rem;color:#6b6455;}
+.lock-card input{
+  width:100%;padding:10px 12px;
+  border:1px solid var(--line);border-radius:4px;
+  font-size:1rem;text-align:center;letter-spacing:.15em;
+  margin-bottom:12px;
+}
+.lock-card button{
+  width:100%;padding:10px;
+  background:var(--green-deep);color:var(--cream);
+  border:none;border-radius:4px;
+  font-family:inherit;font-size:.95rem;cursor:pointer;
+}
+.lock-card button:hover{background:var(--green-mid);}
+.lock-error{color:#a33;font-size:.8rem;min-height:1.1em;margin-bottom:8px;}
+
+/* ---------- Dashboard body ---------- */
+main{max-width:960px;margin:0 auto;padding:32px 20px 60px;}
+.node-title{font-size:1.5rem;color:var(--green-deep);margin:0 0 4px;}
+.node-sub{color:#6b6455;margin:0 0 28px;font-size:.95rem;}
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:16px;
+}
+.panel{
+  background:#fff;
+  border:1px solid var(--line);
+  border-left:4px solid var(--green-mid);
+  border-radius:4px;
+  padding:18px 18px 16px;
+}
+.panel h3{margin:0 0 6px;font-size:1rem;color:var(--green-deep);}
+.panel p{margin:0;font-size:.85rem;color:#5c5647;line-height:1.5;}
+
+.breadcrumb{font-size:.8rem;color:#8a8370;margin-bottom:14px;}
+.breadcrumb a{color:var(--green-mid);text-decoration:none;}
+
+[data-lang="en"] [lang="bn"]{display:none;}
+[data-lang="bn"] [lang="en"]{display:none;}

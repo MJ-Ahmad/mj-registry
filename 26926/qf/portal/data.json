@@ -1,0 +1,43 @@
+{
+  "_readme": "এই পোর্টাল কোনো তথ্য নিজে ধারণ করে না — শুধু সঠিক ড্যাশবোর্ডে পাঠায়। কোনো রোলের দায়িত্বশীল ও ড্যাশবোর্ড প্রস্তুত হলে সেই রোলের status মান 'live' করুন এবং href-এ প্রকৃত ফোল্ডারের পথ দিন (এই ফাইলের অবস্থান qf/portal/ থেকে আপেক্ষিক)। 'soon' থাকা রোল ক্লিক করা যাবে না।",
+
+  "site": {
+    "title": { "bn": "হিফজ ব্যবস্থাপনা পোর্টাল", "en": "Hifz Management Portal" },
+    "brand": { "bn": "কোরআনের ফেরিওয়ালা", "en": "Quraner Fariwala" },
+    "logo": "https://mj-ahmad.github.io/qf/assets/logo.png",
+    "logoAlt": { "bn": "কোরআনের ফেরিওয়ালার লোগো", "en": "Quraner Fariwala logo" },
+    "homeUrl": "../",
+    "defaultLang": "bn"
+  },
+
+  "ui": {
+    "eyebrow": { "bn": "ধাপ ১", "en": "Step 1" },
+    "title": { "bn": "আপনি কী হিসেবে প্রবেশ করতে চান?", "en": "How would you like to sign in?" },
+    "subtitle": { "bn": "আপনার দায়িত্ব বেছে নিন। এরপর পরবর্তী পাতায় পাসওয়ার্ড দিয়ে নিজের ড্যাশবোর্ড খুলতে পারবেন।", "en": "Choose your role. On the next page you'll enter your password to open your own dashboard." },
+    "home": { "bn": "হোমপেজে ফিরুন", "en": "Back to homepage" },
+    "soonBadge": { "bn": "শীঘ্রই", "en": "Soon" },
+    "soonNote": { "bn": "এই দায়িত্বের জন্য এখনো কেউ নিয়োগ পাননি এবং ড্যাশবোর্ড প্রস্তুত হয়নি।", "en": "No one has been assigned to this role yet, and its dashboard isn't ready." },
+    "groupHierarchy": { "bn": "দায়িত্বশীল কাঠামো", "en": "Responsibility hierarchy" },
+    "groupPartners": { "bn": "সহযোগী ও অংশীদার", "en": "Partners & supporters" },
+    "footer": { "bn": "© ২০২৬ কোরআনের ফেরিওয়ালা। সর্বস্বত্ব সংরক্ষিত।", "en": "© 2026 Quraner Fariwala. All rights reserved." }
+  },
+
+  "hierarchy": [
+    { "level": "০", "title": { "bn": "কেন্দ্রীয় প্রধান দায়িত্বশীল", "en": "Central Head (Super Admin)" }, "area": { "bn": "সারা বাংলাদেশ", "en": "All of Bangladesh" }, "status": "live", "href": "../hifz/" },
+    { "level": "১", "title": { "bn": "বিভাগীয় সমন্বয়কারী", "en": "Division Coordinator" }, "area": { "bn": "বিভাগ", "en": "Division" }, "status": "soon" },
+    { "level": "২", "title": { "bn": "জেলা দায়িত্বশীল", "en": "District Coordinator" }, "area": { "bn": "জেলা — উদাহরণ: কুষ্টিয়া", "en": "District — example: Kushtia" }, "status": "live", "href": "../hifz/kushtia/" },
+    { "level": "৩", "title": { "bn": "উপজেলা দায়িত্বশীল", "en": "Upazila Coordinator" }, "area": { "bn": "উপজেলা (উদাহরণ কাঠামো)", "en": "Upazila (example structure)" }, "status": "live", "href": "../hifz/example/" },
+    { "level": "৪", "title": { "bn": "ইউনিয়ন দায়িত্বশীল", "en": "Union Coordinator" }, "area": { "bn": "ইউনিয়ন", "en": "Union" }, "status": "soon" },
+    { "level": "৫", "title": { "bn": "গ্রাম/মাদ্রাসা পরিচালক", "en": "Village / Madrasa Director" }, "area": { "bn": "গ্রাম ও মাদ্রাসা", "en": "Village & madrasa" }, "status": "soon" },
+    { "level": "৬", "title": { "bn": "হিফজ বিভাগের প্রধান উস্তাদ", "en": "Head Hifz Teacher" }, "area": { "bn": "নিজ হিফজ বিভাগ", "en": "Own Hifz department" }, "status": "soon" },
+    { "level": "৭", "title": { "bn": "হিফজ শিক্ষক", "en": "Hifz Teacher" }, "area": { "bn": "নিজ শ্রেণি/শিক্ষার্থীগণ", "en": "Own class / students" }, "status": "soon" },
+    { "level": "৮", "title": { "bn": "হিফজ শিক্ষার্থী", "en": "Hifz Student" }, "area": { "bn": "নিজ অগ্রগতি", "en": "Own progress" }, "status": "soon" },
+    { "level": "৯", "title": { "bn": "অভিভাবক", "en": "Guardian" }, "area": { "bn": "সন্তানের অগ্রগতি (শুধু দেখার জন্য)", "en": "Child's progress (read-only)" }, "status": "soon" }
+  ],
+
+  "partners": [
+    { "title": { "bn": "অনুদানকারী / বিনিয়োগকারী / ঋণদাতা", "en": "Donor / Investor / Lender" }, "area": { "bn": "উদাহরণ: কুষ্টিয়া জেলার বিনিয়োগ প্রোফাইল", "en": "Example: Kushtia district investment profile" }, "status": "live", "href": "../hifz/kushtia/invest/" },
+    { "title": { "bn": "অর্ডার ও সরবরাহ ব্যবস্থাপক", "en": "Order & Distribution Manager" }, "area": { "bn": "কোরআন মাজিদ অর্ডার ও সরবরাহ", "en": "Quran orders & distribution" }, "status": "soon" },
+    { "title": { "bn": "প্রতিযোগিতা ব্যবস্থাপক", "en": "Competition Manager" }, "area": { "bn": "হিফজ/নাজেরা/তাজবিদ/তিলাওয়াত প্রতিযোগিতা", "en": "Hifz/Nazara/Tajweed/Tilawat competitions" }, "status": "soon" }
+  ]
+}

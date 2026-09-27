@@ -8,7 +8,7 @@
     "version": "1.2",
     "footer_bn": "সকল তথ্য data.json থেকে লোড হয়",
     "footer_en": "All data is loaded from data.json",
-    "updated_at": "2026-09-26T18:56:38+06:00",
+    "updated_at": "2026-09-26T22:57:42+06:00",
     "counters": {
       "task": {
         "2026": 20
@@ -20,7 +20,7 @@
         "2026": 2
       },
       "code": {
-        "2026": 31
+        "2026": 32
       }
     },
     "tagline": "Where every script is a verdict, every invocation a vote, and every log a legacy.",
@@ -1978,6 +1978,38 @@
         }
       ],
       "content": "# ============================\n# Debian Custom Profile (MJ)\n# ============================\n\n# রঙিন ডাইনামিক প্রম্পট\n# হোমে থাকলে দেখাবে: MJ :: ~\n# অন্য ডিরেক্টরিতে গেলে দেখাবে: MJ :: ~/folder/subfolder\nexport PS1=\"\\[\\e[1;32m\\]MJ :: \\[\\e[1;34m\\]\\w\\[\\e[0m\\]\\n\\[\\e[1;33m\\]\\$\\[\\e[0m\\] \"\n\n# সাধারণ অ্যালিয়াস\nalias cls='clear'\nalias ll='ls -la'\nalias ..='cd ..'\n\n# VM/ক্লাউড কানেকশন\nalias connect_vm='ssh myvm'\nalias connect_cloud='ssh clouduser@cloud-ip'\n\n# Git শর্টকাট\nalias gs='git status'\nalias ga='git add .'\nalias gc='git commit -m'\nalias gp='git push'\n\n# Python/Node শর্টকাট\nalias py='python3'\nalias npmi='npm install'\nalias npms='npm start'\n\n# tmux শর্টকাট\nalias tnew='tmux new -s'\nalias tls='tmux ls'\nalias ta='tmux attach -t'\n\n# sh\nalias rn='./run.sh'\n\n# প্রজেক্ট জাম্প অ্যালিয়াস\nalias mj='cd ~/mj'\nalias rg='cd ~/mj-registry'\nalias dev='cd ~/mjdev'\nalias qf='cd ~/qf'\nalias pv1='cd ~/mjpv1'\n\n# কাস্টম ফাংশন (goto)\nfunction goto() {\n    case $1 in\n        mj) cd ~/mj ;;\n        rg) cd ~/mj-registry ;;\n        dev) cd ~/mjdev ;;\n        qf) cd ~/qf ;;\n        pv1) cd ~/mjpv1 ;;\n        *) echo \"Unknown project: $1\" ;;\n    esac\n}\n\n# Welcome Banner\necho -e \"\\e[1;32m======================================\"\necho -e \" Welcome MJ! Debian Ready for DevOps 🐧\"\necho -e \" Timestamp: $(date '+%Y-%m-%d %H:%M:%S')\"\necho -e \"======================================\\e[0m\"\n"
+    },
+    {
+      "id": "CDE-2026-0032",
+      "title": "copy.md",
+      "title_bn": "",
+      "desc": "",
+      "desc_bn": "",
+      "filename": "copy.md",
+      "source": "copy.md",
+      "lang": "markdown",
+      "lang_label": "Markdown",
+      "ext": "md",
+      "lines": 40,
+      "bytes": 2089,
+      "sha256": "960be7b298af0db40f5526154507a242baf3afdd3ead263b3d84a890c31d9202",
+      "menu_path": [
+        "codecraft",
+        "c-html",
+        "c-help",
+        "c-shell"
+      ],
+      "category": "general",
+      "tags": [],
+      "created_at": "2026-09-26T22:57:42+06:00",
+      "history": [
+        {
+          "at": "2026-09-26T22:57:42+06:00",
+          "event": "created",
+          "note": "copy.md"
+        }
+      ],
+      "content": "তুমি একদম ঠিক ধরেছো—cp -r দিলে ফোল্ডার ও সাবফোল্ডার কপি হয়, কিন্তু যদি ফাইলগুলো না আসে তাহলে আসল সমস্যা হচ্ছে তুমি Termux/Android storage permission পুরোপুরি দাওনি অথবা পাথ সঠিকভাবে resolve হয়নি।  \n\n---\n\n🔧 সমাধান ধাপে ধাপে\n\n1. Termux storage setup  \n   প্রথমে নিশ্চিত হও যে Termux-এ storage link করা আছে:\n   `bash\n   termux-setup-storage\n   `\n   এতে /storage/emulated/0 সঠিকভাবে accessible হবে।\n\n2. Recursive copy  \n   ফাইলসহ সবকিছু কপি করতে:\n   `bash\n   cp -r /storage/emulated/0/Download/qf-node ~/mj-registry/\n   `\n\n3. Verbose check  \n   কপি হচ্ছে কিনা দেখতে -v যোগ করো:\n   `bash\n   cp -rv /storage/emulated/0/Download/qf-node ~/mj-registry/\n   `\n\n4. Alternative rsync  \n   যদি cp কাজ না করে, rsync ব্যবহার করো:\n   `bash\n   rsync -av /storage/emulated/0/Download/qf-node ~/mj-registry/\n   `\n\n---\n\n📌 নোট\n- যদি ফাইলগুলো না আসে, তাহলে সম্ভবত Android-এর Scoped Storage restriction এর কারণে Termux ফাইল পড়তে পারছে না।  \n- সেক্ষেত্রে ফাইলগুলো আগে /data/data/com.termux/files/home/ এর ভেতরে সরিয়ে নিয়ে তারপর কপি করো।  \n\n---\n\n👉 তুমি চাইলে আমি এখন দেখাতে পারি কীভাবে mv -r দিয়ে সরানো যায়, অথবা কীভাবে find command দিয়ে নিশ্চিত হওয়া যায় যে প্রতিটি সাবফোল্ডারের ফাইল আসলেই কপি হয়েছে।\n"
     }
   ]
 }

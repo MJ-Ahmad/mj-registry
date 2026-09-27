@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Quraner Fariwala Network</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600&family=Noto+Serif+Bengali:wght@600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+<style>
+  #lock{display:none;}
+  .node-list{list-style:none;padding:0;margin:0;display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));}
+  .node-list a{
+    display:block;background:#fff;border:1px solid var(--line);border-left:4px solid var(--green-mid);
+    border-radius:4px;padding:18px;text-decoration:none;color:var(--ink);
+  }
+  .node-list a:hover{border-left-color:var(--gold);}
+  .node-list h3{margin:0 0 4px;color:var(--green-deep);}
+  .node-list p{margin:0;font-size:.85rem;color:#6b6455;}
+</style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand"><span class="mark">কো</span><span>Quraner Fariwala Network</span></div>
+    <div class="topbar-right"><span class="clock" id="clock">--:--:--</span></div>
+  </header>
+  <main>
+    <h1 class="node-title">নোড নির্বাচন করুন / Select a Node</h1>
+    <p class="node-sub">হিফজুল কোরআন বিভাগ ব্যবস্থাপনা নেটওয়ার্ক — প্রতিটি স্তরের নমুনা ড্যাশবোর্ড</p>
+    <ul class="node-list">
+      <li><a href="central/"><h3>কেন্দ্রীয় / Central</h3><p>Top-level control node</p></a></li>
+      <li><a href="division/"><h3>বিভাগীয় / Division</h3><p>Example: Khulna Division</p></a></li>
+      <li><a href="district/"><h3>জেলা / District</h3><p>Example: Kushtia District</p></a></li>
+      <li><a href="upazila/"><h3>উপজেলা / Upazila</h3><p>Example upazila node</p></a></li>
+      <li><a href="union/"><h3>ইউনিয়ন / Union</h3><p>Example union node</p></a></li>
+    </ul>
+  </main>
+  <script>
+    function upd(){
+      var n=new Date(); var u=n.getTime()+n.getTimezoneOffset()*60000; var b=new Date(u+6*3600000);
+      var h=b.getHours(),m=b.getMinutes(),s=b.getSeconds();var ap=h>=12?'PM':'AM';var h12=h%12===0?12:h%12;
+      function p(x){return x<10?'0'+x:x;}
+      document.getElementById('clock').textContent=p(h12)+':'+p(m)+':'+p(s)+' '+ap+' (BD)';
+    }
+    upd(); setInterval(upd,1000);
+  </script>
+</body>
+</html>

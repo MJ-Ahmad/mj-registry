@@ -8,7 +8,7 @@
     "version": "1.2",
     "footer_bn": "সকল তথ্য data.json থেকে লোড হয়",
     "footer_en": "All data is loaded from data.json",
-    "updated_at": "2026-09-26T22:57:42+06:00",
+    "updated_at": "2026-10-03T13:34:49+06:00",
     "counters": {
       "task": {
         "2026": 20
@@ -20,7 +20,7 @@
         "2026": 2
       },
       "code": {
-        "2026": 32
+        "2026": 34
       }
     },
     "tagline": "Where every script is a verdict, every invocation a vote, and every log a legacy.",
@@ -450,6 +450,17 @@
                           }
                         }
                       ]
+                    },
+                    {
+                      "id": "c-setup",
+                      "bn": "setup",
+                      "en": "setup",
+                      "view": {
+                        "type": "codes",
+                        "filter": {
+                          "menu_path": "c-setup"
+                        }
+                      }
                     }
                   ]
                 }
@@ -2010,6 +2021,72 @@
         }
       ],
       "content": "তুমি একদম ঠিক ধরেছো—cp -r দিলে ফোল্ডার ও সাবফোল্ডার কপি হয়, কিন্তু যদি ফাইলগুলো না আসে তাহলে আসল সমস্যা হচ্ছে তুমি Termux/Android storage permission পুরোপুরি দাওনি অথবা পাথ সঠিকভাবে resolve হয়নি।  \n\n---\n\n🔧 সমাধান ধাপে ধাপে\n\n1. Termux storage setup  \n   প্রথমে নিশ্চিত হও যে Termux-এ storage link করা আছে:\n   `bash\n   termux-setup-storage\n   `\n   এতে /storage/emulated/0 সঠিকভাবে accessible হবে।\n\n2. Recursive copy  \n   ফাইলসহ সবকিছু কপি করতে:\n   `bash\n   cp -r /storage/emulated/0/Download/qf-node ~/mj-registry/\n   `\n\n3. Verbose check  \n   কপি হচ্ছে কিনা দেখতে -v যোগ করো:\n   `bash\n   cp -rv /storage/emulated/0/Download/qf-node ~/mj-registry/\n   `\n\n4. Alternative rsync  \n   যদি cp কাজ না করে, rsync ব্যবহার করো:\n   `bash\n   rsync -av /storage/emulated/0/Download/qf-node ~/mj-registry/\n   `\n\n---\n\n📌 নোট\n- যদি ফাইলগুলো না আসে, তাহলে সম্ভবত Android-এর Scoped Storage restriction এর কারণে Termux ফাইল পড়তে পারছে না।  \n- সেক্ষেত্রে ফাইলগুলো আগে /data/data/com.termux/files/home/ এর ভেতরে সরিয়ে নিয়ে তারপর কপি করো।  \n\n---\n\n👉 তুমি চাইলে আমি এখন দেখাতে পারি কীভাবে mv -r দিয়ে সরানো যায়, অথবা কীভাবে find command দিয়ে নিশ্চিত হওয়া যায় যে প্রতিটি সাবফোল্ডারের ফাইল আসলেই কপি হয়েছে।\n"
+    },
+    {
+      "id": "CDE-2026-0033",
+      "title": "setup_shell.md",
+      "title_bn": "",
+      "desc": "",
+      "desc_bn": "",
+      "filename": "setup_shell.md",
+      "source": "setup_shell.md",
+      "lang": "markdown",
+      "lang_label": "Markdown",
+      "ext": "md",
+      "lines": 82,
+      "bytes": 3333,
+      "sha256": "0303f2d789a01e782ca4f08bacfd2e7c9efaaaf3bbb8959074fcbd62edfe5d9b",
+      "menu_path": [
+        "codecraft",
+        "c-html",
+        "c-help",
+        "c-shell",
+        "c-setup"
+      ],
+      "category": "general",
+      "tags": [],
+      "created_at": "2026-10-03T13:34:12+06:00",
+      "history": [
+        {
+          "at": "2026-10-03T13:34:12+06:00",
+          "event": "created",
+          "note": "setup_shell.md"
+        }
+      ],
+      "content": "চমৎকার অনুরোধ! আমি আপনার জন্য একটি setup.sh (Linux shell script) তৈরি করছি, যা রান করলে আপনার পিসি সুন্দরভাবে ডেভেলপমেন্টের জন্য প্রস্তুত হবে, Bing কে ডিফল্ট সার্চ ইঞ্জিন হিসেবে সেট করবে, Tor Browser ও Chrome ইনস্টল করবে, এবং Desktop-এ দুটি ডিরেক্টরি তৈরি করবে — ali-baba (ব্যাকআপের জন্য) এবং .mj (অডিট ও সেটআপ লগের জন্য)।  \n\n---\n\n🖥️ Shell Script: setup.sh\n\n`bash\n\n!/bin/bash\n\n============================================\n\nMJ :: Development Environment Setup Script\n\n============================================\n\nUpdate system\nsudo apt update && sudo apt upgrade -y\n\nInstall essential packages\nsudo apt install -y git curl wget vim build-essential python3 python3-pip nodejs npm\n\nInstall Chrome\nwget https://dl.google.com/linux/direct/google-chrome-stablecurrentamd64.deb\nsudo apt install -y ./google-chrome-stablecurrentamd64.deb\n\nInstall Tor Browser\nsudo apt install -y torbrowser-launcher\n\nSet Bing as default search engine (for Chrome)\nCHROME_PREFS=\"$HOME/.config/google-chrome/Default/Preferences\"\nif [ -f \"$CHROME_PREFS\" ]; then\n  sed -i 's/\"defaultsearchproviderdata\":{[^}]*}/\"defaultsearchproviderdata\":{\"templateurl\":\"https:\\/\\/bing.com\\/search?q={searchTerms}\",\"name\":\"Bing\",\"keyword\":\"bing\"}/' \"$CHROMEPREFS\"\nfi\n\nCreate Desktop directories\nDESKTOP=\"$HOME/Desktop\"\nmkdir -p \"$DESKTOP/ali-baba\"\nmkdir -p \"$DESKTOP/.mj\"\n\nBackup current Desktop data into ali-baba\ncp -r $DESKTOP/* \"$DESKTOP/ali-baba/\" 2>/dev/null\n\nCreate audit log inside .mj\nAUDITFILE=\"$DESKTOP/.mj/setupaudit.log\"\necho \"======================================\" >> $AUDIT_FILE\necho \" MJ :: Development Setup Audit Log\" >> $AUDIT_FILE\necho \" Timestamp: $(date '+%Y-%m-%d %H:%M:%S')\" >> $AUDIT_FILE\necho \" Installed: Git, Python3, Node.js, npm, Chrome, Tor Browser\" >> $AUDIT_FILE\necho \" Default Search Engine: Bing\" >> $AUDIT_FILE\necho \" Backup Directory: ali-baba\" >> $AUDIT_FILE\necho \" Audit Directory: .mj\" >> $AUDIT_FILE\necho \"======================================\" >> $AUDIT_FILE\n\necho \"✅ Setup Complete! Restart Chrome to apply Bing search engine.\"\n`\n\n---\n\n🚀 রান করার নিয়ম\n1. ফাইলটি setup.sh নামে সেভ করুন।  \n2. এক্সিকিউটেবল করুন:  \n   `bash\n   chmod +x setup.sh\n   `\n3. রান করুন:  \n   `bash\n   ./setup.sh\n   `\n\n---\n\n📂 ফলাফল\n- ali-baba → Desktop-এর সব ডাটা ব্যাকআপ থাকবে।  \n- .mj → অডিট লগ ও সেটআপ তথ্য থাকবে।  \n- Tor Browser এবং Chrome ইনস্টল হবে।  \n- Bing ডিফল্ট সার্চ ইঞ্জিন হবে।  \n\n---\n\nআপনি চাইলে আমি একই কাজের জন্য একটি PowerShell (.ps1) বা Python (.py) স্ক্রিপ্টও তৈরি করে দিতে পারি। কোনটি আগে চান — PowerShell নাকি Python?\n\n"
+    },
+    {
+      "id": "CDE-2026-0034",
+      "title": "setup.sh",
+      "title_bn": "",
+      "desc": "",
+      "desc_bn": "",
+      "filename": "setup.sh",
+      "source": "setup.sh",
+      "lang": "shell",
+      "lang_label": "Shell",
+      "ext": "sh",
+      "lines": 44,
+      "bytes": 1700,
+      "sha256": "05a967cd748955be216efc0d365627f84b036de4a5b414ee94c5ebf320ebb061",
+      "menu_path": [
+        "codecraft",
+        "c-html",
+        "c-help",
+        "c-shell",
+        "c-setup"
+      ],
+      "category": "general",
+      "tags": [],
+      "created_at": "2026-10-03T13:34:49+06:00",
+      "history": [
+        {
+          "at": "2026-10-03T13:34:49+06:00",
+          "event": "created",
+          "note": "setup.sh"
+        }
+      ],
+      "content": "#!/bin/bash\n# ============================================\n# MJ :: Development Environment Setup Script\n# ============================================\n\n# Update system\nsudo apt update && sudo apt upgrade -y\n\n# Install essential packages\nsudo apt install -y git curl wget vim build-essential python3 python3-pip nodejs npm\n\n# Install Chrome\nwget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb\nsudo apt install -y ./google-chrome-stable_current_amd64.deb\n\n# Install Tor Browser\nsudo apt install -y torbrowser-launcher\n\n# Set Bing as default search engine (for Chrome)\nCHROME_PREFS=\"$HOME/.config/google-chrome/Default/Preferences\"\nif [ -f \"$CHROME_PREFS\" ]; then\n  sed -i 's/\"default_search_provider_data\":{[^}]*}/\"default_search_provider_data\":{\"template_url\":\"https:\\/\\/bing.com\\/search?q={searchTerms}\",\"name\":\"Bing\",\"keyword\":\"bing\"}/' \"$CHROME_PREFS\"\nfi\n\n# Create Desktop directories\nDESKTOP=\"$HOME/Desktop\"\nmkdir -p \"$DESKTOP/ali-baba\"\nmkdir -p \"$DESKTOP/.mj\"\n\n# Backup current Desktop data into ali-baba\ncp -r $DESKTOP/* \"$DESKTOP/ali-baba/\" 2>/dev/null\n\n# Create audit log inside .mj\nAUDIT_FILE=\"$DESKTOP/.mj/setup_audit.log\"\necho \"======================================\" >> $AUDIT_FILE\necho \" MJ :: Development Setup Audit Log\" >> $AUDIT_FILE\necho \" Timestamp: $(date '+%Y-%m-%d %H:%M:%S')\" >> $AUDIT_FILE\necho \" Installed: Git, Python3, Node.js, npm, Chrome, Tor Browser\" >> $AUDIT_FILE\necho \" Default Search Engine: Bing\" >> $AUDIT_FILE\necho \" Backup Directory: ali-baba\" >> $AUDIT_FILE\necho \" Audit Directory: .mj\" >> $AUDIT_FILE\necho \"======================================\" >> $AUDIT_FILE\n\necho \"✅ Setup Complete! Restart Chrome to apply Bing search engine.\"\n"
     }
   ]
 }

@@ -8,7 +8,7 @@
     "version": "1.2",
     "footer_bn": "সকল তথ্য data.json থেকে লোড হয়",
     "footer_en": "All data is loaded from data.json",
-    "updated_at": "2026-10-03T20:26:51+06:00",
+    "updated_at": "2026-10-03T21:00:04+06:00",
     "counters": {
       "task": {
         "2026": 20
@@ -20,7 +20,7 @@
         "2026": 2
       },
       "code": {
-        "2026": 38
+        "2026": 39
       }
     },
     "tagline": "Where every script is a verdict, every invocation a vote, and every log a legacy.",
@@ -511,6 +511,30 @@
                   "menu_path": "c-life"
                 }
               }
+            },
+            {
+              "id": "c-systems",
+              "bn": "systems",
+              "en": "systems",
+              "view": {
+                "type": "codes",
+                "filter": {
+                  "menu_path": "c-systems"
+                }
+              },
+              "children": [
+                {
+                  "id": "c-og",
+                  "bn": "OG",
+                  "en": "OG",
+                  "view": {
+                    "type": "codes",
+                    "filter": {
+                      "menu_path": "c-og"
+                    }
+                  }
+                }
+              ]
             }
           ]
         },
@@ -2262,6 +2286,38 @@
         }
       ],
       "content": "আপনি আসলে একটি **Developer Life Operating System (DLOS)** কল্পনা করছেন, যেখানে একজন ডেভেলপারের ব্যক্তিগত জীবন, পেশাগত জীবন, প্রযুক্তিগত কার্যক্রম, জ্ঞানভান্ডার, ঝুঁকি, প্রকল্প, অর্থনীতি, ইতিহাস, ভবিষ্যৎ পরিকল্পনা এবং চলমান বাস্তবতা সবকিছু একটি একক \"Tree of Life Dashboard\" এর মাধ্যমে দৃশ্যমান ও নিয়ন্ত্রিত হবে।\n\nএটি সাধারণ Dashboard নয়।\n\nএটি হবে:\n\n> Personal ERP + Knowledge Graph + Digital Twin + Decision Support System + Registry System + Audit System + Project Operating System\n\n---\n\n# ১. আর্কিটেকচার (High Level)\n\n```text\n┌───────────────────────────────┐\n│           HEADER              │\n├───────────────────────────────┤\n│ Search │ Command │ AI Agent   │\n├───────┬───────────────────────┤\n│       │                       │\n│ Tree  │      Main Body        │\n│ Of    │                       │\n│ Life  │    Dynamic Panels     │\n│ Menu  │                       │\n│       │                       │\n├───────┴───────────────────────┤\n│            FOOTER             │\n└───────────────────────────────┘\n```\n\n---\n\n# ২. Tree Of Life Menu\n\nমেনুটি Infinite Recursive Structure।\n\n```json\n{\n  \"root\": {\n    \"id\": \"life\",\n    \"title\": \"Life\",\n    \"children\": {\n      \"person\": {},\n      \"developer\": {},\n      \"business\": {},\n      \"finance\": {},\n      \"projects\": {},\n      \"events\": {},\n      \"risks\": {},\n      \"knowledge\": {},\n      \"future\": {},\n      \"history\": {}\n    }\n  }\n}\n```\n\n---\n\n# ৩. Super Registry Tree\n\n```text\nLife\n│\n├── Identity\n│   ├── Family\n│   ├── Skills\n│   ├── Knowledge\n│   ├── Goals\n│\n├── Development\n│   ├── Source Code\n│   ├── Git\n│   ├── Backend\n│   ├── Frontend\n│   ├── APIs\n│   ├── UI UX\n│\n├── Cyber\n│   ├── Cyber Security\n│   ├── Cyber Crime\n│   ├── Threat Intel\n│   ├── War Simulation\n│   ├── Incidents\n│\n├── Project\n│   ├── Running\n│   ├── Planned\n│   ├── Imaginary\n│   ├── Archived\n│\n├── Finance\n│   ├── Cash Flow\n│   ├── Investments\n│   ├── Debts\n│   ├── Forecast\n│\n├── Supply Chain\n│   ├── Inventory\n│   ├── Store\n│   ├── Printing\n│   ├── Distribution\n│\n├── Audit\n│   ├── Logs\n│   ├── Events\n│   ├── Decisions\n│   ├── Reviews\n│\n├── Risk\n│   ├── Current\n│   ├── Future\n│   ├── Probability\n│   ├── Mitigation\n│\n├── Time\n│   ├── Calendar\n│   ├── Roadmap\n│   ├── Timeline\n│   ├── Schedules\n│\n└── AI\n    ├── Agents\n    ├── Commands\n    ├── Automation\n    ├── Suggestions\n```\n\n---\n\n# ৪. Master JSON\n\nসমস্ত তথ্য JSON Registry এ সংরক্ষিত হবে।\n\n## registry.json\n\n```json\n{\n  \"meta\": {\n    \"version\": \"1.0\",\n    \"created\": \"2026-01-01\"\n  },\n\n  \"identity\": {},\n\n  \"development\": {},\n\n  \"cyber\": {},\n\n  \"projects\": {},\n\n  \"finance\": {},\n\n  \"timeline\": {},\n\n  \"events\": {},\n\n  \"risks\": {},\n\n  \"notes\": {},\n\n  \"references\": {},\n\n  \"commands\": {},\n\n  \"audit\": {}\n}\n```\n\n---\n\n# ৫. HTML Dashboard\n\n```html\n<!DOCTYPE html>\n<html>\n<head>\n<title>DLOS</title>\nstyle.css\n</head>\n<body>\n\n<header>\n<h1>Developer Life OS</h1>\n<input type=\"search\">\n</header>\n\n<div class=\"container\">\n\n<nav id=\"treeMenu\">\n</nav>\n\n<main id=\"contentPanel\">\n</main>\n\n</div>\n\n<footer>\nSystem Ready\n</footer>\n\napp.jsscript>\n\n</body>\n</html>\n```\n\n---\n\n# ৬. app.js\n\nJSON → HTML Loader\n\n```javascript\nasync function loadRegistry(){\n\n let response = await fetch('registry.json');\n\n let registry = await response.json();\n\n renderTree(registry);\n\n}\n\nloadRegistry();\n```\n\n---\n\n# ৭. Recursive Tree Generator\n\n```javascript\nfunction createTree(node){\n\n let ul=document.createElement(\"ul\");\n\n Object.keys(node).forEach(key=>{\n\n    let li=document.createElement(\"li\");\n\n    li.innerText=key;\n\n    if(typeof node[key] === \"object\"){\n\n       li.appendChild(createTree(node[key]));\n    }\n\n    ul.appendChild(li);\n\n });\n\n return ul;\n}\n```\n\n---\n\n# ৮. Python Registry Manager\n\nregistry_manager.py\n\n```python\nimport json\n\nclass Registry:\n\n    def __init__(self,path):\n        self.path=path\n\n        with open(path) as f:\n            self.data=json.load(f)\n\n    def save(self):\n\n        with open(self.path,\"w\") as f:\n            json.dump(self.data,f,indent=4)\n\n    def add_record(self,section,key,value):\n\n        self.data[section][key]=value\n\n        self.save()\n```\n\n---\n\n# ৯. Event Collector\n\nevents.py\n\n```python\nfrom datetime import datetime\n\ndef add_event(registry,title):\n\n    event={\n      \"title\":title,\n      \"time\":str(datetime.now())\n    }\n\n    registry[\"events\"].append(event)\n```\n\n---\n\n# ১০. Audit Engine\n\naudit.py\n\n```python\ndef log_action(user,action):\n\n    audit={\n      \"user\":user,\n      \"action\":action\n    }\n\n    save_audit(audit)\n```\n\n---\n\n# ১১. Risk Engine\n\n```python\nrisk_score=\n(\nimpact\n*\nprobability\n*\nurgency\n)\n```\n\n---\n\n# ১২. Decision Engine\n\n```python\ndecision_score=\n\n(\nbenefit\n+\nopportunity\n)\n\n-\n\n(\nrisk\n+\ncost\n)\n```\n\n---\n\n# ১৩. Command System\n\n```json\n{\n \"commands\":{\n\n  \"add_project\":{\n   \"script\":\"project.py\"\n  },\n\n  \"add_risk\":{\n   \"script\":\"risk.py\"\n  },\n\n  \"add_cyber_case\":{\n   \"script\":\"cyber.py\"\n  }\n\n }\n}\n```\n\n---\n\n# ১৪. Shell Automation\n\nadd-project.sh\n\n```bash\n#!/bin/bash\n\npython project.py\n```\n\n---\n\n# ১৫. Knowledge Graph\n\n```json\n{\n  \"nodes\":[],\n  \"edges\":[]\n}\n```\n\n---\n\n# ১৬. Timeline System\n\n```text\nPast\n│\n├── Historical Events\n\nPresent\n│\n├── Current Projects\n\nFuture\n│\n├── Planned Projects\n```\n\n---\n\n# ১৭. AI Dashboard\n\n```text\nAI Agents\n│\n├── Auditor\n├── Architect\n├── Planner\n├── Cyber Analyst\n├── Risk Manager\n├── Historian\n├── Librarian\n├── Commander\n└── Decision Advisor\n```\n\n---\n\n# ১৮. আপনার জন্য আরও উন্নত স্ট্রাকচার\n\nআপনার (MJ Ahmad) কাজের ধরন বিবেচনা করলে আমি এটিকে `mjahmad.json`-কেন্দ্রিক Registry OS হিসেবে ডিজাইন করতাম:\n\n```text\nmjahmad.json\n│\n├── lineage\n├── identity\n├── quraner_feriwala\n├── development\n├── termux\n├── linux\n├── powershell\n├── ai\n├── projects\n├── funding\n├── risks\n├── roadmap\n├── timeline\n├── audit\n├── journals\n├── decisions\n├── automation\n├── commands\n├── registry\n├── references\n└── knowledge_graph\n```\n\nএর উপর ভিত্তি করে:\n\n- HTML Dashboard (Visualization Layer)\n- JSON Registry (Single Source of Truth)\n- Python Services (Business Logic)\n- Shell Scripts (Automation Layer)\n- AI Agents (Decision Layer)\n- Audit Log (Accountability Layer)\n- Knowledge Graph (Relationship Layer)\n- Timeline Engine (Past → Present → Future Layer)\n\nমিলে একটি পূর্ণাঙ্গ **Developer Life Operating System (DLOS)** তৈরি করা সম্ভব, যেখানে Infinite Tree Menu থেকে যেকোনো বিষয় মুহূর্তে খুঁজে দেখা, বিশ্লেষণ, অডিট, পরিকল্পনা, ঝুঁকি মূল্যায়ন এবং সিদ্ধান্ত গ্রহণ করা যাবে।\n\n"
+    },
+    {
+      "id": "CDE-2026-0039",
+      "title": "OG.md",
+      "title_bn": "",
+      "desc": "",
+      "desc_bn": "",
+      "filename": "OG.md",
+      "source": "OG.md",
+      "lang": "markdown",
+      "lang_label": "Markdown",
+      "ext": "md",
+      "lines": 174,
+      "bytes": 6375,
+      "sha256": "3fa956201d1ef1be569ad97bd0fa103a191e45225a3ee53e7da4b405a53df020",
+      "menu_path": [
+        "codecraft",
+        "c-html",
+        "c-systems",
+        "c-og"
+      ],
+      "category": "general",
+      "tags": [],
+      "created_at": "2026-10-03T21:00:04+06:00",
+      "history": [
+        {
+          "at": "2026-10-03T21:00:04+06:00",
+          "event": "created",
+          "note": "OG.md"
+        }
+      ],
+      "content": "আপনার কোডটি ইতোমধ্যেই অত্যন্ত সুন্দর, আধুনিক এবং কার্যকর। এখন GitHub Pages লিংক `https://MJ-Ahmad.github.io/qf` বিভিন্ন মাধ্যমে (WhatsApp, Messenger, Facebook, Telegram, LinkedIn ইত্যাদি) শেয়ার করলে যেন লোগো, শিরোনাম এবং আকর্ষণীয় বর্ণনা স্বয়ংক্রিয়ভাবে প্রদর্শিত হয়, তার জন্য মূলত **Open Graph (OG)** এবং **Twitter Card Metadata** যুক্ত করতে হবে।\n\nবর্তমানে আপনার HTML-এ SEO metadata আছে, কিন্তু Social Preview Metadata নেই। এজন্য শেয়ার করলে শুধু URL দেখা যেতে পারে অথবা Preview অসম্পূর্ণ হতে পারে।\n\n---\n\n## `<head>` এর মধ্যে নিম্নোক্ত Meta Tags যুক্ত করুন\n\n`<title>` এর পর এবং favicon এর আগে বা পরে নিম্নোক্ত অংশ যুক্ত করুন:\n\n```html\n  <!-- Canonical URL -->\n  <link\n    rel=\"canonical\"\n    href=\"https://MJ-Ahmad.github.io/qf/\"\n  >\n\n  <!-- Open Graph -->\n  <meta\n    property=\"og:type\"\n    content=\"website\"\n  >\n\n  <meta\n    property=\"og:url\"\n    content=\"https://MJ-Ahmad.github.io/qf/\"\n  >\n\n  <meta\n    property=\"og:title\"\n    content=\"কোরআনের ফেরিওয়ালা | Quraner Fariwala\"\n  >\n\n  <meta\n    property=\"og:description\"\n    content=\"গবেষণা, মুদ্রণ, বিতরণ ও হিফজ শিক্ষা ব্যবস্থাপনার একটি মানবিক ও কোরআনকেন্দ্রিক উদ্যোগ।\"\n  >\n\n  <meta\n    property=\"og:image\"\n    content=\"https://MJ-Ahmad.github.io/qf/assets/logo.png\"\n  >\n\n  <meta\n    property=\"og:image:alt\"\n    content=\"কোরআনের ফেরিওয়ালা লোগো\"\n  >\n\n  <meta\n    property=\"og:site_name\"\n    content=\"Quraner Fariwala\"\n  >\n\n  <meta\n    property=\"og:locale\"\n    content=\"bn_BD\"\n  >\n\n  <!-- Twitter / X Card -->\n  <meta\n    name=\"twitter:card\"\n    content=\"summary_large_image\"\n  >\n\n  <meta\n    name=\"twitter:title\"\n    content=\"কোরআনের ফেরিওয়ালা | Quraner Fariwala\"\n  >\n\n  <meta\n    name=\"twitter:description\"\n    content=\"গবেষণা, মুদ্রণ, বিতরণ ও হিফজ শিক্ষা ব্যবস্থাপনার একটি মানবিক উদ্যোগ।\"\n  >\n\n  <meta\n    name=\"twitter:image\"\n    content=\"https://MJ-Ahmad.github.io/qf/assets/logo.png\"\n  >\n\n  <meta\n    name=\"twitter:image:alt\"\n    content=\"কোরআনের ফেরিওয়ালা লোগো\"\n  >\n```\n\n---\n\n## আরও একটি গুরুত্বপূর্ণ উন্নয়ন\n\nবর্তমানে:\n\n```html\n<meta\n  http-equiv=\"refresh\"\n  content=\"4.2; url=home/index.html\"\n>\n```\n\nসোশ্যাল মিডিয়া বট (Facebook, WhatsApp, Telegram crawler) কখনও কখনও Redirect Page সঠিকভাবে বিশ্লেষণ করতে পারে না।\n\nতাই `<head>` এ নিম্নোক্ত JSON-LD Schema যুক্ত করলে Search Engine এবং Social Parser আরও ভালোভাবে ব্র্যান্ডিং বুঝবে:\n\n```html\n<script type=\"application/ld+json\">\n{\n  \"@context\": \"https://schema.org\",\n  \"@type\": \"Organization\",\n  \"name\": \"Quraner Fariwala\",\n  \"alternateName\": \"কোরআনের ফেরিওয়ালা\",\n  \"url\": \"https://MJ-Ahmad.github.io/qf/\",\n  \"logo\": \"https://MJ-Ahmad.github.io/qf/assets/logo.png\",\n  \"description\": \"গবেষণা, মুদ্রণ, বিতরণ ও হিফজ শিক্ষা ব্যবস্থাপনার একটি উদ্যোগ।\",\n  \"founder\": \"MJ-Ahmad\"\n}\n</script>\n```\n\n---\n\n## সর্বোত্তম ফলাফলের জন্য\n\nবর্তমানে আপনার লোগো:\n\n```text\nassets/logo.png\n```\n\nযদি এই PNG ফাইলটি:\n\n- 1200×630 px\n- অথবা 1200×1200 px\n\nসাইজে থাকে, তাহলে Preview অনেক উন্নত হবে।\n\nআরও ভালো হবে যদি আপনি একটি আলাদা Social Banner তৈরি করেন:\n\n```text\nassets/social-preview.jpg\n```\n\nযাতে থাকে:\n\n- কোরআনের ফেরিওয়ালা লোগো\n- সুন্দর ইসলামিক ব্যাকগ্রাউন্ড\n- \"কোরআনের ফেরিওয়ালা\"\n- \"গবেষণা • মুদ্রণ • বিতরণ • হিফজ শিক্ষা\"\n\nতখন OpenGraph Image হিসেবে ব্যবহার করবেন:\n\n```html\n<meta\n  property=\"og:image\"\n  content=\"https://MJ-Ahmad.github.io/qf/assets/social-preview.jpg\"\n>\n\n<meta\n  name=\"twitter:image\"\n  content=\"https://MJ-Ahmad.github.io/qf/assets/social-preview.jpg\"\n>\n```\n\nএতে WhatsApp, Messenger, Facebook, Telegram, LinkedIn-এ শেয়ার করলে সম্পূর্ণ ব্র্যান্ডেড কার্ড দেখা যাবে, যা শুধু লোগোর তুলনায় অনেক বেশি পেশাদার ও আকর্ষণীয় হবে।\n\n### সংক্ষেপে\nআপনার Splash Screen-এর কোনো UI, Animation, Redirect বা Functionality পরিবর্তনের প্রয়োজন নেই। শুধু:\n\n✅ Open Graph Metadata  \n✅ Twitter Card Metadata  \n✅ Canonical URL  \n✅ JSON-LD Schema  \n✅ Full Absolute Image URL (`https://MJ-Ahmad.github.io/qf/assets/logo.png`)\n\nযোগ করলেই Social Sharing Preview উল্লেখযোগ্যভাবে উন্নত হবে এবং \"কোরআনের ফেরিওয়ালা\" ব্র্যান্ডটি শেয়ারকৃত লিংকের সাথে সুন্দরভাবে প্রকাশ পাবে।\n\n"
     }
   ]
 }

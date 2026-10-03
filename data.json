@@ -8,7 +8,7 @@
     "version": "1.2",
     "footer_bn": "সকল তথ্য data.json থেকে লোড হয়",
     "footer_en": "All data is loaded from data.json",
-    "updated_at": "2026-10-03T17:28:17+06:00",
+    "updated_at": "2026-10-03T20:26:51+06:00",
     "counters": {
       "task": {
         "2026": 20
@@ -20,7 +20,7 @@
         "2026": 2
       },
       "code": {
-        "2026": 37
+        "2026": 38
       }
     },
     "tagline": "Where every script is a verdict, every invocation a vote, and every log a legacy.",
@@ -500,6 +500,17 @@
                   ]
                 }
               ]
+            },
+            {
+              "id": "c-life",
+              "bn": "life",
+              "en": "life",
+              "view": {
+                "type": "codes",
+                "filter": {
+                  "menu_path": "c-life"
+                }
+              }
             }
           ]
         },
@@ -2220,6 +2231,37 @@
         }
       ],
       "content": "# ==========================================\n# MJ PowerShell Profile\n# Microsoft.PowerShell_profile.ps1\n# ==========================================\n\n# --------------------------\n# Welcome Banner\n# --------------------------\n\n$DhakaTime = [System.TimeZoneInfo]::ConvertTimeBySystemTimeZoneId(\n    :UtcNow,\n    \"Bangladesh Standard Time\"\n)\n\nWrite-Host \"======================================\" -ForegroundColor Green\nWrite-Host \" Welcome MJ! 🚀 Termux Ready for DevOps\" -ForegroundColor Cyan\nWrite-Host \" Timestamp: $($DhakaTime.ToString('yyyy-MM-dd HH:mm:ss'))\" -ForegroundColor Magenta\nWrite-Host \"======================================\" -ForegroundColor Green\n\n# --------------------------\n# Prompt\n# --------------------------\n\nfunction prompt {\n\n    $Path = $PWD.Path\n\n    $HomePath = $HOME\n\n    $DisplayPath = $Path.Replace($HomePath,\"~\")\n\n    Write-Host \"MJ :: \" -NoNewline -ForegroundColor Green\n    Write-Host $DisplayPath -ForegroundColor Blue\n\n    return '$ '\n}\n\n# --------------------------\n# Basic Aliases\n# --------------------------\n\nSet-Alias cls Clear-Host\nSet-Alias ll Get-ChildItem\n\nfunction .. { Set-Location .. }\n\n# --------------------------\n# Git Shortcuts\n# --------------------------\n\nfunction gs { git status }\n\nfunction ga {\n    git add .\n}\n\nfunction gc {\n    param(\n        [string]$Message\n    )\n\n    git commit -m $Message\n}\n\nfunction gp {\n    git push\n}\n\nfunction gar {\n    git add data.json\n}\n\nfunction gcr {\n    git commit -m \"update data.json\"\n}\n\n# --------------------------\n# Python / Node\n# --------------------------\n\nfunction py {\n    python3 @args\n}\n\nfunction npmi {\n    npm install\n}\n\nfunction npms {\n    npm start\n}\n\n# --------------------------\n# Run Scripts\n# --------------------------\n\nfunction rn {\n    ./run.sh\n}\n\nfunction rns {\n    ./run.sh serve\n}\n\nfunction rnc {\n    ./run.sh code\n}\n\n# --------------------------\n# VM / Cloud\n# --------------------------\n\nfunction connect_vm {\n    ssh myvm\n}\n\nfunction connect_cloud {\n    ssh clouduser@cloud-ip\n}\n\n# --------------------------\n# Project Navigation\n# --------------------------\n\nfunction mj {\n    Set-Location ~/mj\n}\n\nfunction rg {\n    Set-Location ~/mj-registry\n}\n\nfunction dev {\n    Set-Location ~/mjdev\n}\n\nfunction qf {\n    Set-Location ~/qf\n}\n\nfunction pv1 {\n    Set-Location ~/mjpv1\n}\n\nfunction qfb {\n    Set-Location ~/qfbuild\n}\n\nfunction lc {\n    Set-Location \"/storage/emulated/0/Download\"\n}\n\n# --------------------------\n# Browser Links\n# --------------------------\n\nfunction pqf {\n    Start-Process \"https://MJ-Ahmad.github.io/qf\"\n}\n\nfunction prg {\n    Start-Process \"https://MJ-Ahmad.github.io/mj-registry\"\n}\n\nfunction pqfb {\n    Start-Process \"https://MJ-Ahmad.github.io/qfbuild\"\n}\n\nfunction p8 {\n    Start-Process \"http://localhost:8000\"\n}\n\nfunction p8qf {\n    Start-Process \"http://localhost:8000/qf\"\n}\n\nfunction p8qfbuild {\n    Start-Process \"http://localhost:8000/qfbuild\"\n}\n\nfunction p8rg {\n    Start-Process \"http://localhost:8000/mj-registry\"\n}\n\n# --------------------------\n# Linux Distros\n# --------------------------\n\nfunction ub {\n    proot-distro login ubuntu\n}\n\nfunction db {\n    proot-distro login debian\n}\n\n# --------------------------\n# goto command\n# --------------------------\n\nfunction goto {\n\n    param(\n        [string]$Project\n    )\n\n    switch ($Project) {\n\n        \"mj\" {\n            Set-Location ~/mj\n        }\n\n        \"rg\" {\n            Set-Location ~/mj-registry\n        }\n\n        \"dev\" {\n            Set-Location ~/mjdev\n        }\n\n        \"qf\" {\n            Set-Location ~/qf\n        }\n\n        \"pv1\" {\n            Set-Location ~/mjpv1\n        }\n\n        default {\n            Write-Host \"Unknown project: $Project\" -ForegroundColor Red\n        }\n    }\n}\n"
+    },
+    {
+      "id": "CDE-2026-0038",
+      "title": "DLOS.md",
+      "title_bn": "",
+      "desc": "",
+      "desc_bn": "",
+      "filename": "DLOS.md",
+      "source": "DLOS.md",
+      "lang": "markdown",
+      "lang_label": "Markdown",
+      "ext": "md",
+      "lines": 484,
+      "bytes": 8342,
+      "sha256": "4cde74b7b300c9a48dbb246ddffef37ddb04ac638d3302cbfbeb0d4998bde9b2",
+      "menu_path": [
+        "codecraft",
+        "c-html",
+        "c-life"
+      ],
+      "category": "general",
+      "tags": [],
+      "created_at": "2026-10-03T20:26:51+06:00",
+      "history": [
+        {
+          "at": "2026-10-03T20:26:51+06:00",
+          "event": "created",
+          "note": "DLOS.md"
+        }
+      ],
+      "content": "আপনি আসলে একটি **Developer Life Operating System (DLOS)** কল্পনা করছেন, যেখানে একজন ডেভেলপারের ব্যক্তিগত জীবন, পেশাগত জীবন, প্রযুক্তিগত কার্যক্রম, জ্ঞানভান্ডার, ঝুঁকি, প্রকল্প, অর্থনীতি, ইতিহাস, ভবিষ্যৎ পরিকল্পনা এবং চলমান বাস্তবতা সবকিছু একটি একক \"Tree of Life Dashboard\" এর মাধ্যমে দৃশ্যমান ও নিয়ন্ত্রিত হবে।\n\nএটি সাধারণ Dashboard নয়।\n\nএটি হবে:\n\n> Personal ERP + Knowledge Graph + Digital Twin + Decision Support System + Registry System + Audit System + Project Operating System\n\n---\n\n# ১. আর্কিটেকচার (High Level)\n\n```text\n┌───────────────────────────────┐\n│           HEADER              │\n├───────────────────────────────┤\n│ Search │ Command │ AI Agent   │\n├───────┬───────────────────────┤\n│       │                       │\n│ Tree  │      Main Body        │\n│ Of    │                       │\n│ Life  │    Dynamic Panels     │\n│ Menu  │                       │\n│       │                       │\n├───────┴───────────────────────┤\n│            FOOTER             │\n└───────────────────────────────┘\n```\n\n---\n\n# ২. Tree Of Life Menu\n\nমেনুটি Infinite Recursive Structure।\n\n```json\n{\n  \"root\": {\n    \"id\": \"life\",\n    \"title\": \"Life\",\n    \"children\": {\n      \"person\": {},\n      \"developer\": {},\n      \"business\": {},\n      \"finance\": {},\n      \"projects\": {},\n      \"events\": {},\n      \"risks\": {},\n      \"knowledge\": {},\n      \"future\": {},\n      \"history\": {}\n    }\n  }\n}\n```\n\n---\n\n# ৩. Super Registry Tree\n\n```text\nLife\n│\n├── Identity\n│   ├── Family\n│   ├── Skills\n│   ├── Knowledge\n│   ├── Goals\n│\n├── Development\n│   ├── Source Code\n│   ├── Git\n│   ├── Backend\n│   ├── Frontend\n│   ├── APIs\n│   ├── UI UX\n│\n├── Cyber\n│   ├── Cyber Security\n│   ├── Cyber Crime\n│   ├── Threat Intel\n│   ├── War Simulation\n│   ├── Incidents\n│\n├── Project\n│   ├── Running\n│   ├── Planned\n│   ├── Imaginary\n│   ├── Archived\n│\n├── Finance\n│   ├── Cash Flow\n│   ├── Investments\n│   ├── Debts\n│   ├── Forecast\n│\n├── Supply Chain\n│   ├── Inventory\n│   ├── Store\n│   ├── Printing\n│   ├── Distribution\n│\n├── Audit\n│   ├── Logs\n│   ├── Events\n│   ├── Decisions\n│   ├── Reviews\n│\n├── Risk\n│   ├── Current\n│   ├── Future\n│   ├── Probability\n│   ├── Mitigation\n│\n├── Time\n│   ├── Calendar\n│   ├── Roadmap\n│   ├── Timeline\n│   ├── Schedules\n│\n└── AI\n    ├── Agents\n    ├── Commands\n    ├── Automation\n    ├── Suggestions\n```\n\n---\n\n# ৪. Master JSON\n\nসমস্ত তথ্য JSON Registry এ সংরক্ষিত হবে।\n\n## registry.json\n\n```json\n{\n  \"meta\": {\n    \"version\": \"1.0\",\n    \"created\": \"2026-01-01\"\n  },\n\n  \"identity\": {},\n\n  \"development\": {},\n\n  \"cyber\": {},\n\n  \"projects\": {},\n\n  \"finance\": {},\n\n  \"timeline\": {},\n\n  \"events\": {},\n\n  \"risks\": {},\n\n  \"notes\": {},\n\n  \"references\": {},\n\n  \"commands\": {},\n\n  \"audit\": {}\n}\n```\n\n---\n\n# ৫. HTML Dashboard\n\n```html\n<!DOCTYPE html>\n<html>\n<head>\n<title>DLOS</title>\nstyle.css\n</head>\n<body>\n\n<header>\n<h1>Developer Life OS</h1>\n<input type=\"search\">\n</header>\n\n<div class=\"container\">\n\n<nav id=\"treeMenu\">\n</nav>\n\n<main id=\"contentPanel\">\n</main>\n\n</div>\n\n<footer>\nSystem Ready\n</footer>\n\napp.jsscript>\n\n</body>\n</html>\n```\n\n---\n\n# ৬. app.js\n\nJSON → HTML Loader\n\n```javascript\nasync function loadRegistry(){\n\n let response = await fetch('registry.json');\n\n let registry = await response.json();\n\n renderTree(registry);\n\n}\n\nloadRegistry();\n```\n\n---\n\n# ৭. Recursive Tree Generator\n\n```javascript\nfunction createTree(node){\n\n let ul=document.createElement(\"ul\");\n\n Object.keys(node).forEach(key=>{\n\n    let li=document.createElement(\"li\");\n\n    li.innerText=key;\n\n    if(typeof node[key] === \"object\"){\n\n       li.appendChild(createTree(node[key]));\n    }\n\n    ul.appendChild(li);\n\n });\n\n return ul;\n}\n```\n\n---\n\n# ৮. Python Registry Manager\n\nregistry_manager.py\n\n```python\nimport json\n\nclass Registry:\n\n    def __init__(self,path):\n        self.path=path\n\n        with open(path) as f:\n            self.data=json.load(f)\n\n    def save(self):\n\n        with open(self.path,\"w\") as f:\n            json.dump(self.data,f,indent=4)\n\n    def add_record(self,section,key,value):\n\n        self.data[section][key]=value\n\n        self.save()\n```\n\n---\n\n# ৯. Event Collector\n\nevents.py\n\n```python\nfrom datetime import datetime\n\ndef add_event(registry,title):\n\n    event={\n      \"title\":title,\n      \"time\":str(datetime.now())\n    }\n\n    registry[\"events\"].append(event)\n```\n\n---\n\n# ১০. Audit Engine\n\naudit.py\n\n```python\ndef log_action(user,action):\n\n    audit={\n      \"user\":user,\n      \"action\":action\n    }\n\n    save_audit(audit)\n```\n\n---\n\n# ১১. Risk Engine\n\n```python\nrisk_score=\n(\nimpact\n*\nprobability\n*\nurgency\n)\n```\n\n---\n\n# ১২. Decision Engine\n\n```python\ndecision_score=\n\n(\nbenefit\n+\nopportunity\n)\n\n-\n\n(\nrisk\n+\ncost\n)\n```\n\n---\n\n# ১৩. Command System\n\n```json\n{\n \"commands\":{\n\n  \"add_project\":{\n   \"script\":\"project.py\"\n  },\n\n  \"add_risk\":{\n   \"script\":\"risk.py\"\n  },\n\n  \"add_cyber_case\":{\n   \"script\":\"cyber.py\"\n  }\n\n }\n}\n```\n\n---\n\n# ১৪. Shell Automation\n\nadd-project.sh\n\n```bash\n#!/bin/bash\n\npython project.py\n```\n\n---\n\n# ১৫. Knowledge Graph\n\n```json\n{\n  \"nodes\":[],\n  \"edges\":[]\n}\n```\n\n---\n\n# ১৬. Timeline System\n\n```text\nPast\n│\n├── Historical Events\n\nPresent\n│\n├── Current Projects\n\nFuture\n│\n├── Planned Projects\n```\n\n---\n\n# ১৭. AI Dashboard\n\n```text\nAI Agents\n│\n├── Auditor\n├── Architect\n├── Planner\n├── Cyber Analyst\n├── Risk Manager\n├── Historian\n├── Librarian\n├── Commander\n└── Decision Advisor\n```\n\n---\n\n# ১৮. আপনার জন্য আরও উন্নত স্ট্রাকচার\n\nআপনার (MJ Ahmad) কাজের ধরন বিবেচনা করলে আমি এটিকে `mjahmad.json`-কেন্দ্রিক Registry OS হিসেবে ডিজাইন করতাম:\n\n```text\nmjahmad.json\n│\n├── lineage\n├── identity\n├── quraner_feriwala\n├── development\n├── termux\n├── linux\n├── powershell\n├── ai\n├── projects\n├── funding\n├── risks\n├── roadmap\n├── timeline\n├── audit\n├── journals\n├── decisions\n├── automation\n├── commands\n├── registry\n├── references\n└── knowledge_graph\n```\n\nএর উপর ভিত্তি করে:\n\n- HTML Dashboard (Visualization Layer)\n- JSON Registry (Single Source of Truth)\n- Python Services (Business Logic)\n- Shell Scripts (Automation Layer)\n- AI Agents (Decision Layer)\n- Audit Log (Accountability Layer)\n- Knowledge Graph (Relationship Layer)\n- Timeline Engine (Past → Present → Future Layer)\n\nমিলে একটি পূর্ণাঙ্গ **Developer Life Operating System (DLOS)** তৈরি করা সম্ভব, যেখানে Infinite Tree Menu থেকে যেকোনো বিষয় মুহূর্তে খুঁজে দেখা, বিশ্লেষণ, অডিট, পরিকল্পনা, ঝুঁকি মূল্যায়ন এবং সিদ্ধান্ত গ্রহণ করা যাবে।\n\n"
     }
   ]
 }

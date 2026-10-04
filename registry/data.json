@@ -1,0 +1,534 @@
+{
+  "meta": {
+    "title": "MJ Ahmad",
+    "subtitle_bn": "টাস্ক · নোট · অডিট রেজিস্ট্রি",
+    "subtitle_en": "Task · Note · Audit Registry",
+    "logo": "assets/logo.png",
+    "splash_ms": 1800,
+    "version": "1.3",
+    "footer_bn": "সকল তথ্য data.json থেকে লোড হয়",
+    "footer_en": "All data is loaded from data.json",
+    "updated_at": "",
+    "counters": {
+      "audit": {
+        "2026": 2
+      },
+      "code": {}
+    },
+    "tagline": "Where every script is a verdict, every invocation a vote, and every log a legacy.",
+    "links": [
+      {
+        "icon": "◈",
+        "en": "Current project",
+        "bn": "চলমান প্রজেক্ট",
+        "url": "https://MJ-Ahmad.github.io/qf"
+      },
+      {
+        "icon": "◎",
+        "en": "Website",
+        "bn": "ওয়েবসাইট",
+        "url": "https://MJ-Ahmad.github.io/mj"
+      },
+      {
+        "icon": "⬡",
+        "en": "Node Network",
+        "bn": "নোড নেটওয়ার্ক",
+        "url": "mj-node/index.html"
+      },
+      {
+        "icon": "✉",
+        "en": "mjahmad2024@outlook.com",
+        "bn": "mjahmad2024@outlook.com",
+        "url": "mailto:mjahmad2024@outlook.com"
+      },
+      {
+        "icon": "in",
+        "en": "LinkedIn",
+        "bn": "লিংকডিন",
+        "url": "https://www.linkedin.com/in/jafor-ahmad"
+      }
+    ],
+    "commands": [
+      {
+        "group": "code",
+        "en": "Open viewer",
+        "bn": "ভিউয়ার চালু",
+        "cmd": "./run.sh serve"
+      },
+      {
+        "group": "code",
+        "en": "Add a code file / URL",
+        "bn": "কোড ফাইল / লিংক যুক্ত",
+        "cmd": "./run.sh code ~/mj/portal/index.html \"Title\" \"Description\" --bn \"শিরোনাম\" --bn \"বর্ণনা\""
+      },
+      {
+        "group": "code",
+        "en": "Import a whole directory",
+        "bn": "পুরো ডিরেক্টরি যুক্ত",
+        "cmd": "./run.sh codedir ~/mj/portal --menu \"CodeCraft/Web\""
+      },
+      {
+        "group": "audit",
+        "en": "Add an audit",
+        "bn": "অডিট যুক্ত",
+        "cmd": "./run.sh audit \"Title\" --result pass --related CDE-2026-0001"
+      },
+      {
+        "group": "menu",
+        "en": "Show the menu tree",
+        "bn": "মেনু ট্রি দেখুন",
+        "cmd": "./run.sh menu"
+      },
+      {
+        "group": "menu",
+        "en": "Create a submenu",
+        "bn": "সাবমেনু তৈরি",
+        "cmd": "./run.sh menu --new \"Web/Portal\" --bn \"ওয়েব/পোর্টাল\" --under \"CodeCraft\""
+      },
+      {
+        "group": "menu",
+        "en": "Move an entry",
+        "bn": "এন্ট্রি সরান",
+        "cmd": "./run.sh menu --move CDE-2026-0001 --to \"CodeCraft/Web/Portal\""
+      },
+      {
+        "group": "data",
+        "en": "Validate data",
+        "bn": "ডাটা যাচাই",
+        "cmd": "./run.sh check"
+      },
+      {
+        "group": "data",
+        "en": "Backup now",
+        "bn": "ব্যাকআপ নিন",
+        "cmd": "./backup.sh"
+      },
+      {
+        "group": "data",
+        "en": "Emergency: restore last backup",
+        "bn": "জরুরি: শেষ ব্যাকআপ ফেরত",
+        "cmd": "cp data.json.bak data.json && ./run.sh check"
+      },
+      {
+        "group": "data",
+        "en": "Emergency: restore a dated backup",
+        "bn": "জরুরি: নির্দিষ্ট তারিখের ব্যাকআপ ফেরত",
+        "cmd": "./backup.sh --restore backups/backup-....zip"
+      },
+      {
+        "group": "server",
+        "en": "Port busy? use another",
+        "bn": "পোর্ট ব্যস্ত হলে অন্যটি",
+        "cmd": "python3 -m http.server 8080"
+      }
+    ],
+    "code_preview_lines": 4,
+    "help_groups": {
+      "code": {
+        "en": "CodeCraft",
+        "bn": "কোডক্রাফ্ট"
+      },
+      "audit": {
+        "en": "Audits",
+        "bn": "অডিট"
+      },
+      "menu": {
+        "en": "Menu management",
+        "bn": "মেনু ব্যবস্থাপনা"
+      },
+      "data": {
+        "en": "Data & backup",
+        "bn": "ডাটা ও ব্যাকআপ"
+      },
+      "server": {
+        "en": "Server",
+        "bn": "সার্ভার"
+      }
+    }
+  },
+  "menu": [
+    {
+      "id": "dash",
+      "bn": "ড্যাশবোর্ড",
+      "en": "Dashboard",
+      "icon": "◧",
+      "view": {
+        "type": "dashboard"
+      }
+    },
+    {
+      "id": "audits",
+      "bn": "অডিট",
+      "en": "Audits",
+      "icon": "⚖",
+      "view": {
+        "type": "audits"
+      },
+      "children": [
+        {
+          "id": "a-pass",
+          "bn": "উত্তীর্ণ",
+          "en": "Pass",
+          "view": {
+            "type": "audits",
+            "filter": {
+              "result": "pass"
+            }
+          }
+        },
+        {
+          "id": "a-warn",
+          "bn": "সতর্কতা",
+          "en": "Warning",
+          "view": {
+            "type": "audits",
+            "filter": {
+              "result": "warning"
+            }
+          }
+        },
+        {
+          "id": "a-fail",
+          "bn": "ব্যর্থ",
+          "en": "Fail",
+          "view": {
+            "type": "audits",
+            "filter": {
+              "result": "fail"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "codecraft",
+      "bn": "কোডক্রাফ্ট",
+      "en": "CodeCraft",
+      "icon": "❮❯",
+      "open": true,
+      "view": {
+        "type": "codes"
+      },
+      "children": []
+    },
+    {
+      "id": "registry",
+      "bn": "রেজিস্ট্রি (সব)",
+      "en": "Registry (all)",
+      "icon": "☰",
+      "view": {
+        "type": "all"
+      }
+    },
+    {
+      "id": "help",
+      "bn": "সাহায্য ও কমান্ড",
+      "en": "Help & Commands",
+      "icon": "❓",
+      "view": {
+        "type": "help"
+      }
+    }
+  ],
+[
+  {
+    "id": "mj",
+    "bn": "এমজে",
+    "en": "MJ",
+    "icon": "☰",
+    "open": true,
+    "children": [
+      {
+        "id": "imperative",
+        "bn": "অত্যন্ত জরুরি",
+        "en": "Imperative"
+      },
+      {
+        "id": "instant",
+        "bn": "তাৎক্ষণিক",
+        "en": "Instant"
+      },
+      {
+        "id": "urgent",
+        "bn": "জরুরি",
+        "en": "Urgent"
+      },
+      {
+        "id": "required",
+        "bn": "অবশ্যক",
+        "en": "Required"
+      },
+      {
+        "id": "needs",
+        "bn": "প্রয়োজন",
+        "en": "Needs"
+      },
+      {
+        "id": "help",
+        "bn": "সহায়তা",
+        "en": "Help",
+        "view": {
+          "type": "help"
+        }
+      },
+      {
+        "id": "system",
+        "bn": "সিস্টেম",
+        "en": "System"
+      },
+      {
+        "id": "task",
+        "bn": "টাস্ক",
+        "en": "Task"
+      },
+      {
+        "id": "note",
+        "bn": "নোট",
+        "en": "Note"
+      },
+      {
+        "id": "project",
+        "bn": "প্রজেক্ট",
+        "en": "Project"
+      },
+      {
+        "id": "dev",
+        "bn": "ডেভেলপমেন্ট",
+        "en": "Development"
+      },
+      {
+        "id": "learn",
+        "bn": "শিক্ষা",
+        "en": "Learn"
+      },
+      {
+        "id": "script",
+        "bn": "স্ক্রিপ্ট",
+        "en": "Script"
+      },
+      {
+        "id": "command",
+        "bn": "কমান্ড",
+        "en": "Command"
+      },
+      {
+        "id": "cli",
+        "bn": "সিএলআই",
+        "en": "CLI"
+      },
+      {
+        "id": "archive",
+        "bn": "আর্কাইভ",
+        "en": "Archive"
+      },
+      {
+        "id": "organization",
+        "bn": "প্রতিষ্ঠান",
+        "en": "Organization"
+      },
+      {
+        "id": "personal",
+        "bn": "ব্যক্তিগত",
+        "en": "Personal"
+      },
+      {
+        "id": "family",
+        "bn": "পরিবার",
+        "en": "Family"
+      },
+      {
+        "id": "legacy",
+        "bn": "উত্তরাধিকার",
+        "en": "Legacy"
+      },
+      {
+        "id": "assets",
+        "bn": "সম্পদ",
+        "en": "Assets"
+      },
+      {
+        "id": "finance",
+        "bn": "অর্থনীতি",
+        "en": "Finance"
+      },
+      {
+        "id": "legal",
+        "bn": "আইনি",
+        "en": "Legal"
+      },
+      {
+        "id": "research",
+        "bn": "গবেষণা",
+        "en": "Research"
+      },
+      {
+        "id": "timeline",
+        "bn": "টাইমলাইন",
+        "en": "Timeline"
+      },
+      {
+        "id": "analytics",
+        "bn": "অ্যানালিটিক্স",
+        "en": "Analytics"
+      },
+      {
+        "id": "governance",
+        "bn": "গভর্নেন্স",
+        "en": "Governance"
+      },
+      {
+        "id": "ai",
+        "bn": "কৃত্রিম বুদ্ধিমত্তা",
+        "en": "AI"
+      },
+      {
+        "id": "automation",
+        "bn": "অটোমেশন",
+        "en": "Automation"
+      },
+      {
+        "id": "registry",
+        "bn": "রেজিস্ট্রি",
+        "en": "Registry",
+        "view": {
+          "type": "all"
+        }
+      },
+      {
+        "id": "future",
+        "bn": "ভবিষ্যৎ",
+        "en": "Future"
+      },
+      {
+        "id": "universe",
+        "bn": "মহাবিশ্ব",
+        "en": "Universe"
+      }
+    ]
+  },
+
+  {
+    "id": "dash",
+    "bn": "ড্যাশবোর্ড",
+    "en": "Dashboard",
+    "icon": "◧",
+    "view": {
+      "type": "dashboard"
+    }
+  },
+
+  {
+    "id": "audits",
+    "bn": "অডিট",
+    "en": "Audits",
+    "icon": "⚖",
+    "view": {
+      "type": "audits"
+    },
+    "children": [
+      {
+        "id": "a-pass",
+        "bn": "উত্তীর্ণ",
+        "en": "Pass",
+        "view": {
+          "type": "audits",
+          "filter": {
+            "result": "pass"
+          }
+        }
+      },
+      {
+        "id": "a-warn",
+        "bn": "সতর্কতা",
+        "en": "Warning",
+        "view": {
+          "type": "audits",
+          "filter": {
+            "result": "warning"
+          }
+        }
+      },
+      {
+        "id": "a-fail",
+        "bn": "ব্যর্থ",
+        "en": "Fail",
+        "view": {
+          "type": "audits",
+          "filter": {
+            "result": "fail"
+          }
+        }
+      }
+    ]
+  },
+
+  {
+    "id": "codecraft",
+    "bn": "কোডক্রাফ্ট",
+    "en": "CodeCraft",
+    "icon": "❮❯",
+    "open": true,
+    "view": {
+      "type": "codes"
+    },
+    "children": []
+  },
+
+  {
+    "id": "help-commands",
+    "bn": "সাহায্য ও কমান্ড",
+    "en": "Help & Commands",
+    "icon": "❓",
+    "view": {
+      "type": "help"
+    }
+  }
+],
+
+
+  "audits": [
+    {
+      "id": "AUD-2026-0001",
+      "title": "Data integrity check",
+      "title_bn": "ডাটা ইন্টিগ্রিটি যাচাই",
+      "result": "pass",
+      "target": "data.json",
+      "findings": "No duplicate IDs.",
+      "auditor": "MJ Ahmad",
+      "related": [],
+      "category": "system",
+      "tags": [
+        "integrity"
+      ],
+      "created_at": "2026-09-24T10:10:00+06:00",
+      "history": [
+        {
+          "at": "2026-09-24T10:10:00+06:00",
+          "event": "created"
+        }
+      ]
+    },
+    {
+      "id": "AUD-2026-0002",
+      "title": "Logo file present",
+      "title_bn": "লোগো ফাইল আছে কিনা",
+      "result": "warning",
+      "target": "assets/logo.png",
+      "findings": "Logo not yet added.",
+      "auditor": "MJ Ahmad",
+      "related": [],
+      "category": "system",
+      "tags": [
+        "logo"
+      ],
+      "created_at": "2026-09-24T10:12:00+06:00",
+      "history": [
+        {
+          "at": "2026-09-24T10:12:00+06:00",
+          "event": "created"
+        }
+      ]
+    }
+  ],
+  "codes": []
+}

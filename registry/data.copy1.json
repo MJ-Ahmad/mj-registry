@@ -1,0 +1,460 @@
+"menu": [
+  {
+    "id": "mj",
+    "bn": "এমজে",
+    "en": "MJ",
+    "icon": "◉",
+    "open": true,
+    "children": [
+      {
+        "id": "dashboard",
+        "bn": "ড্যাশবোর্ড",
+        "en": "Dashboard",
+        "icon": "◧",
+        "view": {
+          "type": "dashboard"
+        }
+      },
+      {
+        "id": "registry",
+        "bn": "রেজিস্ট্রি",
+        "en": "Registry",
+        "icon": "☰",
+        "open": true,
+        "view": {
+          "type": "all"
+        },
+        "children": [
+          {
+            "id": "imperative",
+            "bn": "অত্যন্ত জরুরি",
+            "en": "Imperative",
+            "icon": "‼"
+          },
+          {
+            "id": "instant",
+            "bn": "তাৎক্ষণিক",
+            "en": "Instant",
+            "icon": "⚡"
+          },
+          {
+            "id": "urgent",
+            "bn": "জরুরি",
+            "en": "Urgent",
+            "icon": "⏱"
+          },
+          {
+            "id": "required",
+            "bn": "অবশ্যক",
+            "en": "Required",
+            "icon": "✓"
+          },
+          {
+            "id": "needs",
+            "bn": "প্রয়োজন",
+            "en": "Needs",
+            "icon": "⬢"
+          },
+          {
+            "id": "help",
+            "bn": "সহায়তা",
+            "en": "Help",
+            "icon": "❓"
+          },
+          {
+            "id": "system",
+            "bn": "সিস্টেম",
+            "en": "System",
+            "icon": "⚙",
+            "children": [
+              {
+                "id": "architecture",
+                "bn": "আর্কিটেকচার",
+                "en": "Architecture"
+              },
+              {
+                "id": "configuration",
+                "bn": "কনফিগারেশন",
+                "en": "Configuration"
+              },
+              {
+                "id": "security",
+                "bn": "নিরাপত্তা",
+                "en": "Security"
+              },
+              {
+                "id": "deployment",
+                "bn": "ডিপ্লয়মেন্ট",
+                "en": "Deployment"
+              },
+              {
+                "id": "monitoring",
+                "bn": "মনিটরিং",
+                "en": "Monitoring"
+              },
+              {
+                "id": "logs",
+                "bn": "লগসমূহ",
+                "en": "Logs"
+              }
+            ]
+          },
+          {
+            "id": "task",
+            "bn": "টাস্ক",
+            "en": "Tasks",
+            "icon": "☑",
+            "children": [
+              {
+                "id": "active",
+                "bn": "চলমান",
+                "en": "Active"
+              },
+              {
+                "id": "pending",
+                "bn": "অপেক্ষমাণ",
+                "en": "Pending"
+              },
+              {
+                "id": "completed",
+                "bn": "সম্পন্ন",
+                "en": "Completed"
+              },
+              {
+                "id": "cancelled",
+                "bn": "বাতিল",
+                "en": "Cancelled"
+              },
+              {
+                "id": "recurring",
+                "bn": "পুনরাবৃত্ত",
+                "en": "Recurring"
+              }
+            ]
+          },
+          {
+            "id": "note",
+            "bn": "নোট",
+            "en": "Notes",
+            "icon": "📝",
+            "children": [
+              {
+                "id": "quick",
+                "bn": "দ্রুত নোট",
+                "en": "Quick"
+              },
+              {
+                "id": "ideas",
+                "bn": "আইডিয়া",
+                "en": "Ideas"
+              },
+              {
+                "id": "research-notes",
+                "bn": "গবেষণা নোট",
+                "en": "Research Notes"
+              },
+              {
+                "id": "meeting-notes",
+                "bn": "মিটিং নোট",
+                "en": "Meeting Notes"
+              }
+            ]
+          },
+          {
+            "id": "project",
+            "bn": "প্রজেক্ট",
+            "en": "Projects",
+            "icon": "⌘",
+            "children": [
+              {
+                "id": "quraner-feriwala",
+                "bn": "কোরআনের ফেরিওয়ালা",
+                "en": "Quraner Feriwala"
+              },
+              {
+                "id": "mj-registry",
+                "bn": "এমজে রেজিস্ট্রি",
+                "en": "MJ Registry"
+              },
+              {
+                "id": "future-projects",
+                "bn": "ভবিষ্যৎ প্রকল্প",
+                "en": "Future Projects"
+              }
+            ]
+          },
+          {
+            "id": "dev",
+            "bn": "ডেভেলপমেন্ট",
+            "en": "Development",
+            "icon": "</>",
+            "children": [
+              {
+                "id": "frontend",
+                "bn": "ফ্রন্টএন্ড",
+                "en": "Frontend"
+              },
+              {
+                "id": "backend",
+                "bn": "ব্যাকএন্ড",
+                "en": "Backend"
+              },
+              {
+                "id": "api",
+                "bn": "এপিআই",
+                "en": "API"
+              },
+              {
+                "id": "database",
+                "bn": "ডাটাবেস",
+                "en": "Database"
+              },
+              {
+                "id": "github",
+                "bn": "গিটহাব",
+                "en": "GitHub"
+              }
+            ]
+          },
+          {
+            "id": "learn",
+            "bn": "শিক্ষা",
+            "en": "Learning",
+            "icon": "📚",
+            "children": [
+              {
+                "id": "english",
+                "bn": "ইংরেজি",
+                "en": "English"
+              },
+              {
+                "id": "arabic",
+                "bn": "আরবি",
+                "en": "Arabic"
+              },
+              {
+                "id": "islamic",
+                "bn": "ইসলামিক",
+                "en": "Islamic"
+              },
+              {
+                "id": "technology",
+                "bn": "প্রযুক্তি",
+                "en": "Technology"
+              }
+            ]
+          },
+          {
+            "id": "script",
+            "bn": "স্ক্রিপ্ট",
+            "en": "Scripts",
+            "icon": "📜"
+          },
+          {
+            "id": "command",
+            "bn": "কমান্ড",
+            "en": "Commands",
+            "icon": "⌨"
+          },
+          {
+            "id": "cli",
+            "bn": "সিএলআই",
+            "en": "CLI",
+            "icon": "$"
+          },
+          {
+            "id": "personal",
+            "bn": "ব্যক্তিগত",
+            "en": "Personal",
+            "icon": "👤"
+          },
+          {
+            "id": "family",
+            "bn": "পরিবার",
+            "en": "Family",
+            "icon": "👪",
+            "children": [
+              {
+                "id": "lineage",
+                "bn": "বংশধারা",
+                "en": "Lineage"
+              },
+              {
+                "id": "history",
+                "bn": "ইতিহাস",
+                "en": "History"
+              },
+              {
+                "id": "documents",
+                "bn": "ডকুমেন্ট",
+                "en": "Documents"
+              },
+              {
+                "id": "legacy",
+                "bn": "উত্তরাধিকার",
+                "en": "Legacy"
+              }
+            ]
+          },
+          {
+            "id": "organization",
+            "bn": "প্রতিষ্ঠান",
+            "en": "Organization",
+            "icon": "🏛"
+          },
+          {
+            "id": "assets",
+            "bn": "সম্পদ",
+            "en": "Assets",
+            "icon": "🗂"
+          },
+          {
+            "id": "finance",
+            "bn": "অর্থনীতি",
+            "en": "Finance",
+            "icon": "💰"
+          },
+          {
+            "id": "legal",
+            "bn": "আইনি",
+            "en": "Legal",
+            "icon": "⚖"
+          },
+          {
+            "id": "audit",
+            "bn": "অডিট",
+            "en": "Audit",
+            "icon": "🔍"
+          },
+          {
+            "id": "timeline",
+            "bn": "টাইমলাইন",
+            "en": "Timeline",
+            "icon": "⏳"
+          },
+          {
+            "id": "analytics",
+            "bn": "অ্যানালিটিক্স",
+            "en": "Analytics",
+            "icon": "📊"
+          },
+          {
+            "id": "governance",
+            "bn": "গভর্নেন্স",
+            "en": "Governance",
+            "icon": "🏛"
+          },
+          {
+            "id": "ai",
+            "bn": "কৃত্রিম বুদ্ধিমত্তা",
+            "en": "AI",
+            "icon": "🤖"
+          },
+          {
+            "id": "automation",
+            "bn": "অটোমেশন",
+            "en": "Automation",
+            "icon": "⚡"
+          },
+          {
+            "id": "knowledge",
+            "bn": "জ্ঞানভান্ডার",
+            "en": "Knowledge",
+            "icon": "📖"
+          },
+          {
+            "id": "research",
+            "bn": "গবেষণা",
+            "en": "Research",
+            "icon": "🔬"
+          },
+          {
+            "id": "archive",
+            "bn": "আর্কাইভ",
+            "en": "Archive",
+            "icon": "🗄"
+          },
+          {
+            "id": "future",
+            "bn": "ভবিষ্যৎ",
+            "en": "Future",
+            "icon": "🚀",
+            "children": [
+              {
+                "id": "vision-2030",
+                "bn": "ভিশন ২০৩০",
+                "en": "Vision 2030"
+              },
+              {
+                "id": "vision-2050",
+                "bn": "ভিশন ২০৫০",
+                "en": "Vision 2050"
+              },
+              {
+                "id": "vision-2100",
+                "bn": "ভিশন ২১০০",
+                "en": "Vision 2100"
+              }
+            ]
+          },
+          {
+            "id": "universe",
+            "bn": "মহাবিশ্ব",
+            "en": "Universe",
+            "icon": "🌌",
+            "children": [
+              {
+                "id": "science",
+                "bn": "বিজ্ঞান",
+                "en": "Science"
+              },
+              {
+                "id": "religion",
+                "bn": "ধর্ম",
+                "en": "Religion"
+              },
+              {
+                "id": "mathematics",
+                "bn": "গণিত",
+                "en": "Mathematics"
+              },
+              {
+                "id": "engineering",
+                "bn": "প্রকৌশল",
+                "en": "Engineering"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "audits",
+        "bn": "অডিট",
+        "en": "Audits",
+        "icon": "⚖",
+        "view": {
+          "type": "audits"
+        }
+      },
+      {
+        "id": "codecraft",
+        "bn": "কোডক্রাফ্ট",
+        "en": "CodeCraft",
+        "icon": "❮❯",
+        "view": {
+          "type": "codes"
+        },
+        "children": []
+      },
+      {
+        "id": "help-commands",
+        "bn": "সাহায্য ও কমান্ড",
+        "en": "Help & Commands",
+        "icon": "❓",
+        "view": {
+          "type": "help"
+        }
+      }
+    ]
+  }
+]

@@ -213,7 +213,7 @@ function drawFooter(){
   $('#fl').innerHTML=L.map(l=>`<a href="${esc(l.url)}"${l.url.startsWith('mailto:')?'':' target="_blank" rel="noopener"'}><span>${esc(l.icon||'')}</span> ${esc(pick(l.en,l.bn))}</a>`).join('');
   $('#fab').innerHTML='⚡ <span>'+esc(t.cc)+'</span>';
   $('#fq').textContent=m.tagline?'“'+m.tagline+'”':'';
-  $('#f2').textContent=`${pick(m.footer_en,m.footer_bn)} · v${m.version} · ${t.upd} ${fmt(m.updated_at)} · © ${new Date().getFullYear()} ${m.title}`}
+  $('#f2').textContent=`${pick(m.footer_en,m.footer_bn)} · v${m.version} · © ${new Date().getFullYear()} ${m.title}`}
 
 /* ---- Command center ---- */
 let shTab='cmds',cmdQ='',cmdG='';

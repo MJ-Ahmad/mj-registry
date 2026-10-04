@@ -94,46 +94,6 @@ footer summary{cursor:pointer;color:var(--ink);font-weight:500}
 .cb .cd{padding:10px 14px;flex:1;min-width:0;tab-size:2}
 .cc.fade .cb{cursor:pointer;overflow:hidden}.cc.fade .cb::after{content:"";position:absolute;left:0;right:0;bottom:0;height:30px;background:linear-gradient(transparent,#0F1917)}
 @media(prefers-reduced-motion:reduce){*{transition:none!important;animation-duration:.01s!important}}
-/* footer (slim) */
-footer{flex-direction:row;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:4px 12px;max-height:none;overflow:visible;padding:6px 14px calc(6px + env(safe-area-inset-bottom,0px))}
-footer .fl{flex:1 1 100%;flex-wrap:nowrap;overflow-x:auto;white-space:nowrap;gap:4px 18px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
-footer .fl::-webkit-scrollbar{display:none}
-footer .fq{flex:1 1 auto;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-footer .fm{flex:1 1 auto;min-width:0}
-.fab{flex:none;display:inline-flex;align-items:center;gap:6px;border:1px solid var(--pine);background:var(--pine);color:#fff;border-radius:20px;padding:5px 14px;font:inherit;font-size:13px;font-weight:600;cursor:pointer;margin-left:auto}
-.fab:hover{filter:brightness(1.1)}
-/* command center (bottom sheet) */
-.sheet{position:fixed;inset:0;z-index:60;background:#0009;display:none;align-items:flex-end;justify-content:center}
-.sheet.on{display:flex}
-.sh{width:min(760px,100%);max-height:86vh;max-height:86dvh;background:var(--pan);color:var(--ink);border-radius:16px 16px 0 0;display:flex;flex-direction:column;box-shadow:0 -10px 40px #0006;animation:up .22s ease-out}
-@keyframes up{from{transform:translateY(40px);opacity:0}}
-#gp{touch-action:none}
-.grip{width:44px;height:4px;border-radius:2px;background:var(--line);margin:8px auto 0}
-.shh{display:flex;align-items:center;justify-content:space-between;padding:6px 14px 4px}
-.shh b{font-size:17px;color:var(--pine)}
-.shh .x{float:none;min-width:36px;height:36px}
-.tabs{display:flex;gap:6px;padding:4px 12px 10px;overflow-x:auto;border-bottom:1px solid var(--line);scrollbar-width:none}
-.tabs .chip{white-space:nowrap;padding:5px 14px}
-.shb{overflow:auto;flex:1;min-height:200px;padding:12px 14px calc(16px + env(safe-area-inset-bottom,0px));-webkit-overflow-scrolling:touch;overscroll-behavior:contain}
-.sq{width:100%;padding:9px 12px;margin-bottom:10px;border-radius:var(--r);border:1px solid var(--line);background:var(--bg);color:var(--ink);font:inherit}
-.ci{border:1px solid var(--line);border-left:4px solid var(--brass);border-radius:var(--r);padding:8px 10px;margin-bottom:8px;background:var(--bg)}
-.ci.em{border-left-color:var(--bad)}
-.ci-d{font-size:13.5px;margin-bottom:6px}
-.ci-r{display:flex;gap:8px;align-items:stretch}
-.ci-r code{flex:1;min-width:0;background:#0F1917;color:#D8E4DF;border-radius:var(--r);padding:7px 10px;font:12.5px/1.5 ui-monospace,Menlo,Consolas,monospace;word-break:break-all;user-select:all}
-.ci-r button,.tl{border:1px solid var(--line);background:var(--pan);color:var(--ink);border-radius:var(--r);padding:6px 12px;font:inherit;font-size:13px;cursor:pointer;white-space:nowrap}
-.ci-r button:hover,.tl:hover{border-color:var(--pine);color:var(--pine)}
-.tls{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:8px}
-.tl{padding:14px 10px;text-align:center;font-size:14px;background:var(--bg)}
-.ll{display:flex;align-items:center;gap:10px;padding:12px;border:1px solid var(--line);border-radius:var(--r);margin-bottom:8px;color:var(--ink);text-decoration:none;background:var(--bg)}
-.ll:hover{border-color:var(--pine)}
-.ll span:first-child{font-size:20px}
-.kv{display:grid;grid-template-columns:1fr auto;gap:6px 12px;margin-bottom:14px}
-.kv span:nth-child(odd){color:var(--mut)}
-.sh h4{margin:10px 0 6px;font-size:14px;color:var(--pine)}
-kbd{font:12px ui-monospace,Menlo,monospace;border:1px solid var(--line);border-bottom-width:2px;border-radius:4px;padding:0 6px;background:var(--bg)}
-@media(min-width:821px){.sheet{align-items:center}.sh{border-radius:16px}}
-@media(max-width:820px){footer .fq{display:none}.sh{width:100%}}
 </style>
 </head>
 <body>
@@ -146,18 +106,17 @@ kbd{font:12px ui-monospace,Menlo,monospace;border:1px solid var(--line);border-b
   <div class="lang" id="lang" role="group" aria-label="Language"><button data-l="en">EN</button><button data-l="bn">BN</button></div>
 </header>
 <div class="main"><nav id="nav" aria-label="Menu"></nav><section id="view"></section></div>
-<footer><div class="fl" id="fl"></div><div class="fq" id="fq"></div><div class="fm" id="f2"></div><button class="fab" id="fab" type="button"></button></footer>
-<div id="cc" class="sheet" aria-hidden="true"><div class="sh" role="dialog" aria-modal="true" aria-labelledby="sht"><div id="gp"><div class="grip"></div><div class="shh"><b id="sht"></b><button class="x" id="shx" type="button" aria-label="Close">×</button></div></div><div class="tabs" id="tabs" role="tablist"></div><div class="shb" id="shb"></div></div></div>
+<footer><div class="fl" id="fl"></div><details id="fd"><summary id="fs"></summary><div id="fc"></div></details><div class="fq" id="fq"></div><div class="fm" id="f2"></div></footer>
 <div id="modal"><div class="p" id="mp"></div></div>
 <script>
 const $=s=>document.querySelector(s),E=(t,c,h)=>{const e=document.createElement(t);if(c)e.className=c;if(h!=null)e.innerHTML=h;return e};
 const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const UI={
-en:{search:'Search — ID, title, tag…',dash:'Dashboard',recent:'Recent',searchT:'Search',all:'All',empty:'Nothing here yet. Add entries with ./run.sh',overdue:'Overdue',history:'History',copy:'copy',openT:'Open tasks',done:'Done',notes:'Notes',audits:'Audits',failed:'Failed audits',t:'tasks',n:'notes',a:'audits',upd:'Updated',cmds:'Quick commands & emergency help',err:'Could not load data.json. Run ./run.sh serve and open http://localhost:8000',menu:'Menu',cc:'Command center',tCmd:'Commands',tTools:'Tools',tLinks:'Links',tInfo:'Info',flt:'Filter commands…',noRes:'No match',tl:'Switch language',ex:'Export data.json',cl:'Copy page link',pr:'Print',up:'Scroll to top',rf:'Reload data',ver:'Version',sc:'Shortcuts',kS:'Focus search',kC:'Open / close this panel',kE:'Close',codes:'CodeCraft',cp:'Copy',cpd:'Copied ✓',dl:'Download',sa:'Show all',co:'Collapse',ln:'lines',
+en:{search:'Search — ID, title, tag…',dash:'Dashboard',recent:'Recent',searchT:'Search',all:'All',empty:'Nothing here yet. Add entries with ./run.sh',overdue:'Overdue',history:'History',copy:'copy',openT:'Open tasks',done:'Done',notes:'Notes',audits:'Audits',failed:'Failed audits',t:'tasks',n:'notes',a:'audits',upd:'Updated',cmds:'Quick commands & emergency help',err:'Could not load data.json. Run ./run.sh serve and open http://localhost:8000',menu:'Menu',codes:'CodeCraft',cp:'Copy',cpd:'Copied ✓',dl:'Download',sa:'Show all',co:'Collapse',ln:'lines',
  st:{todo:'To do',doing:'In progress',done:'Done',low:'Low',medium:'Medium',high:'High',urgent:'Urgent',pass:'Pass',warning:'Warning',fail:'Fail'},
  ty:{tasks:'Tasks',notes:'Notes',audits:'Audits',all:'Registry',codes:'CodeCraft'},
  fk:{status:'Status',priority:'Priority',due:'Due',category:'Category',tags:'Tags',created_at:'Created',completed_at:'Completed',desc:'Description',body:'Note',result:'Result',target:'Target',findings:'Findings',auditor:'Auditor',related:'Related',pinned:'Pinned',filename:'File',source:'Source',lang_label:'Type',lines:'Lines',bytes:'Size (bytes)'}},
-bn:{search:'খুঁজুন — আইডি, শিরোনাম, ট্যাগ…',dash:'ড্যাশবোর্ড',recent:'সাম্প্রতিক',searchT:'অনুসন্ধান',all:'সব',empty:'এখনো কিছু নেই। ./run.sh দিয়ে যুক্ত করুন',overdue:'মেয়াদোত্তীর্ণ',history:'ইতিহাস',copy:'কপি',openT:'খোলা টাস্ক',done:'সম্পন্ন',notes:'নোট',audits:'অডিট',failed:'ব্যর্থ অডিট',t:'টাস্ক',n:'নোট',a:'অডিট',upd:'আপডেট',cmds:'দ্রুত কমান্ড ও জরুরি নির্দেশনা',err:'data.json লোড হয়নি। ./run.sh serve চালিয়ে http://localhost:8000 খুলুন',menu:'মেনু',cc:'কমান্ড সেন্টার',tCmd:'কমান্ড',tTools:'টুলস',tLinks:'লিংক',tInfo:'তথ্য',flt:'কমান্ড খুঁজুন…',noRes:'কিছু পাওয়া যায়নি',tl:'ভাষা বদলান',ex:'data.json এক্সপোর্ট',cl:'পেজের লিংক কপি',pr:'প্রিন্ট',up:'উপরে যান',rf:'ডেটা রিলোড',ver:'ভার্সন',sc:'শর্টকাট',kS:'সার্চে যান',kC:'এই প্যানেল খুলুন/বন্ধ করুন',kE:'বন্ধ করুন',codes:'কোডক্রাফ্ট',cp:'কপি',cpd:'কপি হয়েছে ✓',dl:'ডাউনলোড',sa:'সবটুকু দেখুন',co:'গুটিয়ে নিন',ln:'লাইন',
+bn:{search:'খুঁজুন — আইডি, শিরোনাম, ট্যাগ…',dash:'ড্যাশবোর্ড',recent:'সাম্প্রতিক',searchT:'অনুসন্ধান',all:'সব',empty:'এখনো কিছু নেই। ./run.sh দিয়ে যুক্ত করুন',overdue:'মেয়াদোত্তীর্ণ',history:'ইতিহাস',copy:'কপি',openT:'খোলা টাস্ক',done:'সম্পন্ন',notes:'নোট',audits:'অডিট',failed:'ব্যর্থ অডিট',t:'টাস্ক',n:'নোট',a:'অডিট',upd:'আপডেট',cmds:'দ্রুত কমান্ড ও জরুরি নির্দেশনা',err:'data.json লোড হয়নি। ./run.sh serve চালিয়ে http://localhost:8000 খুলুন',menu:'মেনু',codes:'কোডক্রাফ্ট',cp:'কপি',cpd:'কপি হয়েছে ✓',dl:'ডাউনলোড',sa:'সবটুকু দেখুন',co:'গুটিয়ে নিন',ln:'লাইন',
  st:{todo:'করণীয়',doing:'চলমান',done:'সম্পন্ন',low:'নিম্ন',medium:'মাঝারি',high:'উচ্চ',urgent:'জরুরি',pass:'উত্তীর্ণ',warning:'সতর্কতা',fail:'ব্যর্থ'},
  ty:{tasks:'টাস্ক',notes:'নোট',audits:'অডিট',all:'রেজিস্ট্রি',codes:'কোডক্রাফ্ট'},
  fk:{status:'অবস্থা',priority:'অগ্রাধিকার',due:'শেষ তারিখ',category:'বিভাগ',tags:'ট্যাগ',created_at:'তৈরি',completed_at:'সম্পন্ন হয়েছে',desc:'বিবরণ',body:'নোট',result:'ফলাফল',target:'লক্ষ্য',findings:'পর্যবেক্ষণ',auditor:'অডিটর',related:'সম্পর্কিত',pinned:'পিন করা',filename:'ফাইল',source:'উৎস',lang_label:'ধরন',lines:'লাইন',bytes:'আকার (বাইট)'}}};
@@ -188,80 +147,22 @@ function applyLang(){
   $('#ht').textContent=$('#st').textContent=m.title;$('#hs').textContent=$('#ss').textContent=sub;
   $('#sq').textContent=m.tagline||'';$('#q').placeholder=t.search;
   document.querySelectorAll('#lang button').forEach(b=>b.classList.toggle('on',b.dataset.l===lang));
-  drawNav();drawFooter();render();if($('#cc').classList.contains('on'))drawSheet();if($('#modal').classList.contains('on'))showM(mId)}
+  drawNav();drawFooter();render();if($('#modal').classList.contains('on'))showM(mId)}
 function hideSplash(){$('#splash').classList.add('out')}
 $('#splash').onclick=hideSplash;
 $('#burger').onclick=()=>$('#nav').classList.toggle('on');
 $('#q').oninput=e=>{search=e.target.value.trim().toLowerCase();render()};
 $('#modal').onclick=e=>{if(e.target.id==='modal')closeM()};
-addEventListener('keydown',e=>{
-  const typing=/INPUT|TEXTAREA|SELECT/.test((e.target.tagName||''));
-  if(e.key==='Escape'){closeM();closeSheet()}
-  else if(!typing&&!e.ctrlKey&&!e.metaKey&&!e.altKey){
-    if(e.key==='/'){e.preventDefault();$('#q').focus()}
-    else if(e.key==='c'||e.key==='C'){$('#cc').classList.contains('on')?closeSheet():openSheet()}}});
-$('#fab').onclick=()=>openSheet();
-$('#shx').onclick=()=>closeSheet();
-$('#cc').onclick=e=>{if(e.target.id==='cc')closeSheet()};
-(function(){let y=null;const g=$('#gp');
-  g.addEventListener('touchstart',e=>{y=e.touches[0].clientY},{passive:true});
-  g.addEventListener('touchend',e=>{if(y!=null&&e.changedTouches[0].clientY-y>60)closeSheet();y=null})})();
+addEventListener('keydown',e=>{if(e.key==='Escape')closeM()});
 
 function drawFooter(){
-  const m=D.meta,t=T(),L=m.links||[];
-  $('#fl').hidden=!L.length;
-  $('#fl').innerHTML=L.map(l=>`<a href="${esc(l.url)}"${l.url.startsWith('mailto:')?'':' target="_blank" rel="noopener"'}><span>${esc(l.icon||'')}</span> ${esc(pick(l.en,l.bn))}</a>`).join('');
-  $('#fab').innerHTML='⚡ <span>'+esc(t.cc)+'</span>';
+  const m=D.meta,t=T();
+  $('#fl').innerHTML=(m.links||[]).map(l=>`<a href="${esc(l.url)}"${l.url.startsWith('mailto:')?'':' target="_blank" rel="noopener"'}><span>${esc(l.icon||'')}</span> ${esc(pick(l.en,l.bn))}</a>`).join('');
+  const c=m.commands||[];$('#fd').hidden=!c.length;$('#fs').textContent=t.cmds;
+  $('#fc').innerHTML=c.map(x=>`<div class="cm"><span>${esc(pick(x.en,x.bn))}</span><code title="click to copy">${esc(x.cmd)}</code></div>`).join('');
+  $('#fc').querySelectorAll('code').forEach(e=>e.onclick=()=>navigator.clipboard&&navigator.clipboard.writeText(e.textContent));
   $('#fq').textContent=m.tagline?'“'+m.tagline+'”':'';
-  $('#f2').textContent=`${pick(m.footer_en,m.footer_bn)} · v${m.version} · ${t.upd} ${fmt(m.updated_at)} · © ${new Date().getFullYear()} ${m.title}`}
-
-/* ---- Command center ---- */
-let shTab='cmds',cmdQ='',cmdG='';
-function openSheet(tab){if(tab)shTab=tab;const c=$('#cc');c.classList.add('on');c.setAttribute('aria-hidden','false');drawSheet()}
-function closeSheet(){const c=$('#cc');c.classList.remove('on');c.setAttribute('aria-hidden','true')}
-function copy(txt,btn){
-  const done=()=>{if(!btn)return;if(!btn.dataset.o)btn.dataset.o=btn.textContent;btn.textContent=T().cpd;clearTimeout(btn._t);btn._t=setTimeout(()=>{btn.textContent=btn.dataset.o},1200)};
-  const fb=()=>{const a=document.createElement('textarea');a.value=txt;a.style.cssText='position:fixed;opacity:0';document.body.append(a);a.select();try{document.execCommand('copy')}catch(e){}a.remove();done()};
-  if(navigator.clipboard&&navigator.clipboard.writeText)navigator.clipboard.writeText(txt).then(done,fb);else fb()}
-function drawSheet(){
-  const t=T();$('#sht').textContent='⚡ '+t.cc;
-  const tb=$('#tabs');tb.innerHTML='';
-  [['cmds','⌨ '+t.tCmd],['tools','🛠 '+t.tTools],['links','🔗 '+t.tLinks],['info','ℹ '+t.tInfo]].forEach(([k,l])=>{
-    const b=E('button','chip'+(k===shTab?' on':''),esc(l));b.type='button';b.setAttribute('role','tab');b.onclick=()=>{shTab=k;drawSheet()};tb.append(b)});
-  const box=$('#shb');box.innerHTML='';box.scrollTop=0;
-  ({cmds:sCmds,tools:sTools,links:sLinks,info:sInfo})[shTab](box)}
-function sCmds(b){
-  const t=T(),all=D.meta.commands||[],gs=[...new Set(all.map(x=>x.group).filter(Boolean))];
-  const inp=E('input','sq');inp.type='search';inp.placeholder=t.flt;inp.value=cmdQ;b.append(inp);
-  if(gs.length){const bar=E('div','bar');['',...gs].forEach(g=>{const c=E('button','chip'+(cmdG===g?' on':''),esc(g||t.all));c.type='button';c.onclick=()=>{cmdG=g;drawSheet()};bar.append(c)});b.append(bar)}
-  const box=E('div');b.append(box);
-  const paint=()=>{box.innerHTML='';const q=cmdQ.toLowerCase();
-    const r=all.filter(x=>(!cmdG||x.group===cmdG)&&(!q||[x.en,x.bn,x.cmd,x.group].join(' ').toLowerCase().includes(q)));
-    if(!r.length){box.append(E('div','empty',esc(t.noRes)));return}
-    r.forEach(x=>{const em=x.emergency||/emerg|জরুরি/i.test(x.group||'');
-      const d=E('div','ci'+(em?' em':''),`<div class="ci-d">${em?'🚨 ':''}${esc(pick(x.en,x.bn))}</div><div class="ci-r"><code>${esc(x.cmd)}</code><button type="button">${t.cp}</button></div>`);
-      d.querySelector('button').onclick=e=>copy(x.cmd,e.currentTarget);box.append(d)})};
-  inp.oninput=()=>{cmdQ=inp.value;paint()};paint()}
-function sTools(b){
-  const t=T(),g=E('div','tls');
-  const A=[
-    ['🌐 '+t.tl,()=>document.querySelector('#lang button[data-l="'+(lang==='en'?'bn':'en')+'"]').click()],
-    ['🔗 '+t.cl,e=>copy(location.href,e.currentTarget)],
-    ['⬇ '+t.ex,()=>{const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([JSON.stringify(D,null,2)],{type:'application/json'}));a.download='data.json';a.click();setTimeout(()=>URL.revokeObjectURL(a.href),500)}],
-    ['🖨 '+t.pr,()=>{closeSheet();setTimeout(()=>window.print(),150)}],
-    ['⬆ '+t.up,()=>{closeSheet();$('#view').scrollTo({top:0,behavior:'smooth'})}],
-    ['🔄 '+t.rf,()=>location.reload()]];
-  A.forEach(([l,f])=>{const x=E('button','tl',esc(l));x.type='button';x.onclick=f;g.append(x)});b.append(g)}
-function sLinks(b){
-  const L=D.meta.links||[];
-  if(!L.length){b.append(E('div','empty',esc(T().noRes)));return}
-  L.forEach(l=>{const a=E('a','ll',`<span>${esc(l.icon||'🔗')}</span><span>${esc(pick(l.en,l.bn))}</span>`);a.href=l.url;if(!l.url.startsWith('mailto:')){a.target='_blank';a.rel='noopener'}b.append(a)})}
-function sInfo(b){
-  const t=T(),m=D.meta;
-  b.append(E('div','kv',[[t.ver,'v'+m.version],[t.t,D.tasks.length],[t.n,D.notes.length],[t.a,D.audits.length],[t.codes,(D.codes||[]).length],[t.upd,fmt(m.updated_at)]].map(([k,v])=>`<span>${esc(k)}</span><b>${esc(v)}</b>`).join('')));
-  b.append(E('h4','',esc(t.sc)));
-  b.append(E('div','kv',[['/',t.kS],['C',t.kC],['Esc',t.kE]].map(([k,v])=>`<span>${esc(v)}</span><kbd>${esc(k)}</kbd>`).join('')));
-  if(m.tagline)b.append(E('div','fq','“'+esc(m.tagline)+'”'))}
+  $('#f2').textContent=`${pick(m.footer_en,m.footer_bn)} · v${m.version} · ${D.tasks.length} ${t.t} · ${D.notes.length} ${t.n} · ${D.audits.length} ${t.a} · ${(D.codes||[]).length} ${t.codes} · ${t.upd} ${fmt(m.updated_at)} · © ${new Date().getFullYear()} ${m.title}`}
 
 function drawNav(){const nav=$('#nav');nav.innerHTML='';nav.append(tree(D.menu))}
 function tree(ns){

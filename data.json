@@ -8,7 +8,7 @@
     "version": "1.2",
     "footer_bn": "সকল তথ্য data.json থেকে লোড হয়",
     "footer_en": "All data is loaded from data.json",
-    "updated_at": "2026-10-04T09:10:55+06:00",
+    "updated_at": "2026-10-04T09:43:07+06:00",
     "counters": {
       "task": {
         "2026": 20
@@ -20,7 +20,7 @@
         "2026": 2
       },
       "code": {
-        "2026": 485
+        "2026": 486
       }
     },
     "tagline": "Where every script is a verdict, every invocation a vote, and every log a legacy.",
@@ -6270,6 +6270,17 @@
                         "type": "codes",
                         "filter": {
                           "menu_path": "c-archive-3"
+                        }
+                      }
+                    },
+                    {
+                      "id": "c-ali-baba",
+                      "bn": "ali-baba",
+                      "en": "ali-baba",
+                      "view": {
+                        "type": "codes",
+                        "filter": {
+                          "menu_path": "c-ali-baba"
                         }
                       }
                     }
@@ -23997,6 +24008,38 @@
         }
       ],
       "content": "self.__BUILD_MANIFEST=function(e,r,t){return{__rewrites:{afterFiles:[],beforeFiles:[],fallback:[]},__routerFilterStatic:{numItems:20,errorRate:1e-4,numBits:384,numHashes:14,bitArray:[1,1,e,0,0,e,r,e,e,r,e,e,r,e,r,r,e,e,e,r,e,e,r,r,e,e,r,r,e,e,e,r,e,e,e,e,r,e,r,e,r,r,e,r,r,e,r,e,e,e,r,e,e,r,r,r,e,r,r,r,r,r,r,r,r,e,r,r,e,r,e,e,r,e,e,e,r,e,e,e,r,e,e,e,r,r,e,e,e,r,e,r,r,e,r,e,e,e,e,r,e,e,r,r,e,r,e,e,e,r,e,r,e,e,e,e,e,e,r,e,e,e,e,e,e,e,e,e,e,e,r,e,r,r,r,e,e,r,r,r,e,r,r,r,e,r,r,e,e,r,r,r,r,e,e,e,e,r,r,e,r,r,r,e,e,e,r,r,r,r,r,e,r,r,r,e,r,r,e,e,r,r,r,r,e,r,r,r,e,r,r,e,e,e,e,r,e,e,r,r,e,e,r,e,r,e,e,r,r,e,e,r,e,e,r,e,e,r,e,e,r,r,r,r,e,r,r,r,r,e,r,e,e,e,e,e,r,e,r,e,r,r,r,e,r,e,e,e,e,e,e,e,e,e,e,r,e,e,e,e,e,e,e,e,r,r,r,r,r,r,e,e,e,r,e,e,r,r,e,e,r,r,r,r,e,e,r,r,e,r,r,e,r,r,e,e,r,e,e,r,r,r,e,r,r,r,e,e,e,r,e,e,r,e,r,r,r,e,e,e,r,e,e,e,r,r,e,e,e,r,e,r,r,r,r,r,r,e,r,r,r,r,e,r,e,e,e,e,r,e,r,e,r,e,r,r,e,r,e,r,e,e,e,r,r,r,r,e,r,r,r,e,r,r,r,r,r,e,r,e,r,r,r,e]},__routerFilterDynamic:{numItems:r,errorRate:1e-4,numBits:r,numHashes:null,bitArray:[]},\"/_error\":[\"static/chunks/pages/_error-a8479a8c7bc399cf.js\"],sortedPages:[\"/_app\",\"/_error\"]}}(1,0,1e-4),self.__BUILD_MANIFEST_CB&&self.__BUILD_MANIFEST_CB();"
+    },
+    {
+      "id": "CDE-2026-0486",
+      "title": "create_workspace.py",
+      "title_bn": "",
+      "desc": "",
+      "desc_bn": "",
+      "filename": "create_workspace.py",
+      "source": "create_workspace.py",
+      "lang": "python",
+      "lang_label": "Python",
+      "ext": "py",
+      "lines": 307,
+      "bytes": 4211,
+      "sha256": "01d322bd80a9a8a7d6e89a51ff907daa4cff4e14b4f29bca67dc5aac82da1a26",
+      "menu_path": [
+        "codecraft",
+        "c-root",
+        "c-mj",
+        "c-workspace"
+      ],
+      "category": "general",
+      "tags": [],
+      "created_at": "2026-10-04T09:43:07+06:00",
+      "history": [
+        {
+          "at": "2026-10-04T09:43:07+06:00",
+          "event": "created",
+          "note": "create_workspace.py"
+        }
+      ],
+      "content": "#!/usr/bin/env python3\n# -*- coding: utf-8 -*-\n\nfrom pathlib import Path\nfrom datetime import datetime\n\n\n# ============================================================\n# CONFIGURATION\n# ============================================================\n\nROOT = Path(\"mj/root/mj\")\n\n# ============================================================\n# HELPERS\n# ============================================================\n\ndef create_dir(path: Path):\n    path.mkdir(parents=True, exist_ok=True)\n\n\ndef create_file(path: Path, content: str):\n    if not path.exists():\n        path.write_text(content, encoding=\"utf-8\")\n\n\n# ============================================================\n# DATE STRUCTURE\n# ============================================================\n\ntoday = datetime.now()\n\nYEAR = today.strftime(\"%Y\")\nMONTH = today.strftime(\"%Y-%m\")\nDAY = today.strftime(\"%Y-%m-%d\")\n\nWORKSPACE = (\n    ROOT\n    / \"workspace\"\n    / YEAR\n    / MONTH\n    / DAY\n)\n\n# ============================================================\n# GENERAL DAILY WORKSPACE\n# ============================================================\n\ngeneral_folders = [\n    \"notes\",\n    \"tasks\",\n    \"commands\",\n    \"scripts\",\n    \"files\",\n    \"logs\",\n    \"research\",\n    \"meetings\",\n    \"ideas\",\n    \"drafts\",\n    \"scratchpad\",\n    \"output\",\n    \"archive\",\n]\n\nfor folder in general_folders:\n    create_dir(WORKSPACE / folder)\n\n# ============================================================\n# ALI BABA WORKSPACE\n# ============================================================\n\nali_baba_folders = [\n    \"tasks\",\n    \"printing\",\n    \"photocopy\",\n    \"scanning\",\n    \"typing\",\n    \"graphics\",\n    \"customers\",\n    \"finance\",\n    \"reports\",\n    \"notes\",\n]\n\nfor folder in ali_baba_folders:\n    create_dir(\n        WORKSPACE\n        / \"ali-baba\"\n        / folder\n    )\n\n# ============================================================\n# QURANER FARIWALA WORKSPACE\n# ============================================================\n\nqf_folders = [\n    \"tasks\",\n    \"planning\",\n    \"fundraising\",\n    \"donors\",\n    \"zakat\",\n    \"waqf\",\n    \"printing\",\n    \"distribution\",\n    \"marketing\",\n    \"finance\",\n    \"volunteers\",\n    \"schools\",\n    \"masjids\",\n    \"publication\",\n    \"media\",\n    \"campaigns\",\n    \"inventory\",\n    \"reports\",\n    \"ideas\",\n    \"notes\",\n]\n\nfor folder in qf_folders:\n    create_dir(\n        WORKSPACE\n        / \"quraner-fariwala\"\n        / folder\n    )\n\n# ============================================================\n# README\n# ============================================================\n\ncreate_file(\n    WORKSPACE / \"README.md\",\n    f\"\"\"# Daily Workspace\n\nDate: {DAY}\n\n## Primary Objectives\n\n-\n\n## Important Tasks\n\n-\n\n## Notes\n\n-\n\n## Challenges\n\n-\n\n## Review\n\n-\n\n## Next Actions\n\n-\n\n\"\"\"\n)\n\n# ============================================================\n# DAILY LOG\n# ============================================================\n\ncreate_file(\n    WORKSPACE / \"logs\" / \"daily-log.md\",\n    f\"\"\"# Daily Log\n\nDate: {DAY}\n\n## Morning\n\n-\n\n## Afternoon\n\n-\n\n## Evening\n\n-\n\n## Completed\n\n-\n\n## Pending\n\n-\n\n\"\"\"\n)\n\n# ============================================================\n# ALI BABA LOG\n# ============================================================\n\ncreate_file(\n    WORKSPACE\n    / \"ali-baba\"\n    / \"notes\"\n    / \"daily-work-log.md\",\n    f\"\"\"# Ali Baba Daily Log\n\nDate: {DAY}\n\n## Customers\n\n-\n\n## Printing\n\n-\n\n## Photocopy\n\n-\n\n## Scanning\n\n-\n\n## Typing\n\n-\n\n## Graphics\n\n-\n\n## Income\n\n-\n\n## Notes\n\n-\n\n\"\"\"\n)\n\n# ============================================================\n# QURANER FARIWALA LOG\n# ============================================================\n\ncreate_file(\n    WORKSPACE\n    / \"quraner-fariwala\"\n    / \"notes\"\n    / \"daily-progress.md\",\n    f\"\"\"# Quraner Fariwala Daily Progress\n\nDate: {DAY}\n\n## Tasks\n\n-\n\n## Fundraising\n\n-\n\n## Donors\n\n-\n\n## Distribution\n\n-\n\n## Marketing\n\n-\n\n## Finance\n\n-\n\n## Volunteers\n\n-\n\n## Progress\n\n-\n\n## Next Steps\n\n-\n\n\"\"\"\n)\n\n# ============================================================\n# OUTPUT\n# ============================================================\n\nprint()\nprint(\"=\" * 60)\nprint(\"DAILY WORKSPACE READY\")\nprint(\"=\" * 60)\nprint(f\"Date      : {DAY}\")\nprint(f\"Workspace : {WORKSPACE}\")\nprint(\"=\" * 60)\nprint()\n"
     }
   ]
 }

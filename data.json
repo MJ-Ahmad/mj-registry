@@ -8,7 +8,7 @@
     "version": "1.2",
     "footer_bn": "সকল তথ্য data.json থেকে লোড হয়",
     "footer_en": "All data is loaded from data.json",
-    "updated_at": "2026-10-04T07:34:30+06:00",
+    "updated_at": "2026-10-04T09:10:55+06:00",
     "counters": {
       "task": {
         "2026": 20
@@ -5923,6 +5923,454 @@
                         "type": "codes",
                         "filter": {
                           "menu_path": "c-registry"
+                        }
+                      }
+                    }
+                  ]
+                },
+                {
+                  "id": "c-roadmap",
+                  "bn": "roadmap",
+                  "en": "roadmap",
+                  "view": {
+                    "type": "codes",
+                    "filter": {
+                      "menu_path": "c-roadmap"
+                    }
+                  },
+                  "children": [
+                    {
+                      "id": "c-strategic",
+                      "bn": "strategic",
+                      "en": "strategic",
+                      "view": {
+                        "type": "codes",
+                        "filter": {
+                          "menu_path": "c-strategic"
+                        }
+                      }
+                    },
+                    {
+                      "id": "c-annual",
+                      "bn": "annual",
+                      "en": "annual",
+                      "view": {
+                        "type": "codes",
+                        "filter": {
+                          "menu_path": "c-annual"
+                        }
+                      }
+                    },
+                    {
+                      "id": "c-quarterly",
+                      "bn": "quarterly",
+                      "en": "quarterly",
+                      "view": {
+                        "type": "codes",
+                        "filter": {
+                          "menu_path": "c-quarterly"
+                        }
+                      }
+                    },
+                    {
+                      "id": "c-monthly",
+                      "bn": "monthly",
+                      "en": "monthly",
+                      "view": {
+                        "type": "codes",
+                        "filter": {
+                          "menu_path": "c-monthly"
+                        }
+                      }
+                    },
+                    {
+                      "id": "c-project-roadmaps",
+                      "bn": "project-roadmaps",
+                      "en": "project-roadmaps",
+                      "view": {
+                        "type": "codes",
+                        "filter": {
+                          "menu_path": "c-project-roadmaps"
+                        }
+                      }
+                    },
+                    {
+                      "id": "c-learning-roadmaps",
+                      "bn": "learning-roadmaps",
+                      "en": "learning-roadmaps",
+                      "view": {
+                        "type": "codes",
+                        "filter": {
+                          "menu_path": "c-learning-roadmaps"
+                        }
+                      }
+                    },
+                    {
+                      "id": "c-organization-roadmaps",
+                      "bn": "organization-roadmaps",
+                      "en": "organization-roadmaps",
+                      "view": {
+                        "type": "codes",
+                        "filter": {
+                          "menu_path": "c-organization-roadmaps"
+                        }
+                      }
+                    },
+                    {
+                      "id": "c-technology-roadmaps",
+                      "bn": "technology-roadmaps",
+                      "en": "technology-roadmaps",
+                      "view": {
+                        "type": "codes",
+                        "filter": {
+                          "menu_path": "c-technology-roadmaps"
+                        }
+                      }
+                    },
+                    {
+                      "id": "c-personal-roadmaps",
+                      "bn": "personal-roadmaps",
+                      "en": "personal-roadmaps",
+                      "view": {
+                        "type": "codes",
+                        "filter": {
+                          "menu_path": "c-personal-roadmaps"
+                        }
+                      }
+                    },
+                    {
+                      "id": "c-archived-2",
+                      "bn": "archived",
+                      "en": "archived",
+                      "view": {
+                        "type": "codes",
+                        "filter": {
+                          "menu_path": "c-archived-2"
+                        }
+                      }
+                    }
+                  ]
+                },
+                {
+                  "id": "c-readme",
+                  "bn": "readme",
+                  "en": "readme",
+                  "view": {
+                    "type": "codes",
+                    "filter": {
+                      "menu_path": "c-readme"
+                    }
+                  },
+                  "children": [
+                    {
+                      "id": "c-getting-started",
+                      "bn": "getting-started",
+                      "en": "getting-started",
+                      "view": {
+                        "type": "codes",
+                        "filter": {
+                          "menu_path": "c-getting-started"
+                        }
+                      }
+                    },
+                    {
+                      "id": "c-standards",
+                      "bn": "standards",
+                      "en": "standards",
+                      "view": {
+                        "type": "codes",
+                        "filter": {
+                          "menu_path": "c-standards"
+                        }
+                      }
+                    },
+                    {
+                      "id": "c-conventions",
+                      "bn": "conventions",
+                      "en": "conventions",
+                      "view": {
+                        "type": "codes",
+                        "filter": {
+                          "menu_path": "c-conventions"
+                        }
+                      }
+                    },
+                    {
+                      "id": "c-workflows-3",
+                      "bn": "workflows",
+                      "en": "workflows",
+                      "view": {
+                        "type": "codes",
+                        "filter": {
+                          "menu_path": "c-workflows-3"
+                        }
+                      }
+                    },
+                    {
+                      "id": "c-project-guides",
+                      "bn": "project-guides",
+                      "en": "project-guides",
+                      "view": {
+                        "type": "codes",
+                        "filter": {
+                          "menu_path": "c-project-guides"
+                        }
+                      }
+                    },
+                    {
+                      "id": "c-system-guides",
+                      "bn": "system-guides",
+                      "en": "system-guides",
+                      "view": {
+                        "type": "codes",
+                        "filter": {
+                          "menu_path": "c-system-guides"
+                        }
+                      }
+                    },
+                    {
+                      "id": "c-troubleshooting-2",
+                      "bn": "troubleshooting",
+                      "en": "troubleshooting",
+                      "view": {
+                        "type": "codes",
+                        "filter": {
+                          "menu_path": "c-troubleshooting-2"
+                        }
+                      }
+                    },
+                    {
+                      "id": "c-templates-2",
+                      "bn": "templates",
+                      "en": "templates",
+                      "view": {
+                        "type": "codes",
+                        "filter": {
+                          "menu_path": "c-templates-2"
+                        }
+                      }
+                    },
+                    {
+                      "id": "c-examples",
+                      "bn": "examples",
+                      "en": "examples",
+                      "view": {
+                        "type": "codes",
+                        "filter": {
+                          "menu_path": "c-examples"
+                        }
+                      }
+                    },
+                    {
+                      "id": "c-archive-2",
+                      "bn": "archive",
+                      "en": "archive",
+                      "view": {
+                        "type": "codes",
+                        "filter": {
+                          "menu_path": "c-archive-2"
+                        }
+                      }
+                    }
+                  ]
+                },
+                {
+                  "id": "c-workspace",
+                  "bn": "workspace",
+                  "en": "workspace",
+                  "view": {
+                    "type": "codes",
+                    "filter": {
+                      "menu_path": "c-workspace"
+                    }
+                  },
+                  "children": [
+                    {
+                      "id": "c-inbox",
+                      "bn": "inbox",
+                      "en": "inbox",
+                      "view": {
+                        "type": "codes",
+                        "filter": {
+                          "menu_path": "c-inbox"
+                        }
+                      }
+                    },
+                    {
+                      "id": "c-drafts",
+                      "bn": "drafts",
+                      "en": "drafts",
+                      "view": {
+                        "type": "codes",
+                        "filter": {
+                          "menu_path": "c-drafts"
+                        }
+                      }
+                    },
+                    {
+                      "id": "c-scratchpad",
+                      "bn": "scratchpad",
+                      "en": "scratchpad",
+                      "view": {
+                        "type": "codes",
+                        "filter": {
+                          "menu_path": "c-scratchpad"
+                        }
+                      }
+                    },
+                    {
+                      "id": "c-today-2",
+                      "bn": "today",
+                      "en": "today",
+                      "view": {
+                        "type": "codes",
+                        "filter": {
+                          "menu_path": "c-today-2"
+                        }
+                      }
+                    },
+                    {
+                      "id": "c-current",
+                      "bn": "current",
+                      "en": "current",
+                      "view": {
+                        "type": "codes",
+                        "filter": {
+                          "menu_path": "c-current"
+                        }
+                      }
+                    },
+                    {
+                      "id": "c-staging",
+                      "bn": "staging",
+                      "en": "staging",
+                      "view": {
+                        "type": "codes",
+                        "filter": {
+                          "menu_path": "c-staging"
+                        }
+                      }
+                    },
+                    {
+                      "id": "c-review",
+                      "bn": "review",
+                      "en": "review",
+                      "view": {
+                        "type": "codes",
+                        "filter": {
+                          "menu_path": "c-review"
+                        }
+                      }
+                    },
+                    {
+                      "id": "c-archive-3",
+                      "bn": "archive",
+                      "en": "archive",
+                      "view": {
+                        "type": "codes",
+                        "filter": {
+                          "menu_path": "c-archive-3"
+                        }
+                      }
+                    }
+                  ]
+                },
+                {
+                  "id": "c-knowledge-2",
+                  "bn": "knowledge",
+                  "en": "knowledge",
+                  "view": {
+                    "type": "codes",
+                    "filter": {
+                      "menu_path": "c-knowledge-2"
+                    }
+                  },
+                  "children": [
+                    {
+                      "id": "c-concepts",
+                      "bn": "concepts",
+                      "en": "concepts",
+                      "view": {
+                        "type": "codes",
+                        "filter": {
+                          "menu_path": "c-concepts"
+                        }
+                      }
+                    },
+                    {
+                      "id": "c-methodologies",
+                      "bn": "methodologies",
+                      "en": "methodologies",
+                      "view": {
+                        "type": "codes",
+                        "filter": {
+                          "menu_path": "c-methodologies"
+                        }
+                      }
+                    },
+                    {
+                      "id": "c-best-practices",
+                      "bn": "best-practices",
+                      "en": "best-practices",
+                      "view": {
+                        "type": "codes",
+                        "filter": {
+                          "menu_path": "c-best-practices"
+                        }
+                      }
+                    },
+                    {
+                      "id": "c-lessons-learned",
+                      "bn": "lessons-learned",
+                      "en": "lessons-learned",
+                      "view": {
+                        "type": "codes",
+                        "filter": {
+                          "menu_path": "c-lessons-learned"
+                        }
+                      }
+                    },
+                    {
+                      "id": "c-references",
+                      "bn": "references",
+                      "en": "references",
+                      "view": {
+                        "type": "codes",
+                        "filter": {
+                          "menu_path": "c-references"
+                        }
+                      }
+                    },
+                    {
+                      "id": "c-glossary",
+                      "bn": "glossary",
+                      "en": "glossary",
+                      "view": {
+                        "type": "codes",
+                        "filter": {
+                          "menu_path": "c-glossary"
+                        }
+                      }
+                    },
+                    {
+                      "id": "c-frameworks",
+                      "bn": "frameworks",
+                      "en": "frameworks",
+                      "view": {
+                        "type": "codes",
+                        "filter": {
+                          "menu_path": "c-frameworks"
+                        }
+                      }
+                    },
+                    {
+                      "id": "c-archive-4",
+                      "bn": "archive",
+                      "en": "archive",
+                      "view": {
+                        "type": "codes",
+                        "filter": {
+                          "menu_path": "c-archive-4"
                         }
                       }
                     }

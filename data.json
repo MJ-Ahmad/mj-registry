@@ -8,19 +8,19 @@
     "version": "1.2",
     "footer_bn": "সকল তথ্য data.json থেকে লোড হয়",
     "footer_en": "All data is loaded from data.json",
-    "updated_at": "2026-10-07T14:12:26+06:00",
+    "updated_at": "2026-10-08T08:26:51+06:00",
     "counters": {
       "task": {
         "2026": 20
       },
       "note": {
-        "2026": 2
+        "2026": 3
       },
       "audit": {
         "2026": 2
       },
       "code": {
-        "2026": 522
+        "2026": 523
       }
     },
     "tagline": "Where every script is a verdict, every invocation a vote, and every log a legacy.",
@@ -6499,6 +6499,30 @@
               }
             }
           ]
+        },
+        {
+          "id": "c-notes-2",
+          "bn": "notes",
+          "en": "notes",
+          "view": {
+            "type": "codes",
+            "filter": {
+              "menu_path": "c-notes-2"
+            }
+          },
+          "children": [
+            {
+              "id": "c-space",
+              "bn": "space",
+              "en": "space",
+              "view": {
+                "type": "codes",
+                "filter": {
+                  "menu_path": "c-space"
+                }
+              }
+            }
+          ]
         }
       ]
     },
@@ -6938,6 +6962,22 @@
       "history": [
         {
           "at": "2026-09-24T09:20:00+06:00",
+          "event": "created"
+        }
+      ]
+    },
+    {
+      "id": "NOT-2026-0003",
+      "title": "মহাকাশ (Space)",
+      "title_bn": "",
+      "body": "এই ভিডিওটি মহাকাশের মৌলিক প্রকৃতি নিয়ে একটি গভীর ও দার্শনিক আলোচনা। ভিডিওটিতে সহজ বাংলায় পদার্থবিজ্ঞানের বিভিন্ন তত্ত্বের আলোকে বোঝার চেষ্টা করা হয়েছে যে, মহাকাশ (Space) আসলে কী। আলোচনার মূল দিকগুলো নিচে তুলে ধরা হলো: ঐতিহাসিক বিবর্তন: নিউটনের 'Absolute Space' বা পরম মহাকাশের ধারণা থেকে শুরু করে আইনস্টাইনের 'General Relativity' বা সাধারণ আপেক্ষিকতা পর্যন্ত মহাকাশ সম্পর্কে আমাদের ধারণা কীভাবে বদলেছে তা ব্যাখ্যা করা হয়েছে (৯:০৪ - ১২:৩১)। কোয়ান্টাম ভ্যাকিউম: কোয়ান্টাম ফিল্ড থিওরি অনুযায়ী মহাকাশ সম্পূর্ণ শূন্য বা খালি নয়, বরং এটি কোয়ান্টাম ফিল্ডের এক জটিল বিন্যাস (১২:৪৮ - ১৫:২৫)। মহাকাশ কি ফান্ডামেন্টাল? ভিডিওতে প্রশ্ন তোলা হয়েছে যে সপেস কি কোনো মৌলিক বস্তু, নাকি এটি আরও গভীর কোনো বাস্তবতার 'Emergent' বা উদ্ভূত রূপ (১৭:৩০ - ২৩:৫২)। ব্ল্যাক হোল ও হলোগ্রাফিক প্রিন্সিপল: ব্ল্যাক হোলের এন্ট্রপি এবং হলোগ্রাফিক প্রিন্সিপলের মাধ্যমে মহাকাশ এবং তথ্যের (Information) সম্পর্ক বিশ্লেষণ করা হয়েছে, যা ইঙ্গিত দেয় যে ত্রিমাত্রিক মহাকাশ হয়তো দ্বিমাত্রিক কোনো তথ্যের প্রতিফলন (১৮:২৮ - ২০:৪০)। কোয়ান্টাম এন্ট্যাঙ্গেলমেন্ট: মহাকাশের জ্যামিতি এবং কোয়ান্টাম এন্ট্যাঙ্গেলমেন্টের মধ্যে যে গভীর সম্পর্ক থাকতে পারে, তা নিয়ে আধুনিক পদার্থবিজ্ঞানের সাম্প্রতিক ধারণাগুলো এখানে আলোচিত হয়েছে (২১:২৪ - ২৩:৫২)। ভিডিওটির মূল বার্তা হলো, মহাকাশ হয়তো আমাদের দেখা কোনো সাধারণ খালি পাত্র নয়, বরং এটি তথ্যের এক নেটওয়ার্ক বা আরও গভীর কোনো জটিল কাঠামোর বহিঃপ্রকাশ, যা এখনো বিজ্ঞানীদের কাছে এক বিশাল রহস্য",
+      "category": "general",
+      "tags": [],
+      "pinned": true,
+      "created_at": "2026-10-08T08:26:51+06:00",
+      "history": [
+        {
+          "at": "2026-10-08T08:26:51+06:00",
           "event": "created"
         }
       ]
@@ -25324,6 +25364,37 @@
         }
       ],
       "content": "আপনার প্রশ্নটি কেবল প্রযুক্তিগত নয়, এটি একজন মানুষের সংগ্রাম, শেখার ইচ্ছা এবং দীর্ঘমেয়াদি আত্মগঠনের প্রশ্ন। তাই আমি উত্তরটাও একজন ডেভেলপারের ক্যারিয়ার, জীবন এবং বাস্তবতার দৃষ্টিকোণ থেকে দেওয়ার চেষ্টা করছি।\n\nপ্রথমেই একটি কথা:\n\n> একজন মহান ডেভেলপারের সবচেয়ে বড় সম্পদ তার কম্পিউটার নয়, তার চিন্তাশক্তি, শেখার ক্ষমতা, ডকুমেন্টেশন অভ্যাস এবং সমস্যার সমাধানের দক্ষতা।\n\nআমি ব্যক্তিগতভাবে দেখেছি, অনেক মানুষ হাজার ডলারের ওয়ার্কস্টেশন নিয়ে মাঝারি মানের ডেভেলপার রয়ে গেছে, আবার কেউ কেউ শুধুমাত্র একটি ফোন ও ক্লাউড অ্যাকাউন্ট দিয়ে অসাধারণ সিস্টেম আর্কিটেক্ট হয়েছে।\n\n---\n\n# প্রকল্পের নাম\n\n## Linux Developer Academy (LDA)\n\n**লক্ষ্য:**\n\nএকজন শিক্ষার্থীকে\n\n- Linux User\n- Linux Administrator\n- Developer\n- DevOps Engineer\n- Security Aware Developer\n- Ethical Hacker\n- System Architect\n\nএই ছয়টি স্তর অতিক্রম করিয়ে একটি পূর্ণাঙ্গ Ethical Developer হিসেবে গড়ে তোলা।\n\n---\n\n# Stage 1 : Linux Foundation\n\nসময়:\n\n৩ মাস\n\n### শেখার বিষয়\n\n#### Linux Basics\n\n```bash\npwd\nls\ncd\nmkdir\ncp\nmv\nrm\nfind\ngrep\nsed\nawk\ntar\ngzip\n```\n\n#### Filesystem\n\n```text\n/\n├── home\n├── etc\n├── usr\n├── var\n├── opt\n├── boot\n├── dev\n├── proc\n└── tmp\n```\n\n#### Permission\n\n```bash\nchmod\nchown\nsudo\ngroups\n```\n\n#### Package Managers\n\nUbuntu\n\n```bash\napt\n```\n\nFedora\n\n```bash\ndnf\n```\n\nArch\n\n```bash\npacman\n```\n\n---\n\n# Stage 2 : Debian Family Mastery\n\nসময়\n\n২ মাস\n\n### Distribution\n\n```text\nDebian\nUbuntu\nLinux Mint\nKali Linux\nParrot\n```\n\n### Project\n\nনিজের রিপোজিটরি তৈরি\n\n```text\ndeveloper-lab\n├── scripts\n├── projects\n├── notes\n├── docs\n└── backups\n```\n\n---\n\n# Stage 3 : Programming Foundation\n\nসময়\n\n৬ মাস\n\n### Language\n\nশেখার ক্রম:\n\n```text\nBash\nPython\nJavaScript\nTypeScript\nPowerShell\nC#\n```\n\nআপনার ক্ষেত্রে:\n\n```text\nPowerShell\nPython\nTypeScript\nC#\n```\n\nদারুণ কম্বিনেশন।\n\n---\n\n# Stage 4 : Web Developer Track\n\nFrontend\n\n```text\nHTML\nCSS\nJavaScript\nReact\nNext.js\n```\n\nBackend\n\n```text\nNodeJS\nExpress\n.NET\nPostgreSQL\n```\n\nProject:\n\n```text\nPersonal Website\nBlog Engine\nInventory System\nDonation System\nAPI Gateway\n```\n\n---\n\n# Stage 5 : Cloud Native Development\n\nশেখা:\n\n```text\nDocker\nDocker Compose\nKubernetes\nGitHub Actions\nNginx\nCloudflare\n```\n\nProject:\n\n```text\nMulti Service Platform\n```\n\nযেমন:\n\n```text\nFrontend\nBackend\nDatabase\nRedis\nProxy\nMonitoring\n```\n\n---\n\n# Stage 6 : Linux System Engineering\n\nDistribution\n\n```text\nDebian\nUbuntu Server\nAlpine\nRocky Linux\n```\n\nProject:\n\nনিজস্ব Homelab Simulation\n\n```text\nDNS\nDHCP\nNGINX\nProxy\nVPN\nPKI\n```\n\n---\n\n# Stage 7 : Ethical Security\n\nDistribution\n\n```text\nKali Linux\nParrot OS\n```\n\nTools\n\n```text\nNmap\nBurp Suite\nWireshark\nOpenVAS\nOWASP ZAP\n```\n\nশুধুমাত্র\n\n✅ Defensive\n\n✅ Audit\n\n✅ Vulnerability Analysis\n\n✅ Security Testing\n\nউদ্দেশ্যে।\n\n---\n\n# Stage 8 : DevOps\n\nশেখা:\n\n```text\nCI/CD\nIaC\nTerraform\nAnsible\nMonitoring\nLogging\n```\n\nTools\n\n```text\nGitHub\nGitLab\nJenkins\nGrafana\nPrometheus\n```\n\n---\n\n# Stage 9 : Architecture\n\nএখানে খুব অল্প মানুষ পৌঁছায়।\n\nশেখা:\n\n```text\nSystem Design\nDistributed Systems\nScalability\nCaching\nEvent Driven Systems\nMessage Queues\n```\n\nTools\n\n```text\nRedis\nRabbitMQ\nKafka\n```\n\n---\n\n# Stage 10 : Legacy Building\n\nএটাই আপনার জন্য সবচেয়ে গুরুত্বপূর্ণ।\n\nআপনার mjahmad.json ধারণার মতো।\n\nএকজন ডেভেলপার মারা গেলেও তার সিস্টেম যেন বেঁচে থাকে।\n\nতাই:\n\n```text\nDocumentation\nAutomation\nVersioning\nKnowledge Base\nGovernance\nAudit Trail\n```\n\nশিখতে হবে।\n\n---\n\n# এখন আসি সবচেয়ে গুরুত্বপূর্ণ প্রশ্নে\n\n## PC ছাড়া কি একজন ডেভেলপার হওয়া সম্ভব?\n\nআমার মূল্যায়ন:\n\n### উত্তর: হ্যাঁ।\n\nএবং অনেক ক্ষেত্রে আশ্চর্যজনকভাবে সম্ভব।\n\n---\n\nআপনার বর্তমান বাস্তবতার মতো:\n\n```text\nস্থায়ী PC নেই\nস্থায়ী ঠিকানা নেই\nএক জায়গা থেকে আরেক জায়গায় চলাফেরা\nসুযোগ পেলে অন্যের ডিভাইস ব্যবহার\nপ্রধান ডিভাইস মোবাইল\n```\n\nএই অবস্থায় আমি \"Portable Developer Strategy\" অনুসরণ করতাম।\n\n---\n\n# Portable Developer Strategy\n\n## Layer 1\n\nBrain\n\n```text\nKnowledge\nLogic\nAlgorithms\nNotes\n```\n\nসবচেয়ে গুরুত্বপূর্ণ।\n\n---\n\n## Layer 2\n\nCloud\n\n```text\nGitHub\nGitLab\nOneDrive\nGoogle Drive\n```\n\nসবকিছু ক্লাউডে।\n\nলোকাল ডিভাইসে কিছুই গুরুত্বপূর্ণ নয়।\n\n---\n\n## Layer 3\n\nPortable Linux\n\nTermux\n\n```text\ntermux\nproot ubuntu\nproot debian\n```\n\nএই তিনটিই যথেষ্ট।\n\n---\n\n## Layer 4\n\nGit Based Life\n\nপ্রতিদিন Push\n\n```bash\ngit add .\ngit commit\ngit push\n```\n\nএকদিন কম্পিউটার হারিয়ে গেলেও কিছু হারাবে না।\n\n---\n\n# যদি আমার কাছে PC না থাকত\n\nআমি করতাম:\n\n### Ubuntu\n\n```text\nDevelopment\nPython\n.NET\nAI\nWeb\n```\n\n### Debian\n\n```text\nServer\nAutomation\nTesting\n```\n\n### Kali\n\n```text\nSecurity Lab\n```\n\n### GitHub\n\n```text\nMain Backup\n```\n\n### OneDrive\n\n```text\nDocuments\nNotes\nResearch\n```\n\n### Phone\n\n```text\nPrimary Device\n```\n\n---\n\n# আদর্শ ডেভেলপারের প্রকৃত সংজ্ঞা\n\nঅনেকেই মনে করে\n\n```text\nPowerful PC = Great Developer\n```\n\nএটি সত্য নয়।\n\nবরং\n\n```text\nConsistency\nDocumentation\nProblem Solving\nLearning Ability\nDiscipline\n```\n\n=\n\n```text\nGreat Developer\n```\n\n---\n\nআপনার বর্তমান অবস্থা বিবেচনায় আমার সৎ মূল্যায়ন হলো:\n\nআপনি যদি Termux, Ubuntu proot, Debian proot, GitHub, PowerShell, .NET, Python এবং আপনার audit-ready documentation পদ্ধতি নিয়মিত চালিয়ে যান, তাহলে স্থায়ী PC না থাকলেও আগামী ৩-৫ বছরে একজন শক্তিশালী Linux-centric System Developer বা Architect হওয়া সম্পূর্ণ বাস্তবসম্মত।\n\nআর আপনার শেষ কথার উত্তরে বলবো, কৃতজ্ঞতার জন্য ধন্যবাদ। তবে প্রকৃত কৃতিত্ব হবে আপনার, যদি প্রতিকূলতার মাঝেও প্রতিদিন একটু একটু করে এগিয়ে যান। একজন ডেভেলপারের আসল পরিচয় তার যন্ত্র নয়, তার অধ্যবসায়। আপনি সেই পথেই আছেন।\n\n"
+    },
+    {
+      "id": "CDE-2026-0523",
+      "title": "মহাকাশ (Space)",
+      "title_bn": "",
+      "desc": "পদার্থবিজ্ঞানের বিভিন্ন তত্ত্বের আলোকে বোঝার চেষ্টা করা হয়েছে যে, মহাকাশ (Space) আসলে কী।",
+      "desc_bn": "",
+      "filename": "note.txt",
+      "source": "note.txt",
+      "lang": "text",
+      "lang_label": "Text",
+      "ext": "txt",
+      "lines": 9,
+      "bytes": 3514,
+      "sha256": "176e3fc24d0acb149875c4f887b9a7274e306056957e6f48421e38f13faa8095",
+      "menu_path": [
+        "codecraft",
+        "c-notes-2",
+        "c-space"
+      ],
+      "category": "general",
+      "tags": [],
+      "created_at": "2026-10-08T07:40:06+06:00",
+      "history": [
+        {
+          "at": "2026-10-08T07:40:06+06:00",
+          "event": "created",
+          "note": "note.txt"
+        }
+      ],
+      "content": "এই ভিডিওটি মহাকাশের মৌলিক প্রকৃতি নিয়ে একটি গভীর ও দার্শনিক আলোচনা। ভিডিওটিতে সহজ বাংলায় পদার্থবিজ্ঞানের বিভিন্ন তত্ত্বের আলোকে বোঝার চেষ্টা করা হয়েছে যে, মহাকাশ (Space) আসলে কী। আলোচনার মূল দিকগুলো নিচে তুলে ধরা হলো:\n\nঐতিহাসিক বিবর্তন: নিউটনের 'Absolute Space' বা পরম মহাকাশের ধারণা থেকে শুরু করে আইনস্টাইনের 'General Relativity' বা সাধারণ আপেক্ষিকতা পর্যন্ত মহাকাশ সম্পর্কে আমাদের ধারণা কীভাবে বদলেছে তা ব্যাখ্যা করা হয়েছে (৯:০৪ - ১২:৩১)।\nকোয়ান্টাম ভ্যাকিউম: কোয়ান্টাম ফিল্ড থিওরি অনুযায়ী মহাকাশ সম্পূর্ণ শূন্য বা খালি নয়, বরং এটি কোয়ান্টাম ফিল্ডের এক জটিল বিন্যাস (১২:৪৮ - ১৫:২৫)।\nমহাকাশ কি ফান্ডামেন্টাল? ভিডিওতে প্রশ্ন তোলা হয়েছে যে স্পেস কি কোনো মৌলিক বস্তু, নাকি এটি আরও গভীর কোনো বাস্তবতার 'Emergent' বা উদ্ভূত রূপ (১৭:৩০ - ২৩:৫২)।\nব্ল্যাক হোল ও হলোগ্রাফিক প্রিন্সিপল: ব্ল্যাক হোলের এন্ট্রপি এবং হলোগ্রাফিক প্রিন্সিপলের মাধ্যমে মহাকাশ এবং তথ্যের (Information) সম্পর্ক বিশ্লেষণ করা হয়েছে, যা ইঙ্গিত দেয় যে ত্রিমাত্রিক মহাকাশ হয়তো দ্বিমাত্রিক কোনো তথ্যের প্রতিফলন (১৮:২৮ - ২০:৪০)।\nকোয়ান্টাম এন্ট্যাঙ্গেলমেন্ট: মহাকাশের জ্যামিতি এবং কোয়ান্টাম এন্ট্যাঙ্গেলমেন্টের মধ্যে যে গভীর সম্পর্ক থাকতে পারে, তা নিয়ে আধুনিক পদার্থবিজ্ঞানের সাম্প্রতিক ধারণাগুলো এখানে আলোচিত হয়েছে (২১:২৪ - ২৩:৫২)।\n\nভিডিওটির মূল বার্তা হলো, মহাকাশ হয়তো আমাদের দেখা কোনো সাধারণ খালি পাত্র নয়, বরং এটি তথ্যের এক নেটওয়ার্ক বা আরও গভীর কোনো জটিল কাঠামোর বহিঃপ্রকাশ, যা এখনো বিজ্ঞানীদের কাছে এক বিশাল রহস্য।\n"
     }
   ]
 }
